@@ -13,11 +13,10 @@ import javax.swing.WindowConstants;
  * @author Thoma
  */
 public class DataDisplayScreen extends javax.swing.JFrame {
-<<<<<<< HEAD
+
     int[][] data = new int[5][200];
-=======
+
     int[][] data = new int[5][100];
->>>>>>> cf0a3da96527a02432215eb7683348b4a649592b
     int Instance = 0;
     int Choice = 0;
     String Variable = "A";
@@ -26,13 +25,10 @@ public class DataDisplayScreen extends javax.swing.JFrame {
      * Creates new form DataDisplayScreen
      */
     public DataDisplayScreen() {
-<<<<<<< HEAD
         initComponents();
         InitializeMatrix();
-=======
         Gatherdata();
         initComponents();
->>>>>>> cf0a3da96527a02432215eb7683348b4a649592b
     }
 
     /**
@@ -203,43 +199,36 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         Gatherdata();
     }//GEN-LAST:event_UpdateActionPerformed
 
-<<<<<<< HEAD
 
-private int[][]  InitializeMatrix() {  //Change this to a data request from server
-       
-      
-    int x = data[0].length - 1;
-
-    while(x>=0){
-=======
+private void  InitializeMatrix() {  //Change this to a data request from server
     
-   private int[][]  Gatherdata() {  //Change this to a data request from server
-    printTextField();
-       
-       
     int x = data[0].length - 1;
+    while(x>=0){
+
     int test = 10;
     while(x>0){
->>>>>>> cf0a3da96527a02432215eb7683348b4a649592b
+
         data[0][x] = 0;
         data[1][x] = 0;
         data[2][x] = 0;
         data[3][x] = 0;
         data[4][x] = 0;
-<<<<<<< HEAD
+
 
     }
     
-    return data; 
-   }    
-   private int[][]  Gatherdata() {  //Change this to a data request from server
-       
-       
+ 
+   }   
+}
+   private void  Gatherdata() {
+        
+        
+           //Change this to a data request from server
+    
     int x = data[0].length - 1;
     int test = 14;
     while(x>=0){
-=======
->>>>>>> cf0a3da96527a02432215eb7683348b4a649592b
+
         if (x<9)
         {
             data[0][x] = test;
@@ -253,7 +242,6 @@ private int[][]  InitializeMatrix() {  //Change this to a data request from serv
     }
     
     printTextField();
-    return data; 
    }
    
     public void Constant_Update(){
@@ -281,7 +269,7 @@ private int[][]  InitializeMatrix() {  //Change this to a data request from serv
     int x = 0;
     int Data;
     int i;
-<<<<<<< HEAD
+
     String Printable = "";
     String Printable1 = "";
     String Printable2 = "";
@@ -303,7 +291,6 @@ private int[][]  InitializeMatrix() {  //Change this to a data request from serv
     TempreatureData.setText(Printable);
     RainfallData.setText(Printable1);
     CropHeightData.setText(Printable2);
-=======
     String Printable;
     System.out.println(data[3][0]);
     while(data[3][x+1]>0){
@@ -324,7 +311,7 @@ private int[][]  InitializeMatrix() {  //Change this to a data request from serv
          x = x+1;
     }
  
->>>>>>> cf0a3da96527a02432215eb7683348b4a649592b
+
     }      
 
     public void Close_Chart(){
