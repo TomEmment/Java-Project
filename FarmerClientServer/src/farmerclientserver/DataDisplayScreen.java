@@ -14,12 +14,16 @@ import javax.swing.WindowConstants;
  */
 public class DataDisplayScreen extends javax.swing.JFrame {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     int[][] data = new int[5][200];
 
 =======
 >>>>>>> parent of 35d7139... Data Initial
     int[][] data = new int[5][100];
+=======
+    int[][] data = new int[5][1000];
+>>>>>>> parent of 22c8b05... Done
     int Instance = 0;
     int Choice = 0;
     String Variable = "A";
