@@ -13,7 +13,7 @@ import javax.swing.WindowConstants;
  * @author Thoma
  */
 public class DataDisplayScreen extends javax.swing.JFrame {
-    int[][] data = new int[5][100];
+    int[][] data = new int[5][1000];
     int Instance = 0;
     int Choice = 0;
     String Variable = "A";
@@ -23,7 +23,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
      */
     public DataDisplayScreen() {
         initComponents();
-        Gatherdata();
+        InitializeMatrix()
     }
 
     /**
@@ -194,19 +194,29 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         Gatherdata();
     }//GEN-LAST:event_UpdateActionPerformed
 
-    
-   private int[][]  Gatherdata() {  //Change this to a data request from server
-    printTextField();
+
+private int[][]  InitializeMatrix() {  //Change this to a data request from server
        
-       
+      
     int x = data[0].length - 1;
-    int test = 14;
+
     while(x>=0){
         data[0][x] = 0;
         data[1][x] = 0;
         data[2][x] = 0;
         data[3][x] = 0;
         data[4][x] = 0;
+
+    }
+    
+    return data; 
+   }    
+   private int[][]  Gatherdata() {  //Change this to a data request from server
+       
+       
+    int x = data[0].length - 1;
+    int test = 14;
+    while(x>=0){
         if (x<9)
         {
             data[0][x] = test;
