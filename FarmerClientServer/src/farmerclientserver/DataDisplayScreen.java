@@ -23,7 +23,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
      */
     public DataDisplayScreen() {
         initComponents();
-        InitializeMatrix()
+        InitializeMatrix();
     }
 
     /**
