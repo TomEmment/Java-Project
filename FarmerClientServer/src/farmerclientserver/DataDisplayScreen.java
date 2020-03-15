@@ -13,7 +13,7 @@ import javax.swing.WindowConstants;
  * @author Thoma
  */
 public class DataDisplayScreen extends javax.swing.JFrame {
-    int[][] data = new int[5][1000];
+    int[][] data = new int[5][200];
     int Instance = 0;
     int Choice = 0;
     String Variable = "A";
