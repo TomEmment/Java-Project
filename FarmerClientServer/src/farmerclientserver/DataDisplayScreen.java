@@ -13,9 +13,12 @@ import javax.swing.WindowConstants;
  * @author Thoma
  */
 public class DataDisplayScreen extends javax.swing.JFrame {
+<<<<<<< HEAD
 
     int[][] data = new int[5][200];
 
+=======
+>>>>>>> parent of 35d7139... Data Initial
     int[][] data = new int[5][100];
     int Instance = 0;
     int Choice = 0;
@@ -26,9 +29,13 @@ public class DataDisplayScreen extends javax.swing.JFrame {
      */
     public DataDisplayScreen() {
         initComponents();
+<<<<<<< HEAD
         InitializeMatrix();
         Gatherdata();
         initComponents();
+=======
+        Gatherdata();
+>>>>>>> parent of 35d7139... Data Initial
     }
 
     /**
@@ -199,10 +206,20 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         Gatherdata();
     }//GEN-LAST:event_UpdateActionPerformed
 
+<<<<<<< HEAD
 
 private void  InitializeMatrix() {  //Change this to a data request from server
     
     int x = data[0].length - 1;
+=======
+    
+   private int[][]  Gatherdata() {  //Change this to a data request from server
+    printTextField();
+       
+       
+    int x = data[0].length - 1;
+    int test = 14;
+>>>>>>> parent of 35d7139... Data Initial
     while(x>=0){
 
     int test = 10;
@@ -213,6 +230,7 @@ private void  InitializeMatrix() {  //Change this to a data request from server
         data[2][x] = 0;
         data[3][x] = 0;
         data[4][x] = 0;
+<<<<<<< HEAD
 
 
     }
@@ -229,6 +247,8 @@ private void  InitializeMatrix() {  //Change this to a data request from server
     int test = 14;
     while(x>=0){
 
+=======
+>>>>>>> parent of 35d7139... Data Initial
         if (x<9)
         {
             data[0][x] = test;
