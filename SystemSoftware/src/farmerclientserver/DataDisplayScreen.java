@@ -5,7 +5,7 @@
  */
 package farmerclientserver;
 
-import static farmerclientserver.Server1.din;
+import static javaserver.Server1.din;
 import java.awt.BorderLayout;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
