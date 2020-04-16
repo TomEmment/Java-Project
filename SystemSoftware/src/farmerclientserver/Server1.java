@@ -63,59 +63,110 @@ public class Server1 {
             dout = new DataOutputStream(s.getOutputStream());
             /*ServerGUI ServerVisable = new ServerGUI();
             ServerVisable.setVisible(true);*/
+            char typeLogin = 1;
+            char typeStation = 0;
             while (!Message.equals("exit")){
  
                 Message = din.readUTF();
                 System.out.println(Message);
-                char MessageType = Message.charAt(0);
-                Data = Character.toString(MessageType);
-                /*if (Data.equals(":"))
-                {
+                if(Message.charAt(0) == typeStation){
+                    char MessageType = Message.charAt(0);
+                    Data = Character.toString(MessageType);
+                    /*if (Data.equals(":"))
+                    {
                     Counter = Character.getNumericValue(Message.charAt(1));
                     Index = Index +1;
-                   while (Character.toString(Message.charAt(Index)).equals(":")==false)
-                   {
-                     
+                    while (Character.toString(Message.charAt(Index)).equals(":")==false)
+                    {
+                    
                     temp = Message.charAt(Index);
                     Data = Character.toString(temp);
                     data[Counter][Variable] = data[Counter][Variable] + Data;
                     Index = Index +1;
                     
-                   }
-                   Index = Index +2;
-                   Variable = Variable +1;
+                    }
+                    Index = Index +2;
+                    Variable = Variable +1;
+                    
+                    }*/
+                    
+                    
+                    
+                    //else{
+                    Station = Message.charAt(0);
+                    VariableX = Message.charAt(1);
+                    VariableY = Message.charAt(2);
+                    if (VariableX==VariableY){
+                        ClientMessages = "Could not load Error: Same Variabel";
+                        dout.writeUTF(ClientMessages);
+                        din.close();
+                        
+                    }else{
+                        ClientMessages = "Making Connection";
+                        //UNDER CONSTRUSTION
+                        
+                        dout.writeUTF(ClientMessages);
+                        Number1 = Character.getNumericValue(VariableX);
+                        Number2 = Character.getNumericValue(VariableY);
+                        Number3 = Character.getNumericValue(Station);
+                        ClientData=  data[Number3][Number1] + data[Number3][Number2];
+                        System.out.println(ClientData);
+                        dout.writeUTF(ClientData);
+                        din.close();
+                    }   } else {
+                }
+                if(Message.charAt(0) == typeLogin){
+                    // message from server is from login screen
+                        // check file for login info
+                        // message is == "1" " " "name" " " "pass"
+                        String[] newMessage = Message.split(" ");
+                        //String username = Message[1];
+                        List<String> Userdata = new ArrayList<String>();
+                    try{
+                        Path path = Paths.get("Admin.txt");
+                        Scanner scanner = new Scanner(path);
+                        System.out.println("Read text file using Scanner");
+                        while(scanner.hasNextLine()){
+                            String line = scanner.nextLine();
+                            Userdata.add(line);
 
-                }*/
-                
-                
-               
-                //else{
-                Station = Message.charAt(0);
-                VariableX = Message.charAt(1);
-                VariableY = Message.charAt(2);
-                if (VariableX==VariableY){
-                    ClientMessages = "Could not load Error: Same Variabel";
-                    dout.writeUTF(ClientMessages);
-                    din.close();
-
-                }else{
-                    ClientMessages = "Making Connection";
-                                    //UNDER CONSTRUSTION
- 
-                    dout.writeUTF(ClientMessages);  
-                    Number1 = Character.getNumericValue(VariableX);
-                    Number2 = Character.getNumericValue(VariableY);
-                    Number3 = Character.getNumericValue(Station);
-                    ClientData=  data[Number3][Number1] + data[Number3][Number2];
-                    System.out.println(ClientData);
-                    dout.writeUTF(ClientData);
-                     din.close();
-            }
-
+                        }
+                        scanner.close();
+                        System.out.println("Data collected");
+                    }
+                    catch(IOException e){
+                        System.out.println("Error opening file");
+                    }
+                    int size = Userdata.size()-1;
+                    boolean Present = false;
+                    while (size >= 1){
+                        System.out.println(Userdata.get(size-1));
+                        System.out.println(newMessage[1]);
+                        if ((Userdata.get(size).equals(newMessage[2]))&&(Userdata.get(size-1).equals(newMessage[1]))){
+                            Present = true;
+                            System.out.println("User found");
+                        }
+                        size = size -2;
+                    }
+        try{
+            String msgout = "";
+        if (Present == false){
+            System.out.println("Not User");
+            msgout = "0"; // user not found
+            
+        }else{
+            msgout = "1"; // user found
+        }
+        dout.writeUTF(msgout);
+        
+        }catch(Exception e){
+            //handle exception here
+        }                       
+                }
             //}
           }
           }
-    catch(Exception e){
+    catch(IOException e){
         // Exception handling
     }
           

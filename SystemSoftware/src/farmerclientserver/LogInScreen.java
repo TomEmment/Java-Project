@@ -1,9 +1,12 @@
 
 package farmerclientserver;
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.Socket;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -11,7 +14,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class LogInScreen extends javax.swing.JFrame {
-
+    static Socket s;
+    static DataInputStream din;
+    static DataOutputStream dout;
+    int wrongAttempts = 0;
+    
     public LogInScreen() {
         initComponents();
     }
@@ -125,19 +132,49 @@ public class LogInScreen extends javax.swing.JFrame {
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         String name =String.valueOf(Username.getText());
         String pass = String.valueOf(Password.getPassword());
+        String[] userInfo = new String[] {name,pass};
+        
+        
+        try{
+            
+            s = new Socket("127.0.0.1",1201); //here the IP address is local address because client and server are on the same computer
+            din = new DataInputStream(s.getInputStream());
+            dout = new DataOutputStream(s.getOutputStream()); 
+
+
+
+            dout.writeUTF("1"+" "+userInfo[0]+" "+userInfo[1]);
+            din.close();
+    
+            }
+        catch(IOException e){
+           System.out.println("Error Connecting to Server");
+        }
+        
         /*
         connect to server
         say logging in
         send username password to server
         recive message (Sucesss) from server
         */
-        boolean Success = Log_in(name,pass);
-        if(Success){
+        //boolean Success = Log_in(name,pass);
+        String Success;
+        Success = "";
+        try{
+            //read whether file was read successfully
+            while(!Success.equals("exit")){
+                Success = din.readUTF();}
+        }catch(IOException e){
+       System.out.println("Error reading login success or failure");
+    }
+        if("1".equals(Success)){
             setVisible(false); 
             dispose(); 
             System.out.println("Oppening information window");
             DataDisplayScreen Instance = new DataDisplayScreen();
             Instance.setVisible(true);
+        }else{
+            wrongAttempts += 1;
         }
         
         
