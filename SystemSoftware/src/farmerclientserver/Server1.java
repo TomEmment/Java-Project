@@ -68,9 +68,15 @@ public class Server1 {
             while (!Message.equals("exit")){
  
                 Message = din.readUTF();
-                System.out.println(Message);
+                String[] newMessage = Message.split(" ");
+                
+                System.out.println(Message); // first print
                 if(Message.charAt(0) == typeStation){
-                    char MessageType = Message.charAt(0);
+                    String stationInfo = newMessage[1];
+                    // read in -> String = login or station + " " + Station number + SelectedX + SelectedY
+                    //char MessageType = Message.charAt(0);
+
+                    char MessageType = stationInfo.charAt(0);
                     Data = Character.toString(MessageType);
                     /*if (Data.equals(":"))
                     {
@@ -93,9 +99,9 @@ public class Server1 {
                     
                     
                     //else{
-                    Station = Message.charAt(0);
-                    VariableX = Message.charAt(1);
-                    VariableY = Message.charAt(2);
+                    Station = stationInfo.charAt(0);
+                    VariableX = stationInfo.charAt(1);
+                    VariableY = stationInfo.charAt(2);
                     if (VariableX==VariableY){
                         ClientMessages = "Could not load Error: Same Variabel";
                         dout.writeUTF(ClientMessages);
@@ -110,7 +116,7 @@ public class Server1 {
                         Number2 = Character.getNumericValue(VariableY);
                         Number3 = Character.getNumericValue(Station);
                         ClientData=  data[Number3][Number1] + data[Number3][Number2];
-                        System.out.println(ClientData);
+                        System.out.println(ClientData); // 2nd print
                         dout.writeUTF(ClientData);
                         din.close();
                     }   } else {
@@ -119,19 +125,17 @@ public class Server1 {
                     // message from server is from login screen
                         // check file for login info
                         // message is == "1" " " "name" " " "pass"
-                        String[] newMessage = Message.split(" ");
                         //String username = Message[1];
-                        List<String> Userdata = new ArrayList<String>();
+                        List<String> Userdata = new ArrayList<>();
                     try{
                         Path path = Paths.get("Admin.txt");
-                        Scanner scanner = new Scanner(path);
-                        System.out.println("Read text file using Scanner");
-                        while(scanner.hasNextLine()){
-                            String line = scanner.nextLine();
-                            Userdata.add(line);
-
-                        }
-                        scanner.close();
+                            try (Scanner scanner = new Scanner(path)) {
+                                System.out.println("Read text file using Scanner");
+                                while(scanner.hasNextLine()){
+                                    String line = scanner.nextLine();
+                                    Userdata.add(line);
+                                    
+                                }   }
                         System.out.println("Data collected");
                     }
                     catch(IOException e){
@@ -149,7 +153,7 @@ public class Server1 {
                         size = size -2;
                     }
         try{
-            String msgout = "";
+            String msgout;
         if (Present == false){
             System.out.println("Not User");
             msgout = "0"; // user not found
@@ -159,7 +163,7 @@ public class Server1 {
         }
         dout.writeUTF(msgout);
         
-        }catch(Exception e){
+        }catch(IOException e){
             //handle exception here
         }                       
                 }

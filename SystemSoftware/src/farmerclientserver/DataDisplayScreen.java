@@ -236,7 +236,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
        int SelectedY = VariableY.getSelectedIndex(); 
        int SelectedStation = StationSelection.getSelectedIndex() + 1; 
        
-       String Message = Integer.toString(SelectedStation) + Integer.toString(SelectedX) + Integer.toString(SelectedY);
+       // send 0 to signal that this message is related to station, not login
+       String Message = "0"+Integer.toString(SelectedStation) + Integer.toString(SelectedX) + Integer.toString(SelectedY);
        
 
     try{
@@ -244,6 +245,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         din = new DataInputStream(s.getInputStream());
         dout = new DataOutputStream(s.getOutputStream());
         dout.writeUTF(Message);
+        dout.writeUTF("1"+" "+Message);
                 while (!Message.equals("exit")){
                 Message = din.readUTF();
                 System.out.println(Message + "Data was successfully created");

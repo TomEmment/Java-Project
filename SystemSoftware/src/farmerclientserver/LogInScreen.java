@@ -158,19 +158,19 @@ public class LogInScreen extends javax.swing.JFrame {
         recive message (Sucesss) from server
         */
         //boolean Success = Log_in(name,pass);
-        String Success;
-        Success = "";
-        try{
+        String Success = "-1"; // set to 0 so login currently fails
+        Success = readServer(Success);
+        /*try{
             //read whether file was read successfully
             while(!Success.equals("exit")){
                 Success = din.readUTF();}
         }catch(IOException e){
             System.out.println("Error reading login success or failure");
-    }
-        if("1".equals(Success)){
+    }*/
+        if("1".equals(Success)){ // success changes to 1 if login details are correct
             setVisible(false); 
             dispose(); 
-            System.out.println("Oppening information window");
+            System.out.println("Opening information window");
             DataDisplayScreen Instance = new DataDisplayScreen();
             Instance.setVisible(true);
         }else{
@@ -180,6 +180,27 @@ public class LogInScreen extends javax.swing.JFrame {
         
     }//GEN-LAST:event_LoginActionPerformed
 
+    public static String readServer(String msgin){
+        try{
+            String test = "test";
+            while(!test.equals("exit")){
+                //System.out.println("hello");
+                System.out.println(msgin);
+                msgin = din.readUTF();               
+                //System.out.println("hello");
+                System.out.println(msgin);
+                if("1".equals(msgin) || "0".equals(msgin)){
+                    test = "exit";
+                }
+            }
+            //System.out.println("hello");
+        }catch(IOException e){
+            System.out.println("Error in function readServer");  
+        }
+        return msgin;
+        
+    }
+    
     private void Create_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create_UserActionPerformed
         String name =String.valueOf(Username.getText());
         String pass = String.valueOf(Password.getPassword());
