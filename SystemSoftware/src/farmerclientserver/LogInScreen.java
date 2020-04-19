@@ -165,7 +165,7 @@ public class LogInScreen extends javax.swing.JFrame {
             while(!Success.equals("exit")){
                 Success = din.readUTF();}
         }catch(IOException e){
-       System.out.println("Error reading login success or failure");
+            System.out.println("Error reading login success or failure");
     }
         if("1".equals(Success)){
             setVisible(false); 
