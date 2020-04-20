@@ -105,6 +105,7 @@ public class Server1 {
                     if (VariableX==VariableY){
                         ClientMessages = "Could not load Error: Same Variabel";
                         dout.writeUTF(ClientMessages);
+                        dout.flush();
                         din.close();
                         
                     }else{
@@ -118,6 +119,7 @@ public class Server1 {
                         ClientData=  data[Number3][Number1] + data[Number3][Number2];
                         System.out.println(ClientData); // 2nd print
                         dout.writeUTF(ClientData);
+                        dout.flush();
                         din.close();
                     }   } else {
                 }
@@ -162,6 +164,7 @@ public class Server1 {
             msgout = "1"; // user found
         }
         dout.writeUTF(msgout);
+        dout.flush();
         
         }catch(IOException e){
             //handle exception here

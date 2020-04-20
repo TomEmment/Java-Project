@@ -144,7 +144,9 @@ public class LogInScreen extends javax.swing.JFrame {
 
 
             dout.writeUTF("1"+" "+userInfo[0]+" "+userInfo[1]);
+            dout.flush();
             din.close();
+            
     
             }
         catch(IOException e){
