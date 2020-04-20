@@ -64,7 +64,21 @@ public class Server extends javax.swing.JFrame
                     {
                        Present = Log_in(data[1],data[2]);
                        System.out.println(Present);
-                       //Write Present Back
+                        Iterator it = clientOutputStreams.iterator();
+
+                        while (it.hasNext()) 
+                        {
+                            try 
+                            {
+                                PrintWriter writer = (PrintWriter) it.next();
+                                writer.println(Present);
+                                writer.flush();
+                            } 
+            catch (Exception ex) 
+            {
+		System.out.println("Error telling everyone. \n");
+            }
+        } 
                     } 
                     else if (data[0].equals(Request)) 
                     {
