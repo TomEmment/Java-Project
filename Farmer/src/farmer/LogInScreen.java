@@ -183,7 +183,7 @@ public class LogInScreen extends javax.swing.JFrame {
             {
                 while ((stream = reader.readLine()) != null) 
                 {
-                     data = stream.split(":");
+                     data = stream.split(";");
 
                      if (data[0].equals(connect)) 
                      {

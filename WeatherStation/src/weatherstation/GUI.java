@@ -142,7 +142,7 @@ public class GUI extends javax.swing.JFrame {
 public void SendData(){
         username = StationChoice.getText();
             try {
-               writer.println(username + ":" + data);
+               writer.println(username + ";" + data);
                writer.flush(); // flushes the buffer
             } catch (Exception ex) {
                 System.out.println("Data was not sent. \n");
@@ -289,7 +289,7 @@ public void SendData(){
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(streamreader);
                 writer = new PrintWriter(sock.getOutputStream());
-                writer.println(username +":" +data);
+                writer.println("Data;"+username +";" +data);
                 writer.flush(); 
                 isConnected = true; 
             } 

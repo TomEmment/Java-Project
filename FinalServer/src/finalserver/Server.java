@@ -16,7 +16,7 @@ public class Server extends javax.swing.JFrame
        BufferedReader reader;
        Socket sock;
        PrintWriter client;
-       String DataStorage[];
+       String[] DataStorage = new String[]{"1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"};
        public ClientHandler(Socket clientSocket, PrintWriter user) 
        {
             client = user;
@@ -53,13 +53,12 @@ public class Server extends javax.swing.JFrame
 
                     if (data[0].equals(Data)) 
                     {
-                        System.out.println(data[0]);
-                        System.out.println(data[1]);
                         temp = data[1].charAt(data[1].length()-1);
-                        System.out.println(temp);
+
                         Position = Integer.parseInt(String.valueOf(temp));
-                        System.out.println(data[2]);
+
                         DataStorage[Position] = data[2];
+
                     } 
                     else if (data[0].equals(Login)) 
                     {
@@ -96,6 +95,7 @@ public class Server extends javax.swing.JFrame
 
         b_start = new javax.swing.JButton();
         b_end = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chat - Server's frame");
@@ -116,16 +116,28 @@ public class Server extends javax.swing.JFrame
             }
         });
 
+        jButton1.setText("SEE ALL THE DATA under construction");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(b_start, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(b_end, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(367, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(b_start, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(b_end, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jButton1)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +146,9 @@ public class Server extends javax.swing.JFrame
                 .addComponent(b_start)
                 .addGap(18, 18, 18)
                 .addComponent(b_end)
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addGap(125, 125, 125)
+                .addComponent(jButton1)
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         pack();
@@ -156,6 +170,10 @@ public class Server extends javax.swing.JFrame
         starter.start();
         
     }//GEN-LAST:event_b_startActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println("Print the Matrix");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) 
     {
@@ -275,5 +293,6 @@ public class Server extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_end;
     private javax.swing.JButton b_start;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
