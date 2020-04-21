@@ -156,7 +156,7 @@ public class LogInScreen extends javax.swing.JFrame {
                 writer.flush(); 
                 isConnected = true; 
             } 
-            catch (Exception ex) 
+            catch (IOException ex) 
             {
                 System.out.println("Cannot Connect! Try Again. \n");
             }
@@ -199,7 +199,7 @@ public class LogInScreen extends javax.swing.JFrame {
                      } 
                      
                 }
-           }catch(Exception ex) { }
+           }catch(IOException ex) { }
         }
     }
     public static void main(String args[]) {

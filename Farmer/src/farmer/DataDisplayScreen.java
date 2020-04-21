@@ -8,6 +8,7 @@ package farmer;
 import java.awt.BorderLayout;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -251,7 +252,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 System.out.println(Message + "Data was successfully created");
         }
                 s.close();
-    }catch(Exception e){
+    }catch(IOException e){
        System.out.println("There was an error with the server");
        
     } 
