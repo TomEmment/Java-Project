@@ -121,7 +121,7 @@ public class GUI extends javax.swing.JFrame {
         }    
     }
         public String GenerateData(String File){
-        List<String> Userdata = new ArrayList<>();
+        List<String> Userdata = new ArrayList<String>();
         try{
             Path path = Paths.get(File);
             Scanner scanner = new Scanner(path);
@@ -167,7 +167,7 @@ public void SendData(){
                           SendData();
                      } 
                 }
-           }catch(IOException ex) { }
+           }catch(Exception ex) { }
         }
     }
     @SuppressWarnings("unchecked")

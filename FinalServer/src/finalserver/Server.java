@@ -26,7 +26,7 @@ public class Server extends javax.swing.JFrame
                 InputStreamReader isReader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(isReader);
             }
-            catch (IOException ex) 
+            catch (Exception ex) 
             {
                 System.out.println("Unexpected error... \n");
             }
@@ -90,7 +90,7 @@ public class Server extends javax.swing.JFrame
                     }
                 } 
              } 
-             catch (IOException | NumberFormatException ex) 
+             catch (Exception ex) 
              {
                 System.out.println("Lost a connection. \n");
 
@@ -213,7 +213,7 @@ public class Server extends javax.swing.JFrame
             }
             size = size -2;
         }
-        if ("Unsuccesfull".equals(Present)){
+        if (Present == "Unsuccesfull"){
             System.out.println("Not User");
         }
         return Present;
@@ -256,7 +256,7 @@ public class Server extends javax.swing.JFrame
     }
 */
     public static List<String> GetUsers(){
-        List<String> Userdata = new ArrayList<>();
+        List<String> Userdata = new ArrayList<String>();
         try{
             Path path = Paths.get("Admin.txt");
             Scanner scanner = new Scanner(path);
@@ -297,7 +297,7 @@ public class Server extends javax.swing.JFrame
 				System.out.println("Got a connection. \n");
                 }
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
                 System.out.println("Error making a connection. \n");
             }
