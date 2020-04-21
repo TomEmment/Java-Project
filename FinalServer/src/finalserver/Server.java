@@ -288,7 +288,9 @@ public class Server extends javax.swing.JFrame
 
                 while (true) 
                 {
+                    System.out.println("1");
 				Socket clientSock = serverSock.accept();
+                                System.out.println("2");
 				PrintWriter writer = new PrintWriter(clientSock.getOutputStream());
 				clientOutputStreams.add(writer);
                                 System.out.println(writer);
