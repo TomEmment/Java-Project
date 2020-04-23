@@ -16,7 +16,7 @@ public class Server extends javax.swing.JFrame
        BufferedReader reader;
        Socket sock;
        PrintWriter client;
-       public volatile String[] DataStorage = new String[]{"1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"};
+       String[] DataStorage = new String[]{"1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"};
        public ClientHandler(Socket clientSocket, PrintWriter user) 
        {
             client = user;
@@ -58,9 +58,9 @@ public class Server extends javax.swing.JFrame
 
                         Position = Integer.parseInt(String.valueOf(temp));
                         System.out.println(data[2]);
-                        synchronized(this){
+                        SendMessage("DataSending;"+data[2]);
                         DataStorage[Position] = data[2];
-                        }
+
 
                     } 
                     else if (data[0].equals(Login)) 
@@ -73,12 +73,6 @@ public class Server extends javax.swing.JFrame
                     else if (data[0].equals(Request)) 
                     {
                         SendMessage("DataRequest;");
-                        temp = data[1].charAt(data[1].length()-1);
-                        Position = Integer.parseInt(String.valueOf(temp));
-                        synchronized(this){
-                        Sending = DataStorage[Position];
-                        }
-                        SendMessage("DataSending;"+Sending);
 
                     }                     
                     else 

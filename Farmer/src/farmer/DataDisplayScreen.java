@@ -76,9 +76,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         ChartPannel = new javax.swing.JPanel();
-        UpdateData = new javax.swing.JButton();
+        ContactServer = new javax.swing.JButton();
         StationChoice = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        UpdateChart = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,16 +124,30 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             .addGap(0, 367, Short.MAX_VALUE)
         );
 
-        UpdateData.setText("Update Chart and data");
-        UpdateData.addActionListener(new java.awt.event.ActionListener() {
+        ContactServer.setText("Message Server");
+        ContactServer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateDataActionPerformed(evt);
+                ContactServerActionPerformed(evt);
             }
         });
 
         StationChoice.setText("WeatherStation1");
 
         jLabel3.setText("Station Choice:");
+
+        UpdateChart.setText("Update Chart");
+        UpdateChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateChartActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Print Matrix");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -140,6 +156,14 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(ContactServer, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(UpdateChart, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(StationChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,20 +171,15 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         .addGap(61, 61, 61)
                         .addComponent(VariableX, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56)
-                        .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Stop, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))
+                        .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(UpdateData, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                        .addComponent(ChartPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(388, 388, 388))))
+                        .addComponent(jButton1)
+                        .addGap(574, 574, 574)
+                        .addComponent(Stop, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ChartPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +191,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(VariableX, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Stop, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Stop, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3)
@@ -193,7 +213,9 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         .addGap(4, 4, 4)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(UpdateData, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(UpdateChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ContactServer, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -223,11 +245,30 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_VariableXActionPerformed
 
-    private void UpdateDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateDataActionPerformed
-       Gatherdata();//Eventually wont need this as all data will be pulled initially on succesfull login
-        printTextField(VariableX.getSelectedIndex(),VariableY.getSelectedIndex() );
-        LineChart_AWT(VariableX.getSelectedItem().toString(), VariableY.getSelectedItem().toString() );        // TODO add your handling code here:
-    }//GEN-LAST:event_UpdateDataActionPerformed
+    private void ContactServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactServerActionPerformed
+       Gatherdata();
+  
+    }//GEN-LAST:event_ContactServerActionPerformed
+
+    private void UpdateChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateChartActionPerformed
+                printTextField(VariableX.getSelectedIndex(),VariableY.getSelectedIndex() );
+        LineChart_AWT(VariableX.getSelectedItem().toString(), VariableY.getSelectedItem().toString() );      // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateChartActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     int x = data[0].length - 1;
+    while(x>=0){
+        if (data[0][x]!=0)
+        {
+        System.out.println(data[0][x]);
+        System.out.println(data[1][x]);
+        System.out.println(data[2][x]);
+        System.out.println(data[3][x]);
+        System.out.println(data[4][x]);
+        }
+        x=x-1;
+    }       // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 private int[][]  InitialMatrix() {  //Change this to a data request from server
       
@@ -247,7 +288,6 @@ private int[][]  InitialMatrix() {  //Change this to a data request from server
    }   
 
   private int[][]  Update(String Data) {  //Change this to a data request from server
-    System.out.println(Data);
     int i = 7;   
     int x = Data.length()-1;
     int Variable = 0;
@@ -266,6 +306,7 @@ private int[][]  InitialMatrix() {  //Change this to a data request from server
             i = i + 2;
             tempString = "";
             Variable = Variable + 1;
+            Position = 0;
         }
         else{
              tempString = tempString + tempCharacter;
@@ -346,8 +387,10 @@ private int[][]  InitialMatrix() {  //Change this to a data request from server
     
     while(data[VariableX][x]>0){
         Data = data[VariableX][x];
+        System.out.println(data[VariableX][x]);
         Printable = Printable + ", " + Integer.toString(Data);
         Data1 = data[VariableY][x];
+        System.out.println(data[VariableY][x]);
         Printable1 = Printable1 + ", " + Integer.toString(Data1);            
         x = x+1;
     }
@@ -371,8 +414,6 @@ private int[][]  InitialMatrix() {  //Change this to a data request from server
 
                      if (data[0].equals(Done)) 
                      {
-                         System.out.println(data[0]);
-                         System.out.println(data[1]);
                          Update(data[1]);
                      } 
 
@@ -422,13 +463,15 @@ private int[][]  InitialMatrix() {  //Change this to a data request from server
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ChartPannel;
+    private javax.swing.JButton ContactServer;
     private javax.swing.JTextField StationChoice;
     private java.awt.Button Stop;
-    private javax.swing.JButton UpdateData;
+    private javax.swing.JButton UpdateChart;
     private javax.swing.JComboBox<String> VariableX;
     private javax.swing.JTextArea VariableXData;
     private javax.swing.JComboBox<String> VariableY;
     private javax.swing.JTextArea VariableYData;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
