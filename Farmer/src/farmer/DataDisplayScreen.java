@@ -298,7 +298,6 @@ private int[][]  InitialMatrix() {  //Change this to a data request from server
         tempCharacter = Data.charAt(i);
         if(tempCharacter == ','){
             data[Variable][Position] = Integer.parseInt(tempString);
-            System.out.println(data[Variable][Position]);
             tempString ="";
             Position = Position + 1;
         }
@@ -326,6 +325,8 @@ private int[][]  InitialMatrix() {  //Change this to a data request from server
                 reader = new BufferedReader(streamreader);
                 writer = new PrintWriter(sock.getOutputStream());
                 Choice = StationChoice.getText();
+                writer.println("Connect;FarmerJohn");
+                writer.flush(); 
                 writer.println("DataRequest;"+Choice);
                 writer.flush(); 
                 isConnected = true; 
@@ -387,10 +388,10 @@ private int[][]  InitialMatrix() {  //Change this to a data request from server
     
     while(data[VariableX][x]>0){
         Data = data[VariableX][x];
-        System.out.println(data[VariableX][x]);
+
         Printable = Printable + ", " + Integer.toString(Data);
         Data1 = data[VariableY][x];
-        System.out.println(data[VariableY][x]);
+
         Printable1 = Printable1 + ", " + Integer.toString(Data1);            
         x = x+1;
     }

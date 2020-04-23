@@ -152,6 +152,8 @@ public class LogInScreen extends javax.swing.JFrame {
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(streamreader);
                 writer = new PrintWriter(sock.getOutputStream());
+                writer.println("Connect;LoginScreen");
+                writer.flush(); 
                 writer.println("Login" + ";" + name + ";" + pass);
                 writer.flush(); 
                 isConnected = true; 
@@ -187,6 +189,8 @@ public class LogInScreen extends javax.swing.JFrame {
 
                      if (data[0].equals(connect)) 
                      {
+                        writer.println("DissConnect;LoginScreen");
+                        writer.flush(); 
                         sock.close();
                         setVisible(false); 
                         dispose(); 
