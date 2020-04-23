@@ -38,12 +38,12 @@ public class Server extends javax.swing.JFrame
        @Override
        public void run() 
        {
-            String message, Data = "Data", Login = "Login", Request ="DataRequest", Connect="Connect",DissConnect="DissConnect";
+            String message, Data = "Data", Login = "Login", Request ="DataRequest", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest";
             String[] data;
             String[] Clients;
             char temp;
             int Position;
-            String Sending;
+            String Sending ="";
             String Present;
          
 
@@ -96,7 +96,14 @@ public class Server extends javax.swing.JFrame
                             ClientList.append(users.get(i));
                             ClientList.append("\n");
                         }
-                    }                    
+                    } 
+                     else if (data[0].equals(Client)) 
+                    {
+                      for(int i = 0; i < users.size(); i++) {
+                            Sending = Sending + users.get(i) + ",";
+                        }
+                         SendMessage("ClientList;" + Sending);
+                    }  
                     else 
                     {
                         ServerChat.append("No Conditions were met. \n");
