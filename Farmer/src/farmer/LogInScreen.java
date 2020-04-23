@@ -187,6 +187,7 @@ public class LogInScreen extends javax.swing.JFrame {
 
                      if (data[0].equals(connect)) 
                      {
+                        sock.close();
                         setVisible(false); 
                         dispose(); 
                         System.out.println("Opening information window");

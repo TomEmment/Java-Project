@@ -16,7 +16,7 @@ public class Server extends javax.swing.JFrame
        BufferedReader reader;
        Socket sock;
        PrintWriter client;
-       String[] DataStorage = new String[]{"1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"};
+       public volatile String[] DataStorage = new String[]{"1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"};
        public ClientHandler(Socket clientSocket, PrintWriter user) 
        {
             client = user;
@@ -36,10 +36,11 @@ public class Server extends javax.swing.JFrame
        @Override
        public void run() 
        {
-            String message, Data = "Data", Login = "Login", Request ="Request";
+            String message, Data = "Data", Login = "Login", Request ="DataRequest";
             String[] data;
             char temp;
             int Position;
+            String Sending;
             String Present;
          
 
@@ -56,33 +57,29 @@ public class Server extends javax.swing.JFrame
                         temp = data[1].charAt(data[1].length()-1);
 
                         Position = Integer.parseInt(String.valueOf(temp));
-
+                        System.out.println(data[2]);
+                        synchronized(this){
                         DataStorage[Position] = data[2];
+                        }
 
                     } 
                     else if (data[0].equals(Login)) 
                     {
                        Present = Log_in(data[1],data[2]);
                        System.out.println(Present);
-                        Iterator it = clientOutputStreams.iterator();
+                       SendMessage(Present);
 
-                        while (it.hasNext()) 
-                        {
-                            try 
-                            {
-                                PrintWriter writer = (PrintWriter) it.next();
-                                writer.println(Present);
-                                writer.flush();
-                            } 
-            catch (Exception ex) 
-            {
-		System.out.println("Error telling everyone. \n");
-            }
-        } 
                     } 
                     else if (data[0].equals(Request)) 
                     {
-                       //under construction
+                        SendMessage("DataRequest;");
+                        temp = data[1].charAt(data[1].length()-1);
+                        Position = Integer.parseInt(String.valueOf(temp));
+                        synchronized(this){
+                        Sending = DataStorage[Position];
+                        }
+                        SendMessage("DataSending;"+Sending);
+
                     }                     
                     else 
                     {
@@ -186,7 +183,7 @@ public class Server extends javax.swing.JFrame
     }//GEN-LAST:event_b_startActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println("Print the Matrix");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) 
@@ -255,6 +252,26 @@ public class Server extends javax.swing.JFrame
         
     }
 */
+        
+public void SendMessage(String message) 
+    {
+	Iterator it = clientOutputStreams.iterator();
+
+        while (it.hasNext()) 
+        {
+            try 
+            {
+                PrintWriter writer = (PrintWriter) it.next();
+		writer.println(message);
+                writer.flush();
+
+            } 
+            catch (Exception ex) 
+            {
+		System.out.println("Error telling everyone. \n");
+            }
+        } 
+    }
     public static List<String> GetUsers(){
         List<String> Userdata = new ArrayList<>();
         try{
@@ -293,7 +310,6 @@ public class Server extends javax.swing.JFrame
                                 System.out.println("2");
 				PrintWriter writer = new PrintWriter(clientSock.getOutputStream());
 				clientOutputStreams.add(writer);
-                                System.out.println(writer);
 				Thread listener = new Thread(new ClientHandler(clientSock, writer));
 				listener.start();
 				System.out.println("Got a connection. \n");

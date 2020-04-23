@@ -142,7 +142,7 @@ public class GUI extends javax.swing.JFrame {
 public void SendData(){
         username = StationChoice.getText();
             try {
-               writer.println(username + ";" + data);
+               writer.println("Data;" + username + ";" + data);
                writer.flush(); // flushes the buffer
             } catch (Exception ex) {
                 System.out.println("Data was not sent. \n");
@@ -154,15 +154,15 @@ public void SendData(){
         public void run() 
         {
             String[] data;
-            String stream, Message = "Data";
+            String stream, Message = "DataRequest";
 
             try 
             {
                 while ((stream = reader.readLine()) != null) 
                 {
-                     data = stream.split(":");
+                     data = stream.split(";");
 
-                     if (data[2].equals(Message)) 
+                     if (data[0].equals(Message)) 
                      {
                           SendData();
                      } 
@@ -303,7 +303,7 @@ public void SendData(){
             
         } else if (isConnected == true) 
         {
-            System.out.println("You are already connected. \n");
+            SendData();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_UploadActionPerformed
 
