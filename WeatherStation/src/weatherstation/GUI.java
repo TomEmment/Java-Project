@@ -164,7 +164,9 @@ public void SendData(){
 
                      if (data[0].equals(Message)) 
                      {
+                         if (data[1].equals(username)){
                           SendData();
+                         }
                      } 
                 }
            }catch(IOException ex) { }
