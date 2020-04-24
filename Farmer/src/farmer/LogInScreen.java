@@ -167,7 +167,28 @@ public class LogInScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginActionPerformed
 
     private void Create_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create_UserActionPerformed
-        //under construction
+        String name =String.valueOf(Username.getText());
+        String pass = String.valueOf(Password.getPassword());   
+        String nameNew =String.valueOf(New_Username.getText());
+        String passNew = String.valueOf(New_Password.getText());         
+        try     
+            {
+                sock = new Socket(address, port);
+                InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
+                reader = new BufferedReader(streamreader);
+                writer = new PrintWriter(sock.getOutputStream());
+                writer.println("Connect;LoginScreen");
+                writer.flush(); 
+                writer.println("NewUser" + ";" + name + ";" + pass + ";" + nameNew + ";" + passNew);
+                writer.flush(); 
+                isConnected = true; 
+            } 
+            catch (IOException ex) 
+            {
+                System.out.println("Cannot Connect! Try Again. \n");
+            }
+            
+            ListenThread();
     }//GEN-LAST:event_Create_UserActionPerformed
 
     private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed

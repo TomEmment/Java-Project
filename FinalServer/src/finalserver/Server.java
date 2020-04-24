@@ -38,7 +38,7 @@ public class Server extends javax.swing.JFrame
        @Override
        public void run() 
        {
-            String message, Data = "Data", Login = "Login", Request ="DataRequest", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest";
+            String message, Data = "Data", Login = "Login", Request ="DataRequest", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",NewUser="NewUser";
             String[] data;
             String[] Clients;
             char temp;
@@ -67,7 +67,7 @@ public class Server extends javax.swing.JFrame
                     } 
                     else if (data[0].equals(Login)) 
                     {
-                       ServerChat.append("Attempting to login...");
+                       ServerChat.append("Attempting to login...\n");
                        Present = Log_in(data[1],data[2]);
                        ServerChat.append(Present);
                        SendMessage(Present);
@@ -103,6 +103,11 @@ public class Server extends javax.swing.JFrame
                             Sending = Sending + users.get(i) + ",";
                         }
                          SendMessage("ClientList;" + Sending);
+                    }  
+                     else if (data[0].equals(NewUser)) 
+                    {
+                        Present = New_User(data[1],data[2],data[3],data[4]);
+                        SendMessage(Present);
                     }  
                     else 
                     {
@@ -261,21 +266,21 @@ public class Server extends javax.swing.JFrame
         return Present;
     }
         
-       /*
-    public static boolean New_User(String Username, String Password,String New_Username, String New_Password){
-        boolean Present ;
+       
+    public static String New_User(String Username, String Password,String New_Username, String New_Password){
+        String Present ;
         Present = Log_in(Username, Password);
-        if(Present){
+        if(Present.equals("Sucessfull")){
             AddUser(New_Username, New_Password);
-            return true;
+            return "Sucessfull";
         }else{
             System.out.println("Could not add new user");
-            return false;
+            return "Unsuccesfull";
         }
     }
     public static void AddUser(String New_Username, String New_Password){
-        boolean User_Already_Present = Log_in(New_Username, New_Password);
-        if (User_Already_Present){
+        String User_Already_Present = Log_in(New_Username, New_Password);
+        if (User_Already_Present.equals("Sucessfull")){
             System.out.println("Unable to add new user as already exists");
         }
         else{
@@ -296,7 +301,7 @@ public class Server extends javax.swing.JFrame
     }
         
     }
-*/
+
         
 public void SendMessage(String message) 
     {
