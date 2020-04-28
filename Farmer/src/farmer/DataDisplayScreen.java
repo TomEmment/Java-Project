@@ -59,7 +59,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
  * 
      * Creates new form DataDisplayScreen
      */
-    public DataDisplayScreen() {
+    public DataDisplayScreen(String Station) {
         initComponents();
         try     
             {
@@ -68,6 +68,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 reader = new BufferedReader(streamreader);
                 writer = new PrintWriter(sock.getOutputStream());
                 writer.println("Connect;FarmerJohn");
+                writer.flush(); 
+                writer.println("DataRequest;"+Station);
                 writer.flush(); 
                 isConnected = true; 
             } 
@@ -247,10 +249,14 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_VariableXActionPerformed
 
     private void UpdateChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateChartActionPerformed
-                printTextField(VariableX.getSelectedIndex(),VariableY.getSelectedIndex() );
-        LineChart_AWT(VariableX.getSelectedItem().toString(), VariableY.getSelectedItem().toString() );      // TODO add your handling code here:
+        printTextField(VariableX.getSelectedIndex(),VariableY.getSelectedIndex() );
+        //LineChart_AWT(VariableX.getSelectedItem().toString(), VariableY.getSelectedItem().toString() );      // TODO add your handling code here:
     }//GEN-LAST:event_UpdateChartActionPerformed
 
+    
+    
+    
+    /*
    
    public void LineChart_AWT(String VariableX, String VariableY ) {
        String chartTitle = VariableX + " Vs " + VariableY;
@@ -270,14 +276,13 @@ public class DataDisplayScreen extends javax.swing.JFrame {
       
       
    }
-
    private XYDataset createDataset(String X, String Y ) {
     XYSeriesCollection dataset = new XYSeriesCollection();
 
     //Boys (Age,weight) series
     XYSeries series1 = new XYSeries(X+" Vs "+Y);
     int x = 0;
-    while( data[VariableX.getSelectedIndex()][x] != 0)
+    while(true)
     {
         series1.add(data[VariableX.getSelectedIndex()][x], data[VariableY.getSelectedIndex()][x]);
         x = x +1;
@@ -290,27 +295,47 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
     return dataset;
    }
-    
+ */
+ 
+ 
+ 
+ 
+ 
+ 
     public void printTextField(int VariableX, int VariableY) {
-    int x = 0;
-    int Data;
-    int Data1;
-    String Printable = "";
-    String Printable1 = "";
-    
-    while(data[VariableX][x]>0){
-        Data = data[VariableX][x];
-
-        Printable = Printable + ", " + Integer.toString(Data);
-        Data1 = data[VariableY][x];
-
-        Printable1 = Printable1 + ", " + Integer.toString(Data1);            
-        x = x+1;
+    if (VariableX == 0)
+    {
+    VariableXData.setText(TempreatureData);
     }
-    VariableXData.setText(Printable);
-    VariableYData.setText(Printable1);
+    else if (VariableX ==1)
+    {
+    VariableXData.setText(HumidityData);
     }      
-
+    else if (VariableX ==2)
+    {
+    VariableXData.setText(SoilPHData);
+    }  
+    else if (VariableX ==3)
+    {
+    VariableXData.setText(WindSpeedData);
+    } 
+    if (VariableY == 0)
+    {
+    VariableXData.setText(TempreatureData);
+    }
+    else if (VariableY ==1)
+    {
+    VariableXData.setText(HumidityData);
+    }      
+    else if (VariableY ==2)
+    {
+    VariableXData.setText(SoilPHData);
+    }  
+    else if (VariableY ==3)
+    {
+    VariableXData.setText(WindSpeedData);
+    } 
+    }
    public class IncomingReader implements Runnable
     {
         @Override
@@ -324,23 +349,31 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 while ((stream = reader.readLine()) != null) 
                 {
                      data = stream.split(";");
-
+                     System.out.println(data[1]);
                      if (data[0].equals(Done)) 
                      {
-                        data[1] = StaticData;
-                        data[2] = TimeData;
-                        data[3] = TempreatureData;
-                        data[4] = HumidityData;
-                        data[5] = SoilPHData;
-                        data[6] = WindSpeedData; 
+                         System.out.println(data[2]);
+                         System.out.println(data[3]);
+                        TimeData = data[1];
+                        TempreatureData = data[2];
+                        HumidityData = data[3];
+                        SoilPHData = data[4];
+                        WindSpeedData = data[5]; 
                      } 
                      else if (data[0].equals(Done1)) 
                      {
-                        data[1] = StaticData;
+                        StaticData = data[1];
+                        WeatherStationData.append(StaticData);
                      } 
+                     else
+                     {
+                         System.out.println("No conditions met");
+                     }
                      
                 }
-           }catch(IOException ex) { }
+           }catch(IOException ex) { 
+           System.out.println("Error reciving message from server");
+           }
         }
     }
     
@@ -377,7 +410,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DataDisplayScreen().setVisible(true);
+                new DataDisplayScreen("WeatherStation1").setVisible(true);
           }
         });
     }

@@ -116,13 +116,11 @@ public class WeatherStationList extends javax.swing.JFrame {
     private void ConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectActionPerformed
         try 
             {        
-        writer.println("DataRequest;WeatherStation1"); //Change to choice 
-                writer.flush(); 
                 sock.close();
                 setVisible(false); 
                         dispose(); 
                         System.out.println("Opening information window");
-                        DataDisplayScreen Instance = new DataDisplayScreen();
+                        DataDisplayScreen Instance = new DataDisplayScreen("WeatherStation1");
                         Instance.setVisible(true);
             }
            catch(IOException ex) { 

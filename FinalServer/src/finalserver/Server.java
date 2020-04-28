@@ -39,8 +39,6 @@ public class Server extends javax.swing.JFrame
        {
             String message, Data = "Data", Login = "Login", Request ="DataRequest", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",Information="Information";
             String[] data;
-            String[] Clients;
-            char temp;
             String Sending ="";
             String Present;
          
@@ -56,7 +54,7 @@ public class Server extends javax.swing.JFrame
                     if (data[0].equals(Data)) 
                     {
                         
-                        SendMessage("DataSending;"+data[2]+";"+data[3]+";"+data[4]+";"+data[5]+";"+data[6]+";");
+                        SendMessage("DataSending;"+data[1]+";"+data[2]+";"+data[3]+";"+data[4]+";"+data[5]+";");
 
 
                     } 

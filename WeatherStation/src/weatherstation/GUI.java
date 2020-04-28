@@ -21,18 +21,17 @@ public class GUI extends javax.swing.JFrame {
     String username ="WeatherStation1", address = "localhost";
     ArrayList<String> users = new ArrayList();
     int port = 2222;
-    int dataLength = 12;
     Boolean isConnected = false;
     String data = "";
     Socket sock;
     BufferedReader reader;
     PrintWriter writer;
     String StaticData="Nottigham,GPS,FIELDNAME,POSITION,CROP";
-    String TimeData;
-    String TempreatureData;
-    String HumidityData;
-    String SoilPHData;
-    String WindSpeedData;
+    String TimeData = "";
+    String TempreatureData = "";
+    String HumidityData = "";
+    String SoilPHData = "";
+    String WindSpeedData = "";
     int Active = 0;
     
     //--------------------------//
@@ -45,7 +44,7 @@ public class GUI extends javax.swing.JFrame {
     
     public GUI() {
         initComponents();
-        CreateData(dataLength);
+        CreateData(1);
             try 
             {
                 sock = new Socket(address, port);
@@ -70,7 +69,7 @@ public class GUI extends javax.swing.JFrame {
                 GenerateData(username+".txt");
                 try
                 {
-                    TimeUnit.SECONDS.sleep(1);;
+                    TimeUnit.SECONDS.sleep(10);;
                 }
                 catch(InterruptedException ex)
                 {
@@ -82,9 +81,9 @@ public class GUI extends javax.swing.JFrame {
     }
     public void CreateData(int Length)
     {
-        int Start =10;
-        int Start1 = 30;
-        int Start2 = 4;
+        int Start =20;
+        int Start1 = 50;
+        int Start2 = 6;
         int Start3 = 30;
         int Randomizer;
         int temp;
@@ -97,7 +96,7 @@ public class GUI extends javax.swing.JFrame {
         }else{
            
         }       
-         Randomizer = rand.nextInt(20);
+         Randomizer = -2 + rand.nextInt(4);
         temp = Start + Randomizer;       
         if (Length!=0)
         {
@@ -105,7 +104,7 @@ public class GUI extends javax.swing.JFrame {
         }else{
             TempreatureData = TempreatureData + Integer.toString(temp);
         }
-         Randomizer = rand.nextInt(35);
+         Randomizer = - 6 + rand.nextInt(12);
         temp = Start1 + Randomizer;
         if (Length!=0)
         {
@@ -113,7 +112,7 @@ public class GUI extends javax.swing.JFrame {
         }else{
             HumidityData = HumidityData + Integer.toString(temp);
         }       
-         Randomizer = rand.nextInt(4);
+         Randomizer = -1 + rand.nextInt(2);
         temp = Start2 + Randomizer;
         if (Length!=0)
         {
@@ -121,7 +120,7 @@ public class GUI extends javax.swing.JFrame {
         }else{
             SoilPHData = SoilPHData + Integer.toString(temp);
         }       
-        Randomizer = rand.nextInt(40);
+        Randomizer = -10 + rand.nextInt(20);
         temp = Start3 + Randomizer;
         if (Length!=0)
         {
@@ -145,9 +144,9 @@ public void GenerateData(String File){
 public void SendData(){
         
             try {
-               writer.println("Data;"+username +";" +TempreatureData+";" +HumidityData+";" +SoilPHData+";" +WindSpeedData);
-               StationNotification.append("Data Sent");
+               writer.println("Data"+ ";" +TimeData +";" +TempreatureData+";" +HumidityData+";" +SoilPHData+";" +WindSpeedData);
                writer.flush(); // flushes the buffer
+               StationNotification.append("Data Sent");
             } catch (Exception ex) {
                 StationNotification.append("Data was not sent. \n");
             }
@@ -174,8 +173,19 @@ public void SendData(){
                           writer.println("Information;"+StaticData);
                           writer.flush(); 
                           Active = 1;
-                         }
+                          while (true){
+                            GenerateData(username+".txt");
+                            try
+                            {
+                                TimeUnit.SECONDS.sleep(2);;
+                            }
+                            catch(InterruptedException ex)
+                            {
+                                Thread.currentThread().interrupt();
+                            }
+                            }
                              }
+                 }
                 else if (data[0].equals(Deactivated)) 
                 {
                      if (data[1].equals(username))
@@ -183,14 +193,15 @@ public void SendData(){
                      {
                           Active = 0;
                          }
-                             }
+                       }
                 }
-           }catch(IOException ex) { }
-           {
-               
-        }
+                }
+           catch(IOException ex) { 
+    }
+
     }
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -209,16 +220,16 @@ public void SendData(){
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(95, 95, 95)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
