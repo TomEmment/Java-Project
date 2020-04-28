@@ -33,7 +33,7 @@ public class GUI extends javax.swing.JFrame {
     String HumidityData;
     String SoilPHData;
     String WindSpeedData;
-    int Active = 1;
+    int Active = 0;
     
     //--------------------------//
     
@@ -166,16 +166,23 @@ public void SendData(){
                 {
                      data = stream.split(";");
 
-                 if (data[0].equals(Connected)) 
+                 if (data[0].equals(Connected))
+                 {
+                     if (data[1].equals(username))
+                             
                      {
                           Active = 1;
                          }
-                      
+                             }
                 else if (data[0].equals(Deactivated)) 
+                {
+                     if (data[1].equals(username))
+                             
                      {
-                          Active = 0;
+                          Active = 1;
                          }
-                     } 
+                             }
+                }
            }catch(IOException ex) { }
            {
                

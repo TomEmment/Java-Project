@@ -38,7 +38,7 @@ public class Server extends javax.swing.JFrame
        @Override
        public void run() 
        {
-            String message, Data = "Data", Login = "Login", Request ="DataRequest", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",NewUser="NewUser";
+            String message, Data = "Data", Login = "Login", Request ="DataRequest", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest";
             String[] data;
             String[] Clients;
             char temp;
@@ -76,7 +76,7 @@ public class Server extends javax.swing.JFrame
                     } 
                     else if (data[0].equals(Request)) 
                     {
-                        SendMessage("DataRequest;"+data[1]);
+                        SendMessage("Active;"+data[1]);
 
                     }
                     else if (data[0].equals(Connect)) 
@@ -105,12 +105,7 @@ public class Server extends javax.swing.JFrame
                             Sending = Sending + users.get(i) + ",";
                         }
                          SendMessage("ClientList;" + Sending);
-                    }  
-                     else if (data[0].equals(NewUser)) 
-                    {
-                        Present = New_User(data[1],data[2],data[3],data[4]);
-                        SendMessage(Present);
-                    }  
+                    }    
                     else 
                     {
                         ServerChat.append("No Conditions were met. \n");
