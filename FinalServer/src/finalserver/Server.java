@@ -62,6 +62,7 @@ public class Server extends javax.swing.JFrame
                         Position = Integer.parseInt(String.valueOf(temp));
                         SendMessage("DataSending;"+data[2]);
                         DataStorage[Position] = data[2];
+                        System.out.println(DataStorage[Position]);
 
 
                     } 
@@ -99,6 +100,7 @@ public class Server extends javax.swing.JFrame
                     } 
                      else if (data[0].equals(Client)) 
                     {
+                        Sending = "";
                       for(int i = 0; i < users.size(); i++) {
                             Sending = Sending + users.get(i) + ",";
                         }
