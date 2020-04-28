@@ -116,7 +116,7 @@ public class WeatherStationList extends javax.swing.JFrame {
     private void ConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectActionPerformed
         try 
             {        
-        writer.println("Active;WeatherStation1"); //Change to choice 
+        writer.println("DataRequest;WeatherStation1"); //Change to choice 
                 writer.flush(); 
                 sock.close();
                 setVisible(false); 

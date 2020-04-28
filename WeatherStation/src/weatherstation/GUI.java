@@ -52,7 +52,7 @@ public class GUI extends javax.swing.JFrame {
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(streamreader);
                 writer = new PrintWriter(sock.getOutputStream());
-                writer.println("Connect;"+username+";"+StaticData);
+                writer.println("Connect;"+username);
                 writer.flush(); 
                 writer.println("Data;"+username+";" +TimeData +";" +TempreatureData+";" +HumidityData+";" +SoilPHData+";" +WindSpeedData);
                 writer.flush(); 
@@ -171,6 +171,8 @@ public void SendData(){
                      if (data[1].equals(username))
                              
                      {
+                          writer.println("Information;"+StaticData);
+                          writer.flush(); 
                           Active = 1;
                          }
                              }
@@ -179,7 +181,7 @@ public void SendData(){
                      if (data[1].equals(username))
                              
                      {
-                          Active = 1;
+                          Active = 0;
                          }
                              }
                 }

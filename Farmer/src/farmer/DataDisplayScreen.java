@@ -67,7 +67,6 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(streamreader);
                 writer = new PrintWriter(sock.getOutputStream());
-                Choice = StationChoice.getText();
                 writer.println("Connect;FarmerJohn");
                 writer.flush(); 
                 isConnected = true; 
@@ -318,7 +317,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         public void run() 
         {
             String[] data;
-            String stream, Done = "DataSending";
+            String stream, Done = "DataSending", Done1 ="StaticData";
 
             try 
             {
@@ -328,7 +327,16 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
                      if (data[0].equals(Done)) 
                      {
-                         Update(data[1]);
+                        data[1] = StaticData;
+                        data[2] = TimeData;
+                        data[3] = TempreatureData;
+                        data[4] = HumidityData;
+                        data[5] = SoilPHData;
+                        data[6] = WindSpeedData; 
+                     } 
+                     else if (data[0].equals(Done1)) 
+                     {
+                        data[1] = StaticData;
                      } 
                      
                 }
