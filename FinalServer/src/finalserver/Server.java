@@ -34,7 +34,25 @@ public class Server extends javax.swing.JFrame
             }
 
        }
-
+       public String checkSum(String data){
+            String[] newData = data.split(",");
+            int size = newData.length;
+            int[] arr = new int[size];
+            for(int i = 0; i<size; i++){ // convert data to int
+                arr[i] = Integer.parseInt(newData[i]);
+            }
+            // calculate checksum
+            int checksum = 0;
+            int count = 0;
+            while(count<arr.length){
+                checksum += arr[count];
+                count++;
+            }
+            checksum = checksum%10;
+            String check = Integer.toString(checksum);
+            //String returnStr = check+","+data;
+            return check;
+        }
        @Override
        public void run() 
        {
@@ -60,8 +78,23 @@ public class Server extends javax.swing.JFrame
                         temp = data[1].charAt(data[1].length()-1);
 
                         Position = Integer.parseInt(String.valueOf(temp));
-                        SendMessage("DataSending;"+data[2]);
-                        DataStorage[Position] = data[2];
+                        // compare checksums again
+                        String checksumValue = checkSum(data[2]);
+                        // get sender checksum and compare
+                        String[] newData = data[2].split(",");
+                        String oldChecksum = newData[0];
+                        if( oldChecksum.equals(checksumValue)){
+                            // remove checksum from data[2]
+                            System.out.println("Checksum Passed");
+                            String sendData = data[2].substring(data[2].indexOf(","));
+                            SendMessage("DataSending;"+sendData);
+                            DataStorage[Position] = sendData;
+                        }else{
+                            System.out.println("Checksum Failed");
+                        }
+                        
+                        //SendMessage("DataSending;"+data[2]);
+                        //DataStorage[Position] = data[2];
 
 
                     } 

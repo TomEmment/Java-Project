@@ -139,8 +139,32 @@ public class GUI extends javax.swing.JFrame {
         String UserdataFinal = String.join(",", Userdata);
         return UserdataFinal;
         }
+public String checkSum(String data){
+    String[] newData = data.split(",");
+    int size = newData.length;
+    int[] arr = new int[size];
+    for(int i = 0; i<size; i++){ // convert data to int
+        arr[i] = Integer.parseInt(newData[i]);
+    }
+    // calculate checksum
+    System.out.println("Calculating Checksum: Weather");
+    int checksum = 0;
+    int count = 0;
+    while(count<arr.length){
+        checksum += arr[count];
+        count++;
+    }
+    checksum = checksum%10;
+    String check = Integer.toString(checksum);
+    String returnStr = check+","+data;
+    return returnStr;
+}
 public void SendData(){
         username = StationChoice.getText();
+        // calculate checksum here
+        System.out.println("Calculating checksum: weather");
+        System.out.println(data);
+        data = checkSum(data);
             try {
                writer.println("Data;" + username + ";" + data);
                writer.flush(); // flushes the buffer
