@@ -7,6 +7,7 @@ package farmer;
 //import static javaserver.Server1.din;
 import java.awt.BorderLayout;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -25,6 +26,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import java.io.FileWriter;
 
 /**
  *
@@ -109,6 +111,9 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         VariableX = new javax.swing.JComboBox<>();
         VariableY = new javax.swing.JComboBox<>();
+        saveText = new javax.swing.JTextField();
+        saveButton = new javax.swing.JButton();
+        saveLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,6 +162,15 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
         VariableY.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tempreature", "Humidity", "SoilPH", "WIndSpeed" }));
 
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
+        saveLabel.setText("Filename:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -175,7 +189,14 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(111, 111, 111)
+                                        .addComponent(saveLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(saveText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(saveButton)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
                                 .addComponent(ChartPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(181, Short.MAX_VALUE))
@@ -222,6 +243,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(saveText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(saveButton)
+                            .addComponent(saveLabel))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -243,6 +269,42 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        // collect all data
+        // format username, static data, time, temperature, temp, humidity,soilph, windseed
+        String fileName = saveText.getText()+".txt";
+        try{
+            FileWriter fout = new FileWriter(fileName,true);
+            BufferedWriter x = new BufferedWriter(fout);
+            PrintWriter pout = new PrintWriter(x);
+            pout.println(username);
+            pout.println(StaticData);
+            pout.println(TimeData);
+            pout.println(TempreatureData);
+            pout.println(HumidityData);
+            pout.println(SoilPHData);
+            pout.println(WindSpeedData);
+            pout.close();
+            x.close();
+            fout.close();
+            
+            //try (FileWriter Write = new FileWriter(fileName,true)) {
+                /*Write.write(username);
+                Write.write(StaticData);
+                Write.write(TimeData);
+                Write.write(TempreatureData);
+                Write.write(HumidityData);
+                Write.write(SoilPHData);
+                Write.write(WindSpeedData);
+                Write.close();*/
+            //}
+        }catch(IOException e){
+            
+        }
+            
+        
+    }//GEN-LAST:event_saveButtonActionPerformed
 
     
     
@@ -469,5 +531,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JLabel saveLabel;
+    private javax.swing.JTextField saveText;
     // End of variables declaration//GEN-END:variables
 }
