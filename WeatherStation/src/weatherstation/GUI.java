@@ -29,6 +29,7 @@ public class GUI extends javax.swing.JFrame {
     PrintWriter writer;
     //String Data= "Nottigham,GPS,FIELDNAME,POSITION,CROP";
     String StaticData = "Nottigham,GPS,FIELDNAME,POSITION,CROP";
+    int lineNum = 0;
     String TimeData = "";
     String TempreatureData = "";
     String HumidityData = "";
@@ -81,12 +82,12 @@ public class GUI extends javax.swing.JFrame {
         
      
     }
-    /*
-    public String getStaticData(String staticData){
+    
+    public void getStaticData(){
         //get the length of the file
         // Read random line of file
         //generate random number
-        int lineNum = 0;
+        
         try{ // get number of lines
             File f = new File("staticData.txt");
             Scanner fileScanner = new Scanner(f);
@@ -104,17 +105,18 @@ public class GUI extends javax.swing.JFrame {
             BufferedReader readBuffer = new BufferedReader(readfile);
             for(int i = 1; i < lineNum;i++){
                 if(i==randNum){
-                    staticData = readBuffer.readLine();
+                    StaticData = readBuffer.readLine();
                 }else{
                     readBuffer.readLine();
                 }
             }
         }catch(IOException e){
         }
-        System.out.println(staticData);
-        return staticData;
+        System.out.println(StaticData);
+        String lnNum = Integer.toString(lineNum);
+        username = "WeatherStaion"+lnNum;
     }
-    */
+    
     public void CreateData(int Length)
     {
         int Start =20;
