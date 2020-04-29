@@ -27,8 +27,8 @@ public class GUI extends javax.swing.JFrame {
     Socket sock;
     BufferedReader reader;
     PrintWriter writer;
-    String Data= ""; //"Nottigham,GPS,FIELDNAME,POSITION,CROP";
-    String StaticData = getStaticData(Data);
+    //String Data= "Nottigham,GPS,FIELDNAME,POSITION,CROP";
+    String StaticData = "Nottigham,GPS,FIELDNAME,POSITION,CROP";
     String TimeData = "";
     String TempreatureData = "";
     String HumidityData = "";
@@ -81,6 +81,7 @@ public class GUI extends javax.swing.JFrame {
         
      
     }
+    /*
     public String getStaticData(String staticData){
         //get the length of the file
         // Read random line of file
@@ -113,6 +114,7 @@ public class GUI extends javax.swing.JFrame {
         System.out.println(staticData);
         return staticData;
     }
+    */
     public void CreateData(int Length)
     {
         int Start =20;
