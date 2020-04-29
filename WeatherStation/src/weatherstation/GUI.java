@@ -21,19 +21,18 @@ public class GUI extends javax.swing.JFrame {
     String username ="WeatherStation1", address = "localhost";
     ArrayList<String> users = new ArrayList();
     int port = 2222;
-    int dataLength = 12;
     Boolean isConnected = false;
     String data = "";
     Socket sock;
     BufferedReader reader;
     PrintWriter writer;
     String StaticData="Nottigham,GPS,FIELDNAME,POSITION,CROP";
-    String TimeData;
-    String TempreatureData;
-    String HumidityData;
-    String SoilPHData;
-    String WindSpeedData;
-    int Active = 1;
+    String TimeData = "";
+    String TempreatureData = "";
+    String HumidityData = "";
+    String SoilPHData = "";
+    String WindSpeedData = "";
+    int Active = 0;
     
     //--------------------------//
     
@@ -45,14 +44,14 @@ public class GUI extends javax.swing.JFrame {
     
     public GUI() {
         initComponents();
-        CreateData(dataLength);
+        CreateData(8);
             try 
             {
                 sock = new Socket(address, port);
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(streamreader);
                 writer = new PrintWriter(sock.getOutputStream());
-                writer.println("Connect;"+username+";"+StaticData);
+                writer.println("Connect;"+username);
                 writer.flush(); 
                 writer.println("Data;"+username+";" +TimeData +";" +TempreatureData+";" +HumidityData+";" +SoilPHData+";" +WindSpeedData);
                 writer.flush(); 
@@ -67,10 +66,10 @@ public class GUI extends javax.swing.JFrame {
             
             ListenThread();
             while (true){
-                GenerateData(username+".txt");
+                GenerateData();
                 try
                 {
-                    TimeUnit.SECONDS.sleep(1);;
+                    TimeUnit.SECONDS.sleep(5);;
                 }
                 catch(InterruptedException ex)
                 {
@@ -82,57 +81,42 @@ public class GUI extends javax.swing.JFrame {
     }
     public void CreateData(int Length)
     {
-        int Start =10;
-        int Start1 = 30;
-        int Start2 = 4;
+        int Start =20;
+        int Start1 = 50;
+        int Start2 = 6;
         int Start3 = 30;
         int Randomizer;
         int temp;
         Random rand = new Random();
         while (Length>=0)
         {
-        if (Length!=0)
-        {
+
         TimeData = TimeData + java.time.LocalTime.now()+",";
-        }else{
-           
-        }       
-         Randomizer = rand.nextInt(20);
+     
+         Randomizer = -2 + rand.nextInt(4);
         temp = Start + Randomizer;       
-        if (Length!=0)
-        {
+
         TempreatureData = TempreatureData + Integer.toString(temp)+",";
-        }else{
-            TempreatureData = TempreatureData + Integer.toString(temp);
-        }
-         Randomizer = rand.nextInt(35);
+
+         Randomizer = - 6 + rand.nextInt(12);
         temp = Start1 + Randomizer;
-        if (Length!=0)
-        {
+
         HumidityData = HumidityData + Integer.toString(temp)+",";
-        }else{
-            HumidityData = HumidityData + Integer.toString(temp);
-        }       
-         Randomizer = rand.nextInt(4);
+      
+         Randomizer = -1 + rand.nextInt(2);
         temp = Start2 + Randomizer;
-        if (Length!=0)
-        {
+
         SoilPHData = SoilPHData + Integer.toString(temp)+",";
-        }else{
-            SoilPHData = SoilPHData + Integer.toString(temp);
-        }       
-        Randomizer = rand.nextInt(40);
+     
+        Randomizer = -10 + rand.nextInt(20);
         temp = Start3 + Randomizer;
-        if (Length!=0)
-        {
+
         WindSpeedData = WindSpeedData + Integer.toString(temp)+",";
-        }else{
-            WindSpeedData = WindSpeedData + Integer.toString(temp);
-        }      
+      
         Length=Length-1;
         }
     }
-public void GenerateData(String File){
+public void GenerateData(){
         CreateData(1);
         StationNotification.append("Data Collected");
         if (Active == 1)
@@ -145,9 +129,9 @@ public void GenerateData(String File){
 public void SendData(){
         
             try {
-               writer.println("Data;"+username +";" +TempreatureData+";" +HumidityData+";" +SoilPHData+";" +WindSpeedData);
-               StationNotification.append("Data Sent");
+               writer.println("Data"+ ";" +TimeData +";" +TempreatureData+";" +HumidityData+";" +SoilPHData+";" +WindSpeedData);
                writer.flush(); // flushes the buffer
+               StationNotification.append("Data Sent");
             } catch (Exception ex) {
                 StationNotification.append("Data was not sent. \n");
             }
@@ -166,22 +150,43 @@ public void SendData(){
                 {
                      data = stream.split(";");
 
-                 if (data[0].equals(Connected)) 
+                 if (data[0].equals(Connected))
+                 {
+                     if (data[1].equals(username))
+                             
                      {
+                          writer.println("Information;"+StaticData);
+                          writer.flush(); 
                           Active = 1;
-                         }
-                      
+                          while (true){
+                            GenerateData();
+                            try
+                            {
+                                TimeUnit.SECONDS.sleep(5);;
+                            }
+                            catch(InterruptedException ex)
+                            {
+                                Thread.currentThread().interrupt();
+                            }
+                            }
+                             }
+                 }
                 else if (data[0].equals(Deactivated)) 
+                {
+                     if (data[1].equals(username))
+                             
                      {
                           Active = 0;
                          }
-                     } 
-           }catch(IOException ex) { }
-           {
-               
-        }
+                       }
+                }
+                }
+           catch(IOException ex) { 
+    }
+
     }
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -200,16 +205,16 @@ public void SendData(){
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(95, 95, 95)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();

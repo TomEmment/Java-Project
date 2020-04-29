@@ -216,7 +216,7 @@ public class LogInScreen extends javax.swing.JFrame {
                         setVisible(false); 
                         dispose(); 
                         System.out.println("Opening information window");
-                        DataDisplayScreen Instance = new DataDisplayScreen();
+                        WeatherStationList Instance = new WeatherStationList();
                         Instance.setVisible(true);
                      } 
                      else if (data[0].equals(disconnect)) 

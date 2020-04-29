@@ -18,7 +18,6 @@ public class Server extends javax.swing.JFrame
        BufferedReader reader;
        Socket sock;
        PrintWriter client;
-       String[] DataStorage = new String[]{"1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"};
        public ClientHandler(Socket clientSocket, PrintWriter user) 
        {
             client = user;
@@ -38,11 +37,8 @@ public class Server extends javax.swing.JFrame
        @Override
        public void run() 
        {
-            String message, Data = "Data", Login = "Login", Request ="DataRequest", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",NewUser="NewUser";
+            String message, Data = "Data", Login = "Login", Request ="DataRequest", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",Information="Information";
             String[] data;
-            String[] Clients;
-            char temp;
-            int Position;
             String Sending ="";
             String Present;
          
@@ -57,12 +53,8 @@ public class Server extends javax.swing.JFrame
 
                     if (data[0].equals(Data)) 
                     {
-                        temp = data[1].charAt(data[1].length()-1);
-
-                        Position = Integer.parseInt(String.valueOf(temp));
-                        SendMessage("DataSending;"+data[2]);
-                        DataStorage[Position] = data[2];
-                        System.out.println(DataStorage[Position]);
+                        
+                        SendMessage("DataSending;"+data[1]+";"+data[2]+";"+data[3]+";"+data[4]+";"+data[5]+";");
 
 
                     } 
@@ -76,7 +68,7 @@ public class Server extends javax.swing.JFrame
                     } 
                     else if (data[0].equals(Request)) 
                     {
-                        SendMessage("DataRequest;"+data[1]);
+                        SendMessage("Active;"+data[1]);
 
                     }
                     else if (data[0].equals(Connect)) 
@@ -105,12 +97,13 @@ public class Server extends javax.swing.JFrame
                             Sending = Sending + users.get(i) + ",";
                         }
                          SendMessage("ClientList;" + Sending);
-                    }  
-                     else if (data[0].equals(NewUser)) 
+                    }    
+                     else if (data[0].equals(Information)) 
                     {
-                        Present = New_User(data[1],data[2],data[3],data[4]);
-                        SendMessage(Present);
-                    }  
+                        
+                        SendMessage("StaticData;"+data[1]);
+
+                    }          
                     else 
                     {
                         ServerChat.append("No Conditions were met. \n");
