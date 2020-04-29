@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class GUI extends javax.swing.JFrame {
 
+    
     String username ="WeatherStation1", address = "localhost";
     ArrayList<String> users = new ArrayList();
     int port = 2222;
@@ -26,7 +27,8 @@ public class GUI extends javax.swing.JFrame {
     Socket sock;
     BufferedReader reader;
     PrintWriter writer;
-    String StaticData="Nottigham,GPS,FIELDNAME,POSITION,CROP";
+    String Data= ""; //"Nottigham,GPS,FIELDNAME,POSITION,CROP";
+    String StaticData = getStaticData(Data);
     String TimeData = "";
     String TempreatureData = "";
     String HumidityData = "";
@@ -78,6 +80,38 @@ public class GUI extends javax.swing.JFrame {
             }
         
      
+    }
+    public String getStaticData(String staticData){
+        //get the length of the file
+        // Read random line of file
+        //generate random number
+        int lineNum = 0;
+        try{ // get number of lines
+            File f = new File("staticData.txt");
+            Scanner fileScanner = new Scanner(f);
+            
+            while(fileScanner.hasNextLine()){
+                lineNum++;
+            }
+        }catch(FileNotFoundException e){
+            System.out.println("Static Data file not found");
+        }
+        Random rand = new Random(); // random number between 0 and line num
+        int randNum = rand.nextInt(lineNum+1);
+        try{
+            FileReader readfile = new FileReader("staticData.txt");
+            BufferedReader readBuffer = new BufferedReader(readfile);
+            for(int i = 1; i < lineNum;i++){
+                if(i==randNum){
+                    staticData = readBuffer.readLine();
+                }else{
+                    readBuffer.readLine();
+                }
+            }
+        }catch(IOException e){
+        }
+        System.out.println(staticData);
+        return staticData;
     }
     public void CreateData(int Length)
     {

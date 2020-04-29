@@ -1,0 +1,6 @@
+Nottingham,192-453,Meadow,N,Crop
+Redditch,213-873,Farm,S,Barley
+Leicester,543-836,Woods,NW,Trees
+Manchester,583-928,Meadow,SW,Wheat
+London,363-836,Meadow,E,Barley
+Birmingham,167-952,Forest,W,Crop
