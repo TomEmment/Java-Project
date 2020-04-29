@@ -44,10 +44,10 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     PrintWriter writer;
     String StaticData;
     String TimeData;
-    String TempreatureData;
-    String HumidityData;
-    String SoilPHData;
-    String WindSpeedData;    
+    String TempreatureData = "TempreatureData:";
+    String HumidityData = "HumidityData:";
+    String SoilPHData = "SoilPHData:";
+    String WindSpeedData = "WindSpeedData:";    
     
  
     public void ListenThread() 
@@ -107,8 +107,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         DisplayWindSpeedData = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        Variable2 = new javax.swing.JComboBox<>();
-        Variable1 = new javax.swing.JComboBox<>();
+        VariableX = new javax.swing.JComboBox<>();
+        VariableY = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,9 +153,9 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
         jLabel4.setText("Wind Speed Data");
 
-        Variable2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tempreature", "Humidity", "SoilPH", "WIndSpeed" }));
+        VariableX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tempreature", "Humidity", "SoilPH", "WIndSpeed" }));
 
-        Variable1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tempreature", "Humidity", "SoilPH", "WIndSpeed" }));
+        VariableY.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tempreature", "Humidity", "SoilPH", "WIndSpeed" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,10 +181,10 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         .addContainerGap(181, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(119, 119, 119)
-                        .addComponent(Variable2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(Variable1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
+                        .addComponent(VariableX, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77)
+                        .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -198,30 +198,31 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Variable2)
-                            .addComponent(Variable1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(VariableY)
+                            .addComponent(VariableX))
                         .addGap(76, 76, 76)
                         .addComponent(ChartPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel2)
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -251,7 +252,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
    public void LineChart_AWT( ) {
        
        String chartTitle = "Time Plot";
-      JFreeChart lineChart = ChartFactory.createScatterPlot(
+      JFreeChart lineChart = ChartFactory.createLineChart(
          chartTitle,
          "Time","Variable",
          createDataset());
@@ -268,20 +269,97 @@ public class DataDisplayScreen extends javax.swing.JFrame {
       
    }
    private DefaultCategoryDataset createDataset() {
+       
+       
+      int VarX = VariableX.getSelectedIndex();
+      int VarY = VariableY.getSelectedIndex();
       DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
-      line_chart_dataset.addValue( 15 , "schools" , "1970" );
-      line_chart_dataset.addValue( 30 , "schools" , "1980" );
-      line_chart_dataset.addValue( 60 , "schools" , "1990" );
-      line_chart_dataset.addValue( 120 , "schools" , "2000" );
-      line_chart_dataset.addValue( 240 , "schools" , "2010" ); 
-      line_chart_dataset.addValue( 300 , "schools" , "2014" );
       
+      
+      switch (VarX){
+          case 0:
+            switch (VarY){
+                case 0:
+                    line_chart_dataset = ChopData(TempreatureData, TempreatureData);
+                case 1:
+                    line_chart_dataset = ChopData(TempreatureData, HumidityData);
+                case 2:
+                    line_chart_dataset = ChopData(TempreatureData, SoilPHData);
+                case 3:
+                    line_chart_dataset = ChopData(TempreatureData, WindSpeedData);                    
+            }              
+          case 1:
+            switch (VarY){
+                case 0:
+                    line_chart_dataset = ChopData(HumidityData, TempreatureData);
+                case 1:
+                    line_chart_dataset = ChopData(HumidityData, HumidityData);
+                case 2:
+                    line_chart_dataset = ChopData(HumidityData, SoilPHData);
+                case 3:
+                    line_chart_dataset = ChopData(HumidityData, WindSpeedData); 
+            }                
+          case 2:
+            switch (VarY){
+                case 0:
+                   line_chart_dataset =  ChopData(SoilPHData, TempreatureData);
+                case 1:
+                    line_chart_dataset = ChopData(SoilPHData, HumidityData);
+                case 2:
+                    line_chart_dataset = ChopData(SoilPHData, SoilPHData);
+                case 3:
+                    line_chart_dataset = ChopData(SoilPHData, WindSpeedData); 
+            }                
+          case 3:
+            switch (VarY){
+                case 0:
+                    line_chart_dataset = ChopData(WindSpeedData, TempreatureData);
+                case 1:
+                    line_chart_dataset = ChopData(WindSpeedData, HumidityData);
+                case 2:
+                    line_chart_dataset = ChopData(WindSpeedData, SoilPHData);
+                case 3:
+                    line_chart_dataset = ChopData(WindSpeedData, WindSpeedData); 
+            }        
+      }
+
       
     return line_chart_dataset;
    }
  
  
- 
+ private DefaultCategoryDataset ChopData(String VarX, String VarY) {
+     DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
+     
+     String[] InitialXdata;
+     String[] InitialYdata;
+     String[] Xdata;
+     String[] Ydata;
+     String[] TimeDisplayData;
+     String VariableXName;
+     String VariableYName;
+     int Position = 0;
+     int Amount;
+     
+     InitialXdata = VarX.split(":");
+     InitialYdata = VarY.split(":");
+     VariableXName = InitialXdata[0];
+     VariableYName = InitialYdata[0];
+     Xdata = InitialXdata[1].split(",");
+     Ydata = InitialYdata[1].split(",");
+     TimeDisplayData = TimeData.split(",");
+     
+     Amount = Xdata.length-15;
+     
+     while (Position<12)
+     {
+      line_chart_dataset.addValue( Integer.parseInt(Xdata[Position]), VariableXName , TimeDisplayData[Position] );
+      line_chart_dataset.addValue( Integer.parseInt(Ydata[Position]), VariableYName , TimeDisplayData[Position] );
+      Amount = Amount + 1;
+      Position = Position +1;
+              }
+     return line_chart_dataset;
+ }
  
  
  
@@ -308,12 +386,13 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                      data = stream.split(";");
                      if (data[0].equals(Done)) 
                      {
-                        TimeData = data[1];
-                        TempreatureData = data[2];
-                        HumidityData = data[3];
-                        SoilPHData = data[4];
-                        WindSpeedData = data[5]; 
+                        TimeData = TimeData + data[1];
+                        TempreatureData = TempreatureData +data[2];
+                        HumidityData = HumidityData + data[3];
+                        SoilPHData = SoilPHData + data[4];
+                        WindSpeedData = WindSpeedData + data[5]; 
                         printTextField();
+                        LineChart_AWT( );
                      } 
                      else if (data[0].equals(Done1)) 
                      {
@@ -376,8 +455,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private javax.swing.JTextArea DisplaySoilPHData;
     private javax.swing.JTextArea DisplayTempreatureData;
     private javax.swing.JTextArea DisplayWindSpeedData;
-    private javax.swing.JComboBox<String> Variable1;
-    private javax.swing.JComboBox<String> Variable2;
+    private javax.swing.JComboBox<String> VariableX;
+    private javax.swing.JComboBox<String> VariableY;
     private javax.swing.JTextArea WeatherStationData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

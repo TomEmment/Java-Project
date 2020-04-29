@@ -44,7 +44,7 @@ public class GUI extends javax.swing.JFrame {
     
     public GUI() {
         initComponents();
-        CreateData(1);
+        CreateData(8);
             try 
             {
                 sock = new Socket(address, port);
@@ -66,10 +66,10 @@ public class GUI extends javax.swing.JFrame {
             
             ListenThread();
             while (true){
-                GenerateData(username+".txt");
+                GenerateData();
                 try
                 {
-                    TimeUnit.SECONDS.sleep(10);;
+                    TimeUnit.SECONDS.sleep(5);;
                 }
                 catch(InterruptedException ex)
                 {
@@ -116,7 +116,7 @@ public class GUI extends javax.swing.JFrame {
         Length=Length-1;
         }
     }
-public void GenerateData(String File){
+public void GenerateData(){
         CreateData(1);
         StationNotification.append("Data Collected");
         if (Active == 1)
@@ -159,10 +159,10 @@ public void SendData(){
                           writer.flush(); 
                           Active = 1;
                           while (true){
-                            GenerateData(username+".txt");
+                            GenerateData();
                             try
                             {
-                                TimeUnit.SECONDS.sleep(2);;
+                                TimeUnit.SECONDS.sleep(5);;
                             }
                             catch(InterruptedException ex)
                             {
