@@ -90,44 +90,29 @@ public class GUI extends javax.swing.JFrame {
         Random rand = new Random();
         while (Length>=0)
         {
-        if (Length!=0)
-        {
+
         TimeData = TimeData + java.time.LocalTime.now()+",";
-        }else{
-           
-        }       
+     
          Randomizer = -2 + rand.nextInt(4);
         temp = Start + Randomizer;       
-        if (Length!=0)
-        {
+
         TempreatureData = TempreatureData + Integer.toString(temp)+",";
-        }else{
-            TempreatureData = TempreatureData + Integer.toString(temp);
-        }
+
          Randomizer = - 6 + rand.nextInt(12);
         temp = Start1 + Randomizer;
-        if (Length!=0)
-        {
+
         HumidityData = HumidityData + Integer.toString(temp)+",";
-        }else{
-            HumidityData = HumidityData + Integer.toString(temp);
-        }       
+      
          Randomizer = -1 + rand.nextInt(2);
         temp = Start2 + Randomizer;
-        if (Length!=0)
-        {
+
         SoilPHData = SoilPHData + Integer.toString(temp)+",";
-        }else{
-            SoilPHData = SoilPHData + Integer.toString(temp);
-        }       
+     
         Randomizer = -10 + rand.nextInt(20);
         temp = Start3 + Randomizer;
-        if (Length!=0)
-        {
+
         WindSpeedData = WindSpeedData + Integer.toString(temp)+",";
-        }else{
-            WindSpeedData = WindSpeedData + Integer.toString(temp);
-        }      
+      
         Length=Length-1;
         }
     }
