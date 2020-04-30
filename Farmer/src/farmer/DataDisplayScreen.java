@@ -114,6 +114,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         saveText = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
         saveLabel = new javax.swing.JLabel();
+        fileTypeCombo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -171,6 +172,13 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
         saveLabel.setText("Filename:");
 
+        fileTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Text", "Excel" }));
+        fileTypeCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileTypeComboActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -196,8 +204,10 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(saveText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
+                                        .addComponent(fileTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34)
                                         .addComponent(saveButton)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
                                 .addComponent(ChartPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(181, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -247,7 +257,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(saveText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(saveButton)
-                            .addComponent(saveLabel))
+                            .addComponent(saveLabel)
+                            .addComponent(fileTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -271,7 +282,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        // collect all data
+        if("Text".equals(fileTypeCombo.getSelectedItem().toString())){
+// collect all data
         // format username, static data, time, temperature, temp, humidity,soilph, windseed
         String fileName = saveText.getText()+".txt";
         try{
@@ -293,8 +305,14 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             
         }
             
-        
+        }else{
+            // Save file to Excel
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void fileTypeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileTypeComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fileTypeComboActionPerformed
 
     
     
@@ -520,6 +538,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> VariableX;
     private javax.swing.JComboBox<String> VariableY;
     private javax.swing.JTextArea WeatherStationData;
+    private javax.swing.JComboBox<String> fileTypeCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
