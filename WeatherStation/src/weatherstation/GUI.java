@@ -29,7 +29,7 @@ public class GUI extends javax.swing.JFrame {
     PrintWriter writer;
     //String Data= "Nottigham,GPS,FIELDNAME,POSITION,CROP";
     String StaticData = "Nottigham,GPS,FIELDNAME,POSITION,CROP";
-    int lineNum = 0;
+    int lineNum = 5;
     String TimeData = "";
     String TempreatureData = "";
     String HumidityData = "";
@@ -89,32 +89,26 @@ public class GUI extends javax.swing.JFrame {
         // Read random line of file
         //generate random number
         
-        try{ // get number of lines
-            File f = new File("staticData.txt");
-            Scanner fileScanner = new Scanner(f);
-            
-            while(fileScanner.hasNextLine()){
-                lineNum++;
-            }
-        }catch(FileNotFoundException e){
-            System.out.println("Static Data file not found");
-        }
+
         Random rand = new Random(); // random number between 0 and line num
-        int randNum = rand.nextInt(lineNum+1);
+        int randNum = rand.nextInt(lineNum);
+        int i = 0;
         try{
             FileReader readfile = new FileReader("staticData.txt");
             BufferedReader readBuffer = new BufferedReader(readfile);
-            for(int i = 1; i < lineNum;i++){
-                if(i==randNum){
-                    StaticData = readBuffer.readLine();
-                }else{
-                    readBuffer.readLine();
-                }
+
+			String line = readBuffer.readLine();
+	while (line != null) {
+            if(i==randNum){
+                  StaticData = line;
+                  break;
             }
+                line = readBuffer.readLine();
+                i = i +1;
+			}
         }catch(IOException e){
         }
-        System.out.println(StaticData);
-        String lnNum = Integer.toString(lineNum);
+        String lnNum = Integer.toString(randNum);
         username = "WeatherStaion"+lnNum;
     }
     

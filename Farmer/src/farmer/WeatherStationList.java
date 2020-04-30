@@ -120,7 +120,8 @@ public class WeatherStationList extends javax.swing.JFrame {
                 setVisible(false); 
                         dispose(); 
                         System.out.println("Opening information window");
-                        DataDisplayScreen Instance = new DataDisplayScreen("WeatherStation1");
+                        String Choice = StationChoice.getItemAt(StationChoice.getSelectedIndex());
+                        DataDisplayScreen Instance = new DataDisplayScreen(Choice);
                         Instance.setVisible(true);
             }
            catch(IOException ex) { 

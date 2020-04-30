@@ -306,7 +306,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
        String chartTitle = "Time Plot";
       JFreeChart lineChart = ChartFactory.createLineChart(
          chartTitle,
-         "Time","Variable",
+         "Time","Values",
          createDataset());
          
         
@@ -328,8 +328,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
       DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
       
       
-      switch (VarX){
-          case 0:
+      if (VarX==0){
+          
             switch (VarY){
                 case 0:
                     line_chart_dataset = ChopData(TempreatureData, TempreatureData);
@@ -340,7 +340,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 case 3:
                     line_chart_dataset = ChopData(TempreatureData, WindSpeedData);                    
             }              
-          case 1:
+         if (VarX==1)
             switch (VarY){
                 case 0:
                     line_chart_dataset = ChopData(HumidityData, TempreatureData);
@@ -351,7 +351,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 case 3:
                     line_chart_dataset = ChopData(HumidityData, WindSpeedData); 
             }                
-          case 2:
+          if (VarX==2)
             switch (VarY){
                 case 0:
                    line_chart_dataset =  ChopData(SoilPHData, TempreatureData);
@@ -362,7 +362,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 case 3:
                     line_chart_dataset = ChopData(SoilPHData, WindSpeedData); 
             }                
-          case 3:
+          if (VarX==3)
             switch (VarY){
                 case 0:
                     line_chart_dataset = ChopData(WindSpeedData, TempreatureData);
@@ -390,8 +390,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
      String[] TimeDisplayData;
      String VariableXName;
      String VariableYName;
-     int Position = 0;
-     int Amount;
+     int Amount = 0;
+     int Position;
      
      InitialXdata = VarX.split(":");
      InitialYdata = VarY.split(":");
@@ -401,11 +401,20 @@ public class DataDisplayScreen extends javax.swing.JFrame {
      Ydata = InitialYdata[1].split(",");
      TimeDisplayData = TimeData.split(",");
      
-     Amount = Xdata.length-15;
+     Position = Xdata.length-12;
      
-     while (Position<12)
+     while (Amount<10)
      {
       line_chart_dataset.addValue( Integer.parseInt(Xdata[Position]), VariableXName , TimeDisplayData[Position] );
+
+      Amount = Amount + 1;
+      Position = Position +1;
+              }
+     Position = Xdata.length-12;
+     Amount = 0;
+     while (Amount<10)
+     {
+
       line_chart_dataset.addValue( Integer.parseInt(Ydata[Position]), VariableYName , TimeDisplayData[Position] );
       Amount = Amount + 1;
       Position = Position +1;
