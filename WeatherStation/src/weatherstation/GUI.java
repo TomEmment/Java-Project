@@ -20,8 +20,9 @@ public class GUI extends javax.swing.JFrame {
 
     
     String username ="WeatherStation1", address = "localhost";
-    ArrayList<String> users = new ArrayList();
+    List<String> UserList = new ArrayList<>();
     int port = 2222;
+    int Done = 0;
     Boolean isConnected = false;
     String data = "";
     Socket sock;
@@ -47,8 +48,8 @@ public class GUI extends javax.swing.JFrame {
     
     public GUI() {
         initComponents();
-        getStaticData();
         CreateData(8);
+        getStaticData();
             try 
             {
                 sock = new Socket(address, port);
@@ -58,7 +59,8 @@ public class GUI extends javax.swing.JFrame {
                 writer.println("Connect;"+username);
                 writer.flush(); 
                 writer.println("Data;"+username+";" +TimeData +";" +TempreatureData+";" +HumidityData+";" +SoilPHData+";" +WindSpeedData);
-                writer.flush(); 
+                writer.flush();
+
                 StationNotification.append("Data Sent");
                 isConnected = true; 
             } 
@@ -101,7 +103,6 @@ public class GUI extends javax.swing.JFrame {
 	while (line != null) {
             if(i==randNum){
                   StaticData = line;
-                  break;
             }
                 line = readBuffer.readLine();
                 i = i +1;
@@ -110,6 +111,7 @@ public class GUI extends javax.swing.JFrame {
         }
         String lnNum = Integer.toString(randNum);
         username = "WeatherStaion"+lnNum;
+
     }
     
     public void CreateData(int Length)
@@ -175,7 +177,8 @@ public void SendData(){
         public void run() 
         {
             String[] data;
-            String stream, Connected = "Active", Deactivated ="Deactivated";
+
+            String stream, Connected = "Active", Deactivated ="Deactivated",List="ClientList";
 
             try 
             {
@@ -212,7 +215,10 @@ public void SendData(){
                           Active = 0;
                          }
                        }
+
                 }
+                       
+                
                 }
            catch(IOException ex) { 
     }

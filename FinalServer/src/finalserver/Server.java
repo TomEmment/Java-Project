@@ -96,7 +96,7 @@ public class Server extends javax.swing.JFrame
                       for(int i = 0; i < users.size(); i++) {
                             Sending = Sending + users.get(i) + ",";
                         }
-                         SendMessage("ClientList;" + Sending);
+                         SendMessage("ClientList;" + Sending+",Empty");
                     }    
                      else if (data[0].equals(Information)) 
                     {

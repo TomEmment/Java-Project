@@ -21,7 +21,6 @@ public class WeatherStationList extends javax.swing.JFrame {
     ArrayList<String> users = new ArrayList();
     int port = 2222;
     Boolean isConnected = false;
-    
     Socket sock;
     BufferedReader reader;
     PrintWriter writer;
@@ -145,7 +144,6 @@ public class WeatherStationList extends javax.swing.JFrame {
 
                      if (data[0].equals(ClientList)) 
                      {
-                         
                          int x = data[1].length() - 1;
                          int i = 0;
                          String Station = "";
