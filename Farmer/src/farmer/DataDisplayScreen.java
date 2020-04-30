@@ -172,6 +172,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         jLabel4.setText("Wind Speed Data");
 
         VariableX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tempreature", "Humidity", "SoilPH", "WIndSpeed" }));
+        VariableX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VariableXActionPerformed(evt);
+            }
+        });
 
         VariableY.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tempreature", "Humidity", "SoilPH", "WIndSpeed" }));
 
@@ -333,6 +338,10 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fileTypeComboActionPerformed
 
+    private void VariableXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VariableXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VariableXActionPerformed
+
     
     
     
@@ -340,7 +349,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
    
    public void LineChart_AWT( ) {
        
-       String chartTitle = "Time Plot";
+       String chartTitle = "Time Plot For selected variables";
       JFreeChart lineChart = ChartFactory.createLineChart(
          chartTitle,
          "Time","Values",
@@ -367,50 +376,65 @@ public class DataDisplayScreen extends javax.swing.JFrame {
       
       if (VarX==0){
           
-            switch (VarY){
-                case 0:
+            if (VarY==0){
                     line_chart_dataset = ChopData(TempreatureData, TempreatureData);
-                case 1:
+                }
+                if (VarY==1){
                     line_chart_dataset = ChopData(TempreatureData, HumidityData);
-                case 2:
+                }
+                if (VarY==2){
                     line_chart_dataset = ChopData(TempreatureData, SoilPHData);
-                case 3:
+                }
+                if (VarY==3){
                     line_chart_dataset = ChopData(TempreatureData, WindSpeedData);                    
-            }              
-         if (VarX==1)
-            switch (VarY){
-                case 0:
-                    line_chart_dataset = ChopData(HumidityData, TempreatureData);
-                case 1:
-                    line_chart_dataset = ChopData(HumidityData, HumidityData);
-                case 2:
-                    line_chart_dataset = ChopData(HumidityData, SoilPHData);
-                case 3:
-                    line_chart_dataset = ChopData(HumidityData, WindSpeedData); 
-            }                
-          if (VarX==2)
-            switch (VarY){
-                case 0:
-                   line_chart_dataset =  ChopData(SoilPHData, TempreatureData);
-                case 1:
-                    line_chart_dataset = ChopData(SoilPHData, HumidityData);
-                case 2:
-                    line_chart_dataset = ChopData(SoilPHData, SoilPHData);
-                case 3:
-                    line_chart_dataset = ChopData(SoilPHData, WindSpeedData); 
-            }                
-          if (VarX==3)
-            switch (VarY){
-                case 0:
-                    line_chart_dataset = ChopData(WindSpeedData, TempreatureData);
-                case 1:
-                    line_chart_dataset = ChopData(WindSpeedData, HumidityData);
-                case 2:
-                    line_chart_dataset = ChopData(WindSpeedData, SoilPHData);
-                case 3:
-                    line_chart_dataset = ChopData(WindSpeedData, WindSpeedData); 
-            }        
+            }
       }
+      if (VarX==1){
+          
+            if (VarY==0){
+                    line_chart_dataset = ChopData(HumidityData, TempreatureData);
+                }
+                if (VarY==1){
+                    line_chart_dataset = ChopData(HumidityData, HumidityData);
+                }
+                if (VarY==2){
+                    line_chart_dataset = ChopData(HumidityData, SoilPHData);
+                }
+                if (VarY==3){
+                    line_chart_dataset = ChopData(HumidityData, WindSpeedData);                    
+            }
+      }           
+      if (VarX==2){
+          
+            if (VarY==0){
+                    line_chart_dataset = ChopData(SoilPHData, TempreatureData);
+                }
+                if (VarY==1){
+                    line_chart_dataset = ChopData(SoilPHData, HumidityData);
+                }
+                if (VarY==2){
+                    line_chart_dataset = ChopData(SoilPHData, SoilPHData);
+                }
+                if (VarY==3){
+                    line_chart_dataset = ChopData(SoilPHData, WindSpeedData);                    
+            }
+      }                
+      if (VarX==3){
+          
+            if (VarY==0){
+                    line_chart_dataset = ChopData(WindSpeedData, TempreatureData);
+                }
+                if (VarY==1){
+                    line_chart_dataset = ChopData(WindSpeedData, HumidityData);
+                }
+                if (VarY==2){
+                    line_chart_dataset = ChopData(WindSpeedData, SoilPHData);
+                }
+                if (VarY==3){
+                    line_chart_dataset = ChopData(WindSpeedData, WindSpeedData);                    
+            }
+      }     
+      
 
       
     return line_chart_dataset;
@@ -463,9 +487,9 @@ public class DataDisplayScreen extends javax.swing.JFrame {
  
  
     public void printTextField() {
-     DisplayHumidityData.setText(TempreatureData);
-    DisplaySoilPHData.setText(HumidityData);
-    DisplayTempreatureData.setText(SoilPHData);
+     DisplayTempreatureData.setText(TempreatureData);
+    DisplayHumidityData.setText(HumidityData);
+    DisplaySoilPHData.setText(SoilPHData);
     DisplayWindSpeedData.setText(WindSpeedData);
 
     }
