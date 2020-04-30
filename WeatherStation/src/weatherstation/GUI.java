@@ -47,6 +47,7 @@ public class GUI extends javax.swing.JFrame {
     
     public GUI() {
         initComponents();
+        getStaticData();
         CreateData(8);
             try 
             {
@@ -193,7 +194,7 @@ public void SendData(){
                      if (data[1].equals(username))
                              
                      {
-                          writer.println("Information;"+StaticData);
+                          writer.println("Information;"+username+";"+StaticData);
                           writer.flush(); 
                           Active = 1;
                           while (true){

@@ -288,17 +288,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             pout.close();
             x.close();
             fout.close();
-            
-            //try (FileWriter Write = new FileWriter(fileName,true)) {
-                /*Write.write(username);
-                Write.write(StaticData);
-                Write.write(TimeData);
-                Write.write(TempreatureData);
-                Write.write(HumidityData);
-                Write.write(SoilPHData);
-                Write.write(WindSpeedData);
-                Write.close();*/
-            //}
+
         }catch(IOException e){
             
         }
@@ -458,7 +448,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                      } 
                      else if (data[0].equals(Done1)) 
                      {
-                        StaticData = data[1];
+                        username = data[1];
+                         StaticData = data[2];
                         WeatherStationData.append(StaticData);
                      } 
                      else
