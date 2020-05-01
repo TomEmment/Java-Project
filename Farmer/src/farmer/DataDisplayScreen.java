@@ -589,33 +589,77 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             System.out.println(name);
             String fileName = name + ".xlsx";
             //try {
-                XSSFWorkbook workbook = new XSSFWorkbook();
-                XSSFSheet sheet  = workbook.createSheet("fileName");
-                String[] Time = TimeData.split(",");
-                String[] Temperature = TempreatureData.split(",");
-                String[] Humidity = HumidityData.split(",");
-                String[] soilPH = SoilPHData.split(",");
-                String[] windSpeed = WindSpeedData.split(",");
-                Object[][] datatypes ={{"Time Data",TimeData},
+            /*Object[][] datatypes ={{"Time Data",TimeData},
                         {"Temperature",TempreatureData},
                         {"Humidity",HumidityData},
                         {"soilPH",SoilPHData},
                         {"windSpeed",WindSpeedData},
-                };
+                };*/
+            
+                XSSFWorkbook workbook = new XSSFWorkbook();
+                XSSFSheet sheet  = workbook.createSheet("fileName");
+                
+                String[] Time = TimeData.split(":");
+                String nameTime = Time[0];
+                String[] Time1 = Time[1].split(",");
+                
+              
+                String[] Temperature = TempreatureData.split(":");
+                String nameTemp = Temperature[0];
+                String[] Temp1 = Temperature[1].split(",");
+                
+                String[] Humidity = HumidityData.split(":");
+                String nameHumidity = Humidity[0];
+                String[] Humidity1 = Humidity[1].split(",");
+                
+                
+                String[] soilPH = SoilPHData.split(":");
+                String namesoilPH = soilPH[0];
+                String[] soilPH1 = soilPH[1].split(",");
+                
+                String[] windSpeed = WindSpeedData.split(":");
+                String namewindSpeed = windSpeed[0];
+                String[] windSpeed1 = windSpeed[1].split(",");
+                
+                ArrayList<String[]> dataArr = new ArrayList<>();
+                dataArr.add(Time1);
+                dataArr.add(Temp1);
+                dataArr.add(Humidity1);
+                dataArr.add(soilPH1);
+                dataArr.add(windSpeed1);
+                
+                ArrayList<String> nameArr = new ArrayList<>();
+                nameArr.add(nameTime);
+                nameArr.add(nameTemp);
+                nameArr.add(nameHumidity);
+                nameArr.add(namesoilPH);
+                nameArr.add(namewindSpeed);
+
                 int rowNum = 0;
                 System.out.println("Creating Excel Spreadsheet");
-                for(Object[] datatype : datatypes){
+                //Writing variable names to first column
+                for(String datatype : nameArr){
                     Row row = sheet.createRow(rowNum++);
                     int colNum = 0;
-                    for(Object field : datatype){
+                    Cell cell = row.createCell(colNum);
+                    if (datatype instanceof String){
+                            cell.setCellValue((String) datatype);
+                        }                    
+                }
+                
+                // Writing data
+                rowNum = 0;
+                for(String[] datatype : dataArr){
+                    Row row = sheet.createRow(rowNum++);
+                    int colNum = 1;
+                    for(String field : datatype){
                         Cell cell = row.createCell(colNum++);
                         if (field instanceof String){
                             cell.setCellValue((String) field);
-                        }else if (field instanceof Integer){
-                            cell.setCellValue((Integer) field);
+                        }
                         }
                     }
-                }
+                
                 try{
                     FileOutputStream outputStream = new FileOutputStream(fileName);
                     workbook.write(outputStream);
