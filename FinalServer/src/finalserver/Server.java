@@ -41,7 +41,7 @@ public class Server extends javax.swing.JFrame
        @Override
        public void run() 
        {
-            String message, Data = "Data", Login = "Login", Request ="DataRequest",InitialConnect="InitialConnect", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",Information="Information";
+            String message, Data = "Data", Login = "Login", Request ="DataRequest",InitialConnect="InitialConnect", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",Information="Information",FieldRequest ="FieldRequest";
             String[] data;
             String[] Tempdata;
             String Sending ="";
@@ -52,6 +52,7 @@ public class Server extends javax.swing.JFrame
             int Done = 0;
             int x;
             int y;
+            int n;
          
 
             try 
@@ -129,7 +130,7 @@ public class Server extends javax.swing.JFrame
                         {
                             if (StationFieldList[x][y]==null)
                             {
-                                StationFieldList[x][y]=data[1]+";"+FieldName+";"+Position;
+                                StationFieldList[x][y]=data[1]+":"+FieldName+":"+Position;
                                 Done = 1;
                             }
                             else
@@ -164,12 +165,29 @@ public class Server extends javax.swing.JFrame
                         }
                          SendMessage("ClientList;" + Sending);
                     }    
+                     else if (data[0].equals(FieldRequest)) 
+                    {
+                        n=0;
+                      for(int i = 0; i < FieldList.size(); i++) {
+                            if(data[1].equals(FieldList.get(i)))
+                            {
+                                while(StationFieldList[i][n] != "")
+                                {
+                                Sending = Sending + StationFieldList[i][n]+",";
+                                n=n+1;
+                                }
+                            }
+                        }
+                     
+                        SendMessage("FieldData;"+Sending);
+
+                    }  
                      else if (data[0].equals(Information)) 
                     {
                         
                         SendMessage("StaticData;"+data[1]+";"+data[2]);
 
-                    }          
+                    }      
                     else 
                     {
                         ServerChat.append("No Conditions were met. \n");

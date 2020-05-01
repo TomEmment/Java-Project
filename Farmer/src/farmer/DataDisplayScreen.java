@@ -755,7 +755,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         public void run() 
         {
             String[] data,Tempdata;
-            String stream, Done = "DataSending", Done1 ="StaticData";
+            String stream, Done = "DataSending", Done1 ="StaticData",Done2 ="FieldData";
             String FieldName;
 
             try 
@@ -782,6 +782,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         FieldName = Tempdata[2];
                         writer.println("FieldRequest;"+FieldName);
                         writer.flush();                         
+                     } 
+                     else if (data[0].equals(Done2)) 
+                     {
+
+                         
                      } 
                      else
                      {
