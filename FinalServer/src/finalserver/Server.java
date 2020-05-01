@@ -41,7 +41,7 @@ public class Server extends javax.swing.JFrame
        @Override
        public void run() 
        {
-            String message, Data = "Data", Login = "Login", Request ="DataRequest",InitialConnect="InitialConnect", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",Information="Information",FieldRequest ="FieldRequest";
+            String message, Data = "Data", Login = "Login", Request ="DataRequest",InitialConnect="InitialConnect", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",Information="Information",FieldRequest ="FieldRequest",ChangeActive="ChangeActive";
             String[] data;
             String[] Tempdata;
             String Sending ="";
@@ -154,6 +154,12 @@ public class Server extends javax.swing.JFrame
                             ClientList.append("\n");
                         }
                     } 
+                     else if (data[0].equals(ChangeActive)) 
+                    {
+                        
+                        SendMessage("Deactivated;"+data[1]);
+                        SendMessage("Active;"+data[2]);
+                    }                           
                      else if (data[0].equals(Client)) 
                     {
                         Sending = "";

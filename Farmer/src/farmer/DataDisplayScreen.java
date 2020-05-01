@@ -381,12 +381,32 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         );
 
         North.setText("Go");
+        North.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NorthActionPerformed(evt);
+            }
+        });
 
         West.setText("Go");
+        West.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WestActionPerformed(evt);
+            }
+        });
 
         East.setText("Go");
+        East.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EastActionPerformed(evt);
+            }
+        });
 
         South.setText("Go");
+        South.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SouthActionPerformed(evt);
+            }
+        });
 
         NorthPosition.setText("No Connected Station");
         NorthPosition.addActionListener(new java.awt.event.ActionListener() {
@@ -583,11 +603,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_VariableXActionPerformed
 
     private void NorthPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NorthPositionActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_NorthPositionActionPerformed
 
     private void EastPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EastPositionActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_EastPositionActionPerformed
 
     private void WestPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WestPositionActionPerformed
@@ -597,6 +617,46 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private void SouthPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SouthPositionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SouthPositionActionPerformed
+
+    private void NorthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NorthActionPerformed
+         String temp;
+        temp = EastPosition.getSelectedText();
+        if (temp != "No Connected Station")
+        {
+            writer.println("ChangeActive;"+username+";"+temp);
+            writer.flush();   
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_NorthActionPerformed
+
+    private void WestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WestActionPerformed
+         String temp;
+        temp = WestPosition.getSelectedText();
+        if (temp != "No Connected Station")
+        {
+            writer.println("ChangeActive;"+username+";"+temp);
+            writer.flush();   
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_WestActionPerformed
+
+    private void EastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EastActionPerformed
+         String temp;
+        temp = EastPosition.getSelectedText();
+        if (temp != "No Connected Station")
+        {
+            writer.println("ChangeActive;"+username+";"+temp);
+            writer.flush();   
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_EastActionPerformed
+
+    private void SouthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SouthActionPerformed
+         String temp;
+        temp = SouthPosition.getSelectedText();
+        if (temp != "No Connected Station")
+        {
+            writer.println("ChangeActive;"+username+";"+temp);
+            writer.flush();   
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_SouthActionPerformed
 
     
     
@@ -744,7 +804,6 @@ public class DataDisplayScreen extends javax.swing.JFrame {
          
          int x = StationsInField.length;
          String[] Temp;
-         String temp;
          while ( x>= 0)
          {
              Temp = StationsInField[x].split(":");

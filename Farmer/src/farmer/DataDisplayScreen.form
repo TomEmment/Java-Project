@@ -555,21 +555,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Go"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NorthActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="West">
       <Properties>
         <Property name="text" type="java.lang.String" value="Go"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WestActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="East">
       <Properties>
         <Property name="text" type="java.lang.String" value="Go"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EastActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="South">
       <Properties>
         <Property name="text" type="java.lang.String" value="Go"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SouthActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="NorthPosition">
       <Properties>
