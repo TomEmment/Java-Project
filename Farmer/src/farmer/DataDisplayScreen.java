@@ -5,10 +5,10 @@
  */
 package farmer;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 
 //import org.apache.poi.ss.usermodel.*;
 //import static javaserver.Server1.din;
@@ -20,6 +20,7 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -584,12 +585,56 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             
         }else{
             // Save file to Excel
-            String fileName = saveText.getText()+".xlsx";
-            try {
-                XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(new File(fileName)));
+            String name = saveText.getText();//+".xlsx";
+            System.out.println(name);
+            String fileName = name + ".xlsx";
+            //try {
+                XSSFWorkbook workbook = new XSSFWorkbook();
+                XSSFSheet sheet  = workbook.createSheet("fileName");
+                String[] Time = TimeData.split(",");
+                String[] Temperature = TempreatureData.split(",");
+                String[] Humidity = HumidityData.split(",");
+                String[] soilPH = SoilPHData.split(",");
+                String[] windSpeed = WindSpeedData.split(",");
+                Object[][] datatypes ={{"Time Data",TimeData},
+                        {"Temperature",TempreatureData},
+                        {"Humidity",HumidityData},
+                        {"soilPH",SoilPHData},
+                        {"windSpeed",WindSpeedData},
+                };
+                int rowNum = 0;
+                System.out.println("Creating Excel Spreadsheet");
+                for(Object[] datatype : datatypes){
+                    Row row = sheet.createRow(rowNum++);
+                    int colNum = 0;
+                    for(Object field : datatype){
+                        Cell cell = row.createCell(colNum++);
+                        if (field instanceof String){
+                            cell.setCellValue((String) field);
+                        }else if (field instanceof Integer){
+                            cell.setCellValue((Integer) field);
+                        }
+                    }
+                }
+                try{
+                    FileOutputStream outputStream = new FileOutputStream(fileName);
+                    workbook.write(outputStream);
+                    workbook.close();
+                    
+                } catch (FileNotFoundException ex) {
+                Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
             }
+                
+                
+                
+                //XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(new File(fileName)));
+                
+            /*} catch (IOException ex) {
+                System.out.println("Excel file can't be open");
+                Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
+            }*/
             
         }
     }//GEN-LAST:event_saveButtonActionPerformed
