@@ -12,12 +12,16 @@ public class Server extends javax.swing.JFrame
 {
    ArrayList clientOutputStreams;
    ArrayList<String> users;
+   ArrayList<String>  FieldList;
+   String[][] StationFieldList = new String[10][20];
 
    public class ClientHandler implements Runnable	
    {
        BufferedReader reader;
        Socket sock;
        PrintWriter client;
+       
+       
        public ClientHandler(Socket clientSocket, PrintWriter user) 
        {
             client = user;
@@ -37,10 +41,17 @@ public class Server extends javax.swing.JFrame
        @Override
        public void run() 
        {
-            String message, Data = "Data", Login = "Login", Request ="DataRequest", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",Information="Information";
+            String message, Data = "Data", Login = "Login", Request ="DataRequest",InitialConnect="InitialConnect", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",Information="Information";
             String[] data;
+            String[] Tempdata;
             String Sending ="";
             String Present;
+            String Temp;
+            String FieldName;
+            String Position;
+            int Done = 0;
+            int x;
+            int y;
          
 
             try 
@@ -80,7 +91,62 @@ public class Server extends javax.swing.JFrame
                             ClientList.append("\n");
                         }
 
-                    }     
+                    }  
+                    else if (data[0].equals(InitialConnect)) 
+                    {
+                        users.add(data[1]);
+                        Done = 0;
+                        x=0;
+                        y=0;
+                        Tempdata = data[2].split(",");
+                        FieldName = Tempdata[2];
+                        Position = Tempdata[3];                       
+                        
+                        
+                        
+                        while (Done ==0)
+                        {
+                            if (FieldList.get(x).equals(FieldName))
+                            {
+                                Done = 1;
+                                
+                            }
+                            else if(FieldList.get(x).equals("End"))
+                                    {
+                                        Done = 1;
+                                        FieldList.remove("End");
+                                        FieldList.add(FieldName);
+                                        FieldList.add("End");
+                                        
+                                    }
+                            else
+                            {
+                                x=x+1;
+                            }
+                                }
+                        Done = 0;
+                        while (Done ==0)
+                        {
+                            if (StationFieldList[x][y]==null)
+                            {
+                                StationFieldList[x][y]=data[1]+";"+FieldName+";"+Position;
+                                Done = 1;
+                            }
+                            else
+                            {
+                                y=y+1;
+                            }
+                           
+                        
+                    }
+                        ClientList.setText("");
+                        for(int i = 0; i < users.size(); i++) {
+                            ClientList.append(users.get(i));
+                            ClientList.append("\n");
+                            
+                        }
+
+                    }
                      else if (data[0].equals(DissConnect)) 
                     {
                         users.remove(data[1]);
@@ -343,6 +409,8 @@ public void SendMessage(String message)
         {
             clientOutputStreams = new ArrayList();
             users = new ArrayList();  
+            FieldList = new ArrayList();
+            FieldList.add("End");
 
             try 
             {

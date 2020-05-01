@@ -56,7 +56,7 @@ public class GUI extends javax.swing.JFrame {
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(streamreader);
                 writer = new PrintWriter(sock.getOutputStream());
-                writer.println("Connect;"+username);
+                writer.println("InitialConnect;"+username+";"+StaticData);
                 writer.flush(); 
                 writer.println("Data;"+username+";" +TimeData +";" +TempreatureData+";" +HumidityData+";" +SoilPHData+";" +WindSpeedData);
                 writer.flush();
