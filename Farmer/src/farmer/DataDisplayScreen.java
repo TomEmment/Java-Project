@@ -745,9 +745,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
          int x = StationsInField.length;
          String[] Temp;
          String temp;
-         while ( x> 0)
+         while ( x>= 0)
          {
-             x=x-1;
              Temp = StationsInField[x].split(":");
              if (Temp[2].equals("N"))
              {
@@ -765,6 +764,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
              {
                  WestPosition.setText(Temp[1]);
              }
+             x=x-1;
            
          }
          

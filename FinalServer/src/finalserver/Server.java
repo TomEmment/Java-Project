@@ -102,9 +102,6 @@ public class Server extends javax.swing.JFrame
                         Tempdata = data[2].split(",");
                         FieldName = Tempdata[2];
                         Position = Tempdata[3];                       
-                        
-                        
-                        
                         while (Done ==0)
                         {
                             if (FieldList.get(x).equals(FieldName))
