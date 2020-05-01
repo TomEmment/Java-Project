@@ -140,10 +140,10 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         West = new javax.swing.JButton();
         East = new javax.swing.JButton();
         South = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        NorthPosition = new javax.swing.JTextField();
+        EastPosition = new javax.swing.JTextField();
+        WestPosition = new javax.swing.JTextField();
+        SouthPosition = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -388,31 +388,31 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
         South.setText("Go");
 
-        jTextField1.setText("No Connected Station");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        NorthPosition.setText("No Connected Station");
+        NorthPosition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                NorthPositionActionPerformed(evt);
             }
         });
 
-        jTextField2.setText("No Connected Station");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        EastPosition.setText("No Connected Station");
+        EastPosition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                EastPositionActionPerformed(evt);
             }
         });
 
-        jTextField3.setText("No Connected Station");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        WestPosition.setText("No Connected Station");
+        WestPosition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                WestPositionActionPerformed(evt);
             }
         });
 
-        jTextField4.setText("No Connected Station");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        SouthPosition.setText("No Connected Station");
+        SouthPosition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                SouthPositionActionPerformed(evt);
             }
         });
 
@@ -450,9 +450,9 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(76, 76, 76)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SouthPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(WestPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(West)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,7 +468,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                                 .addGap(29, 29, 29)
                                 .addComponent(jLabel15)
                                 .addGap(38, 38, 38)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(EastPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(East))))
                     .addGroup(layout.createSequentialGroup()
@@ -476,7 +476,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(NorthPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(North)
                                 .addGap(31, 31, 31)
@@ -502,7 +502,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NorthPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(North)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(4, 4, 4)
@@ -517,10 +517,10 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EastPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(East))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(WestPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(West)))
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -530,7 +530,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SouthPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(South))
                 .addGap(65, 65, 65))
         );
@@ -582,21 +582,21 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_VariableXActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void NorthPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NorthPositionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_NorthPositionActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void EastPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EastPositionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_EastPositionActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void WestPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WestPositionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_WestPositionActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void SouthPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SouthPositionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_SouthPositionActionPerformed
 
     
     
@@ -740,7 +740,37 @@ public class DataDisplayScreen extends javax.swing.JFrame {
  }
  
  
- 
+     public void UpdateField(String[] StationsInField) {
+         
+         int x = StationsInField.length;
+         String[] Temp;
+         String temp;
+         while ( x> 0)
+         {
+             x=x-1;
+             Temp = StationsInField[x].split(":");
+             if (Temp[2].equals("N"))
+             {
+                 NorthPosition.setText(Temp[1]);
+             }
+             if (Temp[2].equals("E"))
+             {
+                 EastPosition.setText(Temp[1]);
+             }
+             if (Temp[2].equals("S"))
+             {
+                 SouthPosition.setText(Temp[1]);
+             }
+             if (Temp[2].equals("W"))
+             {
+                 WestPosition.setText(Temp[1]);
+             }
+           
+         }
+         
+
+
+    }
  
     public void printTextField() {
      DisplayTempreatureData.setText(TempreatureData);
@@ -785,7 +815,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                      } 
                      else if (data[0].equals(Done2)) 
                      {
-
+                         Tempdata = data[1].split(",");
+                         UpdateField(Tempdata);
                          
                      } 
                      else
@@ -845,12 +876,16 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private javax.swing.JTextArea DisplayTempreatureData;
     private javax.swing.JTextArea DisplayWindSpeedData;
     private javax.swing.JButton East;
+    private javax.swing.JTextField EastPosition;
     private javax.swing.JButton North;
+    private javax.swing.JTextField NorthPosition;
     private javax.swing.JButton South;
+    private javax.swing.JTextField SouthPosition;
     private javax.swing.JComboBox<String> VariableX;
     private javax.swing.JComboBox<String> VariableY;
     private javax.swing.JTextArea WeatherStationData;
     private javax.swing.JButton West;
+    private javax.swing.JTextField WestPosition;
     private javax.swing.JComboBox<String> fileTypeCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -882,10 +917,6 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JButton saveButton;
     private javax.swing.JLabel saveLabel;
     private javax.swing.JTextField saveText;

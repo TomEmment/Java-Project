@@ -30,7 +30,7 @@ public class GUI extends javax.swing.JFrame {
     PrintWriter writer;
     //String Data= "Nottigham,GPS,FIELDNAME,POSITION,CROP";
     String StaticData = "Nottigham,GPS,FIELDNAME,POSITION,CROP";
-    int lineNum = 5;
+    int lineNum = 15;
     String TimeData = "";
     String TempreatureData = "";
     String HumidityData = "";
