@@ -1108,7 +1108,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }
         while (Iterations < WTempdata.length)
         {
-            WindSpeedDataTemp = WindSpeedDataTemp + TimeDataTemp[Iterations] + " : " +WTempdata[Iterations]+"MPH" + " | ";
+            WindSpeedDataTemp = WindSpeedDataTemp + TimeDataTemp[Iterations] + " : " +WTempdata[Iterations]+"Mph" + " | ";
             
             Iterations = Iterations +1;
         }       
