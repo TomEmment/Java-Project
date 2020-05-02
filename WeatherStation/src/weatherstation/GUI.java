@@ -35,6 +35,7 @@ public class GUI extends javax.swing.JFrame {
     String HumidityData = "";
     String SoilPHData = "";
     String WindSpeedData = "";
+    String Nitorgen;
     int Active = 0;
     
     //--------------------------//
@@ -218,6 +219,7 @@ public void SendData(){
             String[] data;
             String[] temp;
             int Sleep;
+            Random rand = new Random();
 
             String stream, Connected = "Active", Deactivated ="Deactivated",Field="FieldPull";
 
@@ -232,7 +234,8 @@ public void SendData(){
                      if (data[1].equals(username))
                              
                      {
-                          writer.println("Information;"+username+";"+StaticData);
+                         Nitorgen = Integer.toString(rand.nextInt(4));
+                          writer.println("Information;"+username+";"+StaticData+";"+Nitorgen);
                           writer.flush(); 
                           GenerateData();
                           Active = 1;

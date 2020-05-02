@@ -119,7 +119,7 @@ public class Server extends javax.swing.JFrame
                      else if (data[0].equals(Information)) 
                     {
                         
-                        SendMessage("StaticData;"+data[1]+";"+data[2]);
+                        SendMessage("StaticData;"+data[1]+";"+data[2]+";"+data[3]);
 
                     }     
                      else if (data[0].equals(FieldData)) 

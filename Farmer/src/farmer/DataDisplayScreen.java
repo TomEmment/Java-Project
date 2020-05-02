@@ -15,10 +15,6 @@ import org.apache.poi.ss.usermodel.Row;
 import java.awt.BorderLayout;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,17 +22,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
 import java.io.FileWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,6 +42,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     ArrayList<String> users = new ArrayList();
     int port = 2222;
     Boolean isConnected = false;
+    String Nitrogen;
     
     Socket sock;
     BufferedReader reader;
@@ -164,6 +154,13 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         WindChoice = new javax.swing.JComboBox<>();
         jLabel24 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        Slider1 = new javax.swing.JSlider();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -389,6 +386,26 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LightMode", "DarkMode" }));
 
+        Slider1.setMajorTickSpacing(1);
+        Slider1.setMaximum(4);
+        Slider1.setOrientation(javax.swing.JSlider.VERTICAL);
+        Slider1.setPaintTicks(true);
+        Slider1.setSnapToTicks(true);
+        Slider1.setToolTipText("");
+        Slider1.setValue(2);
+
+        jLabel32.setText("Nitrogen Levels:");
+
+        jLabel29.setText("Surplus");
+
+        jLabel30.setText("Depleted");
+
+        jLabel31.setText("Normal");
+
+        jLabel33.setText("High");
+
+        jLabel34.setText("Low");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -518,6 +535,18 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                                 .addComponent(South)))))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
+                .addComponent(jLabel32)
+                .addGap(33, 33, 33)
+                .addComponent(Slider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel30)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel31)
+                        .addComponent(jLabel29))
+                    .addComponent(jLabel33)
+                    .addComponent(jLabel34))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -544,10 +573,9 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel13)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel21)
-                                .addComponent(SoilPHChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel22)))
+                            .addComponent(jLabel21)
+                            .addComponent(SoilPHChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -557,10 +585,9 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel23)
-                                .addComponent(WindChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel24)))
+                            .addComponent(jLabel23)
+                            .addComponent(WindChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel27))
@@ -599,7 +626,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                             .addComponent(jLabel18))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(Jfreechartpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -625,7 +652,23 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                             .addComponent(West)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(7, 7, 7)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel32)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel29)
+                                    .addGap(30, 30, 30)
+                                    .addComponent(jLabel33)
+                                    .addGap(29, 29, 29)
+                                    .addComponent(jLabel31)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel34)
+                                    .addGap(30, 30, 30)
+                                    .addComponent(jLabel30))
+                                .addComponent(Slider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
 
         pack();
@@ -1148,19 +1191,25 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         WindSpeedData = WindSpeedData + data[5]; 
                         printTextField();
                         LineChart_AWT( );
-                        isConnected = true;
+                        
                      } 
                      else if (data[0].equals(Done1)) 
                      {
                         username = data[1];
                         ActiveStation.setText(username);
                          StaticData = data[2];
+                         Nitrogen = data[3];
+                         
+                         Slider1.setValue(Integer.parseInt(Nitrogen));	
+                        Slider1.setEnabled(false);
                         WeatherStationData.setText(StaticData);
                         Tempdata = data[2].split(",");
                         FieldName = Tempdata[2];
                         UpdateField(username,Tempdata[3]);
+                        isConnected = true;  
                         writer.println("FieldRequest;"+FieldName);
-                        writer.flush();                         
+                        writer.flush(); 
+                                             
                      } 
                      else if (data[0].equals(Done2)) 
                      {
@@ -1230,6 +1279,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private javax.swing.JPanel Jfreechartpanel;
     private javax.swing.JButton North;
     private javax.swing.JTextField NorthPosition;
+    private javax.swing.JSlider Slider1;
     private javax.swing.JComboBox<String> SoilPHChoice;
     private javax.swing.JButton South;
     private javax.swing.JTextField SouthPosition;
@@ -1263,7 +1313,13 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
