@@ -92,11 +92,10 @@ public class GUI extends javax.swing.JFrame {
         // Read random line of file
         //generate random number
         int randNum=0;
-        boolean star = true;
-        while(star){
+        String star = "Notfound";
+        while(star.equals("Notfound")){
             Random rand = new Random(); // random number between 0 and line num
             randNum = rand.nextInt(lineNum);
-            System.out.println(randNum);
             int i = 0;
             try{
                 FileReader readfile = new FileReader("staticData.txt");
@@ -105,51 +104,57 @@ public class GUI extends javax.swing.JFrame {
                 String line = readBuffer.readLine();
             while (line != null) {
                 if(i==randNum){
-                    if(line.charAt(0)=='*'){
-                      System.out.println("Weather station already in use");
-                      // Repeat with new rand num
-                      line = null;
-                    }else{
-                        System.out.println("Weather station not in use");
-                        StaticData = line;
-                        // Replace line in file
-                        File inputFile = new File("staticData.txt");
-                        File tempFile = new File("temp.txt");
-                        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-                        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-                        
-                        String currentLine;
-                        String newLine = "*"+line;
-                        while((currentLine = reader.readLine()) != null){
-                            // trim newline when comparing with replace line
-                            String trimmedLine = currentLine.trim();
-                            if(trimmedLine.equals(line)){
-                                writer.write(newLine + System.getProperty("line.seperator")+"\n");
-                            }else{
+
+                    try{
+                        readfile = new FileReader("temp.txt");
+                        readBuffer = new BufferedReader(readfile);
+
+                        String linetemp = readBuffer.readLine();
+                        star = "Found";
+                        while (linetemp != null) {
+                            if(linetemp.equals(line)){
+                                star = "NotFound";
+                            }
+                            linetemp = readBuffer.readLine();
+                         }
+                         if (star.equals("Found"))
+                        {
+                            StaticData = line;
                             
-                                writer.write(currentLine + System.getProperty("line.seperator")+"\n");
+                            try{
+                                FileWriter fout = new FileWriter("Admin.txt",true);
+                                BufferedWriter x = new BufferedWriter(fout);
+                                PrintWriter pout = new PrintWriter(x);
+                                pout.println(StaticData);
+                                pout.close();
+                                x.close();
+                                fout.close();
                             }
-                                                            
+                            catch(IOException e){
+                                System.out.println("Error opening file");
+                            }
                         }
-                        writer.close();
-                        reader.close();
-                        boolean successful = tempFile.renameTo(inputFile);
-                        star = false;
-                        
-                        break;
                     }
-                }else{
-                    line = readBuffer.readLine();
-                    i = i +1;
+                    catch (Exception ex) 
+                    {
+                        System.out.println("No");
+                    }  
                 }
-                
-                            }
-            }catch(IOException e){
+                i = i+1;
+                line = readBuffer.readLine();
             }
+            }
+             catch (Exception ex) 
+            {
+                System.out.println("No");
+                
+            }           
         }
+    
+        
         String lnNum = Integer.toString(randNum);
         username = "WeatherStaion"+lnNum;
-
+ 
     }
     
     public void CreateData(int Length)
