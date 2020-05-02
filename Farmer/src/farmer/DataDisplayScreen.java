@@ -52,7 +52,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     String TempreatureData = "TempreatureData:";
     String HumidityData = "HumidityData:";
     String SoilPHData = "SoilPHData:";
-    String WindSpeedData = "WindSpeedData:";    
+    String WindSpeedData = "WindSpeedData:";  
+    String SleepTime;
     
  
     public void ListenThread() 
@@ -68,6 +69,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         initComponents();
         try     
             {
+                SleepTime = Sleep;
                 sock = new Socket(address, port);
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(streamreader);
@@ -688,7 +690,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }  
         else
         {
-            writer.println("ChangeActive;"+username+";"+temp);
+            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime);
             writer.flush();           
         }       // TODO add your handling code here:
     }//GEN-LAST:event_SouthActionPerformed
@@ -703,7 +705,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }  
         else
         {
-            writer.println("ChangeActive;"+username+";"+temp);
+            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime);
             writer.flush();           
         }       // TODO add your handling code here:
     }//GEN-LAST:event_WestActionPerformed
@@ -726,7 +728,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }  
         else
         {
-            writer.println("ChangeActive;"+username+";"+temp);
+            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime);
             writer.flush();           
         }      // TODO add your handling code here:
     }//GEN-LAST:event_NorthActionPerformed
@@ -741,7 +743,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }  
         else
         {
-            writer.println("ChangeActive;"+username+";"+temp);
+            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime);
             writer.flush();           
         }
 // TODO add your handling code here:

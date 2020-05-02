@@ -101,7 +101,7 @@ public class Server extends javax.swing.JFrame
                     {
                         
                         SendMessage("Deactivated;"+data[1]);
-                        SendMessage("Active;"+data[2]);
+                        SendMessage("Active;"+data[2]+";"+data[3]);
                     }                           
                      else if (data[0].equals(Client)) 
                     {
