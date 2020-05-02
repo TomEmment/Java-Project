@@ -48,7 +48,7 @@ public class GUI extends javax.swing.JFrame {
     
     public GUI() {
         initComponents();
-        CreateData(8);
+        CreateData(10);
         getStaticData();
             try 
             {

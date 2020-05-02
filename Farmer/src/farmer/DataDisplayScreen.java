@@ -85,8 +85,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 writer.println("Connect;FarmerJohn");
                 writer.flush(); 
                 writer.println("DataRequest;"+Station+";"+Sleep);
-                writer.flush(); 
-                isConnected = true; 
+                writer.flush();  
             } 
             catch (IOException ex) 
             {
@@ -347,24 +346,44 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         jLabel17.setText("Last");
 
         TempChoice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5", "10", "20", "50" }));
+        TempChoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TempChoiceActionPerformed(evt);
+            }
+        });
 
         jLabel18.setText("Entrys");
 
         jLabel19.setText("Last");
 
         HumidityChoice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5", "10", "20", "50" }));
+        HumidityChoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HumidityChoiceActionPerformed(evt);
+            }
+        });
 
         jLabel20.setText("Entrys");
 
         jLabel21.setText("Last");
 
         SoilPHChoice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5", "10", "20", "50" }));
+        SoilPHChoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SoilPHChoiceActionPerformed(evt);
+            }
+        });
 
         jLabel22.setText("Entrys");
 
         jLabel23.setText("Last");
 
         WindChoice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5", "10", "20", "50" }));
+        WindChoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WindChoiceActionPerformed(evt);
+            }
+        });
 
         jLabel24.setText("Entrys");
 
@@ -810,12 +829,46 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_fileTypeComboActionPerformed
 
     private void VariableXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VariableXActionPerformed
-        LineChart_AWT( );
+        if (isConnected)
+        {
+            LineChart_AWT( );
+        }
     }//GEN-LAST:event_VariableXActionPerformed
 
     private void VariableYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VariableYActionPerformed
-       LineChart_AWT( );
+        if (isConnected)
+        {
+            LineChart_AWT( );
+        }
     }//GEN-LAST:event_VariableYActionPerformed
+
+    private void TempChoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TempChoiceActionPerformed
+       if (isConnected)
+        {
+            printTextField();
+        }
+    }//GEN-LAST:event_TempChoiceActionPerformed
+
+    private void HumidityChoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HumidityChoiceActionPerformed
+       if (isConnected)
+        {
+            printTextField();
+        }
+    }//GEN-LAST:event_HumidityChoiceActionPerformed
+
+    private void SoilPHChoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SoilPHChoiceActionPerformed
+       if (isConnected)
+        {
+            printTextField();
+        }
+    }//GEN-LAST:event_SoilPHChoiceActionPerformed
+
+    private void WindChoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WindChoiceActionPerformed
+       if (isConnected)
+        {
+            printTextField();
+        }
+    }//GEN-LAST:event_WindChoiceActionPerformed
 
     
     
@@ -917,6 +970,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
  
  
  private DefaultCategoryDataset ChopData(String VarX, String VarY) {
+
      DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
      
      String[] InitialXdata;
@@ -956,6 +1010,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
       Position = Position +1;
               }
      return line_chart_dataset;
+     
  }
  
  
@@ -986,10 +1041,84 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     
  
     public void printTextField() {
-     DisplayTempreatureData.setText(TempreatureData);
-    DisplayHumidityData.setText(HumidityData);
-    DisplaySoilPHData.setText(SoilPHData);
-    DisplayWindSpeedData.setText(WindSpeedData);
+        String[] Tdata,TTempdata,Hdata,HTempdata,Sdata,STempdata,Wdata,WTempdata;
+        String TempreatureDataTemp, HumidityDataTemp, SoilPHDataTemp, WindSpeedDataTemp;
+        String IterationsChoice = TempChoice.getItemAt(TempChoice.getSelectedIndex());
+        String[] TimeDataTemp = TimeData.split(",");
+        int Iterations = Integer.parseInt(IterationsChoice);
+        Tdata = TempreatureData.split(":");
+        TempreatureDataTemp =Tdata[0]+":";
+        TTempdata = Tdata[1].split(",");
+         Hdata = HumidityData.split(":");
+        HumidityDataTemp =Hdata[0]+":"; 
+        HTempdata = Hdata[1].split(",");
+         Sdata = SoilPHData.split(":");
+        SoilPHDataTemp =Sdata[0]+":"; 
+        STempdata = Sdata[1].split(",");
+         Wdata = WindSpeedData.split(":");
+        WindSpeedDataTemp =Wdata[0]+":";   
+        WTempdata = Wdata[1].split(",");
+        Iterations = TTempdata.length - Iterations; 
+        if (Iterations <0)
+        {
+            Iterations = 0;
+        }
+        while (Iterations < TTempdata.length)
+        {
+            TempreatureDataTemp = TempreatureDataTemp + TimeDataTemp[Iterations] + " : " +TTempdata[Iterations] + " | ";
+            
+            Iterations = Iterations +1;
+        }
+        IterationsChoice = HumidityChoice.getItemAt(HumidityChoice.getSelectedIndex());
+        Iterations = Integer.parseInt(IterationsChoice);
+         Iterations = HTempdata.length - Iterations; 
+        if (Iterations <0)
+        {
+            Iterations = 0;
+        }
+        while (Iterations < HTempdata.length)
+        {
+            HumidityDataTemp = HumidityDataTemp + TimeDataTemp[Iterations] + " : " +HTempdata[Iterations] + " | ";
+            
+            Iterations = Iterations +1;
+        }       
+
+
+        IterationsChoice = SoilPHChoice.getItemAt(SoilPHChoice.getSelectedIndex());
+        Iterations = Integer.parseInt(IterationsChoice);
+         Iterations = STempdata.length - Iterations; 
+        if (Iterations <0)
+        {
+            Iterations = 0;
+        }
+        while (Iterations < STempdata.length)
+        {
+            SoilPHDataTemp = SoilPHDataTemp + TimeDataTemp[Iterations] + " : " +STempdata[Iterations] + " | ";
+            
+            Iterations = Iterations +1;
+        }       
+        
+
+        IterationsChoice = WindChoice.getItemAt(WindChoice.getSelectedIndex());
+        Iterations = Integer.parseInt(IterationsChoice);
+         Iterations = WTempdata.length - Iterations; 
+        if (Iterations <0)
+        {
+            Iterations = 0;
+        }
+        while (Iterations < WTempdata.length)
+        {
+            WindSpeedDataTemp = WindSpeedDataTemp + TimeDataTemp[Iterations] + " : " +WTempdata[Iterations] + " | ";
+            
+            Iterations = Iterations +1;
+        }       
+                
+        
+        
+     DisplayTempreatureData.setText(TempreatureDataTemp);
+    DisplayHumidityData.setText(HumidityDataTemp);
+    DisplaySoilPHData.setText(SoilPHDataTemp);
+    DisplayWindSpeedData.setText(WindSpeedDataTemp);
 
     }
    public class IncomingReader implements Runnable
@@ -1015,6 +1144,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         WindSpeedData = WindSpeedData + data[5]; 
                         printTextField();
                         LineChart_AWT( );
+                        isConnected = true;
                      } 
                      else if (data[0].equals(Done1)) 
                      {
