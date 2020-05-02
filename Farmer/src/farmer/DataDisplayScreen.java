@@ -683,7 +683,6 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private void SouthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SouthActionPerformed
          String temp;
         temp = SouthPosition.getText();
-        ActiveStation.setText(temp);
         if (temp.equals("No Connected Station"))
         {
             System.out.println("No Station Avaliable");
@@ -698,7 +697,6 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private void WestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WestActionPerformed
         String temp;
         temp = WestPosition.getText();
-        ActiveStation.setText(temp);
         if (temp.equals("No Connected Station"))
         {
             System.out.println("No Station Avaliable");
@@ -721,7 +719,6 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private void NorthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NorthActionPerformed
         String temp;
         temp = NorthPosition.getText();
-        ActiveStation.setText(temp);
         if (temp.equals("No Connected Station"))
         {
             System.out.println("No Station Avaliable");
@@ -736,7 +733,6 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private void EastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EastActionPerformed
         String temp;
         temp = EastPosition.getText();
-        ActiveStation.setText(temp);
         if (temp.equals("No Connected Station"))
         {
             System.out.println("No Station Avaliable");

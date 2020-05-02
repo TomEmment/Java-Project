@@ -37,6 +37,7 @@ public class GUI extends javax.swing.JFrame {
     String WindSpeedData = "";
     String Nitorgen;
     int Active = 0;
+    int Sleep =10;
     
     //--------------------------//
     
@@ -75,7 +76,7 @@ public class GUI extends javax.swing.JFrame {
                 GenerateData();
                 try
                 {
-                    TimeUnit.SECONDS.sleep(10);;
+                    TimeUnit.SECONDS.sleep(Sleep);;
                 }
                 catch(InterruptedException ex)
                 {
@@ -218,7 +219,6 @@ public void SendData(){
         {
             String[] data;
             String[] temp;
-            int Sleep;
             Random rand = new Random();
 
             String stream, Connected = "Active", Deactivated ="Deactivated",Field="FieldPull";
@@ -237,20 +237,9 @@ public void SendData(){
                          Nitorgen = Integer.toString(rand.nextInt(4));
                           writer.println("Information;"+username+";"+StaticData+";"+Nitorgen);
                           writer.flush(); 
-                          GenerateData();
                           Active = 1;
+                          GenerateData();
                           Sleep = Integer.parseInt(data[2]);
-                          while (true){
-                            GenerateData();
-                            try
-                            {
-                                TimeUnit.SECONDS.sleep(Sleep);;
-                            }
-                            catch(InterruptedException ex)
-                            {
-                                Thread.currentThread().interrupt();
-                            }
-                            }
                              }
                  }
                 else if (data[0].equals(Deactivated)) 

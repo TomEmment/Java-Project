@@ -8,10 +8,10 @@ Nottingham-South,193-453,Meadow,S,Cropnull
 Redditch-South,213-873,Farm,S,Barleynull
 Leicester-South,543-836,Woods,S,Treesnull
 Manchester-South,583-928,Stan,S,Wheatnull
-*London-South,363-836,Lectrun,S,Barleynull
+London-South,363-836,Lectrun,S,Barleynull
 Birmingham-South,167-952,Forest,S,Cropnull
 Nottingham-East,194-453,Meadow,E,Cropnull
-Redditch-East,213-873,Farm,E,Barleynull
+*Redditch-East,213-873,Farm,E,Barleynull
 Leicester-East,543-836,Woods,E,Treesnull
 Manchester-East,583-928,Stan,E,Wheatnull
 London-East,363-836,Lectrun,E,Barleynull
