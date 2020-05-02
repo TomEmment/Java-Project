@@ -1065,7 +1065,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }
         while (Iterations < TTempdata.length)
         {
-            TempreatureDataTemp = TempreatureDataTemp + TimeDataTemp[Iterations] + " : " +TTempdata[Iterations] + " | ";
+            TempreatureDataTemp = TempreatureDataTemp + TimeDataTemp[Iterations] + " : " +TTempdata[Iterations]+"'C" + " | ";
             
             Iterations = Iterations +1;
         }
@@ -1078,7 +1078,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }
         while (Iterations < HTempdata.length)
         {
-            HumidityDataTemp = HumidityDataTemp + TimeDataTemp[Iterations] + " : " +HTempdata[Iterations] + " | ";
+            HumidityDataTemp = HumidityDataTemp + TimeDataTemp[Iterations] + " : " +HTempdata[Iterations]+"%" + " | ";
             
             Iterations = Iterations +1;
         }       
@@ -1093,7 +1093,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }
         while (Iterations < STempdata.length)
         {
-            SoilPHDataTemp = SoilPHDataTemp + TimeDataTemp[Iterations] + " : " +STempdata[Iterations] + " | ";
+            SoilPHDataTemp = SoilPHDataTemp + TimeDataTemp[Iterations] + " : " +STempdata[Iterations]+"PH" + " | ";
             
             Iterations = Iterations +1;
         }       
@@ -1108,7 +1108,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }
         while (Iterations < WTempdata.length)
         {
-            WindSpeedDataTemp = WindSpeedDataTemp + TimeDataTemp[Iterations] + " : " +WTempdata[Iterations] + " | ";
+            WindSpeedDataTemp = WindSpeedDataTemp + TimeDataTemp[Iterations] + " : " +WTempdata[Iterations]+"MPH" + " | ";
             
             Iterations = Iterations +1;
         }       
