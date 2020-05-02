@@ -227,6 +227,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         });
 
         VariableY.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tempreature", "Humidity", "SoilPH", "WIndSpeed" }));
+        VariableY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VariableYActionPerformed(evt);
+            }
+        });
 
         saveLabel.setText("Filename:");
 
@@ -796,8 +801,12 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_fileTypeComboActionPerformed
 
     private void VariableXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VariableXActionPerformed
-        // TODO add your handling code here:
+        LineChart_AWT( );
     }//GEN-LAST:event_VariableXActionPerformed
+
+    private void VariableYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VariableYActionPerformed
+       LineChart_AWT( );
+    }//GEN-LAST:event_VariableYActionPerformed
 
     
     
