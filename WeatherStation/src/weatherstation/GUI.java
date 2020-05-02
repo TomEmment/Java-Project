@@ -75,7 +75,7 @@ public class GUI extends javax.swing.JFrame {
                 GenerateData();
                 try
                 {
-                    TimeUnit.SECONDS.sleep(5);;
+                    TimeUnit.SECONDS.sleep(10);;
                 }
                 catch(InterruptedException ex)
                 {
@@ -178,6 +178,7 @@ public void SendData(){
         {
             String[] data;
             String[] temp;
+            int Sleep;
 
             String stream, Connected = "Active", Deactivated ="Deactivated",Field="FieldPull";
 
@@ -194,12 +195,14 @@ public void SendData(){
                      {
                           writer.println("Information;"+username+";"+StaticData);
                           writer.flush(); 
+                          GenerateData();
                           Active = 1;
+                          Sleep = Integer.parseInt(data[2]);
                           while (true){
                             GenerateData();
                             try
                             {
-                                TimeUnit.SECONDS.sleep(5);;
+                                TimeUnit.SECONDS.sleep(Sleep);;
                             }
                             catch(InterruptedException ex)
                             {

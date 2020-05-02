@@ -24,6 +24,7 @@ public class WeatherStationList extends javax.swing.JFrame {
     Socket sock;
     BufferedReader reader;
     PrintWriter writer;
+    String Sleep;
     
     
         public void ListenThread() 
@@ -74,6 +75,9 @@ public class WeatherStationList extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         StationChoice = new javax.swing.JComboBox<>();
         Connect = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        SleepChoice = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -88,6 +92,12 @@ public class WeatherStationList extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Active Stations:");
+
+        SleepChoice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2 Seconds", "5 Seconds", "10 Seconds", "30 Seconds", "1 Minute", "5 Minutes" }));
+
+        jLabel2.setText("Station Data pull time:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,18 +105,28 @@ public class WeatherStationList extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(StationChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Connect))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(SleepChoice, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Connect, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(StationChoice, 0, 349, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jLabel2))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(11, 11, 11)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(StationChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SleepChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(Connect)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addGap(106, 106, 106))
         );
 
         pack();
@@ -114,13 +134,38 @@ public class WeatherStationList extends javax.swing.JFrame {
 
     private void ConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectActionPerformed
         try 
-            {        
+            {   
+                int Position = SleepChoice.getSelectedIndex();
+                if (Position == 0)
+                {
+                    Sleep = "2";
+                }
+                else if (Position == 0)
+                {
+                    Sleep = "5";
+                }               
+                else if (Position == 0)
+                {
+                    Sleep = "10";
+                }                  
+                else if (Position == 0)
+                {
+                    Sleep = "30";
+                }                  
+                 else if (Position == 0)
+                {
+                    Sleep = "60";
+                }  
+                else if (Position == 0)
+                {
+                    Sleep = "300";
+                }                  
                 sock.close();
                 setVisible(false); 
                         dispose(); 
                         System.out.println("Opening information window");
                         String Choice = StationChoice.getItemAt(StationChoice.getSelectedIndex());
-                        DataDisplayScreen Instance = new DataDisplayScreen(Choice);
+                        DataDisplayScreen Instance = new DataDisplayScreen(Choice,Sleep);
                         Instance.setVisible(true);
             }
            catch(IOException ex) { 
@@ -209,7 +254,10 @@ public class WeatherStationList extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Connect;
+    private javax.swing.JComboBox<String> SleepChoice;
     private javax.swing.JComboBox<String> StationChoice;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables

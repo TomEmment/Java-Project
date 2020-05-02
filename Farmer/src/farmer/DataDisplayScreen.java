@@ -74,7 +74,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
  * 
      * Creates new form DataDisplayScreen
      */
-    public DataDisplayScreen(String Station) {
+    public DataDisplayScreen(String Station,String Sleep) {
         initComponents();
         try     
             {
@@ -84,7 +84,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 writer = new PrintWriter(sock.getOutputStream());
                 writer.println("Connect;FarmerJohn");
                 writer.flush(); 
-                writer.println("DataRequest;"+Station);
+                writer.println("DataRequest;"+Station+";"+Sleep);
                 writer.flush(); 
                 isConnected = true; 
             } 
@@ -947,7 +947,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DataDisplayScreen("WeatherStation1").setVisible(true);
+                new DataDisplayScreen("WeatherStation1","10").setVisible(true);
           }
         });
     }

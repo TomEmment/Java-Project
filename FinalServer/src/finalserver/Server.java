@@ -74,7 +74,7 @@ public class Server extends javax.swing.JFrame
                     } 
                     else if (data[0].equals(Request)) 
                     {
-                        SendMessage("Active;"+data[1]);
+                        SendMessage("Active;"+data[1]+";"+data[2]);
 
                     }
                     else if (data[0].equals(Connect)) 
