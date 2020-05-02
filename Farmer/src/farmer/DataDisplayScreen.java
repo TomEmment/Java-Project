@@ -150,6 +150,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        ActiveStation = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -320,6 +322,10 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
+        jLabel16.setText("Active Station:");
+
+        ActiveStation.setText("WeatherStation1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -378,7 +384,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(VariableX, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
-                        .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16)
+                            .addComponent(ActiveStation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(Jfreechartpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(86, 86, 86))
             .addGroup(layout.createSequentialGroup()
@@ -467,9 +477,15 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(VariableY, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                    .addComponent(VariableX))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(VariableX))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ActiveStation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Jfreechartpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,21 +525,29 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private void SouthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SouthActionPerformed
          String temp;
         temp = SouthPosition.getSelectedText();
-        if (temp != "No Connected Station")
+        ActiveStation.setText(temp);
+        if (temp.equals("No Connected Station"))
+        {
+        }  
+        else
         {
             writer.println("ChangeActive;"+username+";"+temp);
-            writer.flush();   
-        }         // TODO add your handling code here:
+            writer.flush();           
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_SouthActionPerformed
 
     private void WestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WestActionPerformed
         String temp;
         temp = WestPosition.getSelectedText();
-        if (temp != "No Connected Station")
+        ActiveStation.setText(temp);
+        if (temp.equals("No Connected Station"))
+        {
+        }  
+        else
         {
             writer.println("ChangeActive;"+username+";"+temp);
-            writer.flush();
-        }         // TODO add your handling code here:
+            writer.flush();           
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_WestActionPerformed
 
     private void NorthPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NorthPositionActionPerformed
@@ -536,22 +560,31 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
     private void NorthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NorthActionPerformed
         String temp;
-        temp = EastPosition.getSelectedText();
-        if (temp != "No Connected Station")
+        temp = NorthPosition.getSelectedText();
+        ActiveStation.setText(temp);
+        if (temp.equals("No Connected Station"))
+        {
+        }  
+        else
         {
             writer.println("ChangeActive;"+username+";"+temp);
-            writer.flush();
-        }         // TODO add your handling code here:
+            writer.flush();           
+        }      // TODO add your handling code here:
     }//GEN-LAST:event_NorthActionPerformed
 
     private void EastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EastActionPerformed
         String temp;
         temp = EastPosition.getSelectedText();
-        if (temp != "No Connected Station")
+        ActiveStation.setText(temp);
+        if (temp.equals("No Connected Station"))
+        {
+        }  
+        else
         {
             writer.println("ChangeActive;"+username+";"+temp);
-            writer.flush();
-        }         // TODO add your handling code here:
+            writer.flush();           
+        }
+// TODO add your handling code here:
     }//GEN-LAST:event_EastActionPerformed
 
     private void EastPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EastPositionActionPerformed
@@ -888,6 +921,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                      else if (data[0].equals(Done1)) 
                      {
                         username = data[1];
+                        ActiveStation.setText(username);
                          StaticData = data[2];
                         WeatherStationData.append(StaticData);
                         Tempdata = data[2].split(",");
@@ -953,6 +987,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ActiveStation;
     private javax.swing.JTextArea DisplayHumidityData;
     private javax.swing.JTextArea DisplaySoilPHData;
     private javax.swing.JTextArea DisplayTempreatureData;
@@ -977,6 +1012,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
