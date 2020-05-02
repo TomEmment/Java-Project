@@ -219,7 +219,7 @@ public void SendData(){
               else if (data[0].equals(Field)) 
                 {
                    temp = StaticData.split(",");
-                   if (temp[3].equals(data[1]))
+                   if (temp[2].equals(data[1]))
                    {
                           writer.println("FieldData;"+username+","+temp[3]);
                           writer.flush();                        

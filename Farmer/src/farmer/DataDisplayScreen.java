@@ -892,6 +892,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         WeatherStationData.append(StaticData);
                         Tempdata = data[2].split(",");
                         FieldName = Tempdata[2];
+                        UpdateField(username,Tempdata[3]);
                         writer.println("FieldRequest;"+FieldName);
                         writer.flush();                         
                      } 
