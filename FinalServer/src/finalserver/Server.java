@@ -41,18 +41,12 @@ public class Server extends javax.swing.JFrame
        @Override
        public void run() 
        {
-            String message, Data = "Data", Login = "Login", Request ="DataRequest",InitialConnect="InitialConnect", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",Information="Information",FieldRequest ="FieldRequest",ChangeActive="ChangeActive";
+            String message, Data = "Data", Login = "Login", Request ="DataRequest", Connect="Connect",DissConnect="DissConnect",Client="ClientRequest",Information="Information",FieldRequest ="FieldRequest",ChangeActive="ChangeActive",FieldData="FieldData";
             String[] data;
-            String[] Tempdata;
+
             String Sending ="";
             String Present;
-            String Temp;
-            String FieldName;
-            String Position;
-            int Done = 0;
-            int x;
-            int y;
-            int n;
+
          
 
             try 
@@ -93,58 +87,7 @@ public class Server extends javax.swing.JFrame
                         }
 
                     }  
-                    else if (data[0].equals(InitialConnect)) 
-                    {
-                        users.add(data[1]);
-                        Done = 0;
-                        x=0;
-                        y=0;
-                        Tempdata = data[2].split(",");
-                        FieldName = Tempdata[2];
-                        Position = Tempdata[3];                       
-                        while (Done ==0)
-                        {
-                            if (FieldList.get(x).equals(FieldName))
-                            {
-                                Done = 1;
-                                
-                            }
-                            else if(FieldList.get(x).equals("End"))
-                                    {
-                                        Done = 1;
-                                        FieldList.remove("End");
-                                        FieldList.add(FieldName);
-                                        FieldList.add("End");
-                                        
-                                    }
-                            else
-                            {
-                                x=x+1;
-                            }
-                                }
-                        Done = 0;
-                        while (Done ==0)
-                        {
-                            if (StationFieldList[x][y]==null)
-                            {
-                                StationFieldList[x][y]=data[1]+":"+FieldName+":"+Position;
-                                Done = 1;
-                            }
-                            else
-                            {
-                                y=y+1;
-                            }
-                           
-                        
-                    }
-                        ClientList.setText("");
-                        for(int i = 0; i < users.size(); i++) {
-                            ClientList.append(users.get(i));
-                            ClientList.append("\n");
-                            
-                        }
 
-                    }
                      else if (data[0].equals(DissConnect)) 
                     {
                         users.remove(data[1]);
@@ -170,19 +113,7 @@ public class Server extends javax.swing.JFrame
                     }    
                      else if (data[0].equals(FieldRequest)) 
                     {
-                        n=0;
-                      for(int i = 0; i < FieldList.size(); i++) {
-                            if(data[1].equals(FieldList.get(i)))
-                            {
-                                while(StationFieldList[i][n] != "")
-                                {
-                                Sending = Sending + StationFieldList[i][n]+",";
-                                n=n+1;
-                                }
-                            }
-                        }
-                     
-                        SendMessage("FieldData;"+Sending);
+                        SendMessage("FieldPull;"+data[1]);
 
                     }  
                      else if (data[0].equals(Information)) 
@@ -190,7 +121,13 @@ public class Server extends javax.swing.JFrame
                         
                         SendMessage("StaticData;"+data[1]+";"+data[2]);
 
-                    }      
+                    }     
+                     else if (data[0].equals(FieldData)) 
+                    {
+                        
+                        SendMessage("FieldData;"+data[1]);
+
+                    }   
                     else 
                     {
                         ServerChat.append("No Conditions were met. \n");
@@ -396,6 +333,7 @@ public void SendMessage(String message)
                 PrintWriter writer = (PrintWriter) it.next();
 		writer.println(message);
                 writer.flush();
+
 
             } 
             catch (Exception ex) 

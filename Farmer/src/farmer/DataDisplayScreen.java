@@ -105,321 +105,52 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        South = new javax.swing.JButton();
+        WestPosition = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         DisplayTempreatureData = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        DisplaySoilPHData = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        ChartPannel = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        WeatherStationData = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         DisplayHumidityData = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        DisplaySoilPHData = new javax.swing.JTextArea();
+        jLabel27 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         DisplayWindSpeedData = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        WeatherStationData = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
         VariableX = new javax.swing.JComboBox<>();
         VariableY = new javax.swing.JComboBox<>();
-        saveText = new javax.swing.JTextField();
-        saveButton = new javax.swing.JButton();
         saveLabel = new javax.swing.JLabel();
+        saveText = new javax.swing.JTextField();
         fileTypeCombo = new javax.swing.JComboBox<>();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        North = new javax.swing.JButton();
-        West = new javax.swing.JButton();
-        East = new javax.swing.JButton();
-        South = new javax.swing.JButton();
-        NorthPosition = new javax.swing.JTextField();
-        EastPosition = new javax.swing.JTextField();
-        WestPosition = new javax.swing.JTextField();
+        saveButton = new javax.swing.JButton();
         SouthPosition = new javax.swing.JTextField();
+        North = new javax.swing.JButton();
+        EastPosition = new javax.swing.JTextField();
+        East = new javax.swing.JButton();
+        NorthPosition = new javax.swing.JTextField();
+        West = new javax.swing.JButton();
+        Jfreechartpanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        DisplayTempreatureData.setColumns(20);
-        DisplayTempreatureData.setRows(5);
-        jScrollPane2.setViewportView(DisplayTempreatureData);
-
-        DisplaySoilPHData.setColumns(20);
-        DisplaySoilPHData.setRows(5);
-        jScrollPane3.setViewportView(DisplaySoilPHData);
-
-        jLabel2.setText("Humidity Data:");
-
-        jLabel1.setText("Tempreature Data:");
-
-        javax.swing.GroupLayout ChartPannelLayout = new javax.swing.GroupLayout(ChartPannel);
-        ChartPannel.setLayout(ChartPannelLayout);
-        ChartPannelLayout.setHorizontalGroup(
-            ChartPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 805, Short.MAX_VALUE)
-        );
-        ChartPannelLayout.setVerticalGroup(
-            ChartPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 489, Short.MAX_VALUE)
-        );
-
-        WeatherStationData.setColumns(20);
-        WeatherStationData.setRows(5);
-        jScrollPane5.setViewportView(WeatherStationData);
-
-        jLabel5.setText("Station information:");
-
-        DisplayHumidityData.setColumns(20);
-        DisplayHumidityData.setRows(5);
-        jScrollPane6.setViewportView(DisplayHumidityData);
-
-        jLabel3.setText("SoilPH Data:");
-
-        DisplayWindSpeedData.setColumns(20);
-        DisplayWindSpeedData.setRows(5);
-        jScrollPane4.setViewportView(DisplayWindSpeedData);
-
-        jLabel4.setText("Wind Speed Data");
-
-        VariableX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tempreature", "Humidity", "SoilPH", "WIndSpeed" }));
-        VariableX.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VariableXActionPerformed(evt);
-            }
-        });
-
-        VariableY.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tempreature", "Humidity", "SoilPH", "WIndSpeed" }));
-
-        saveButton.setText("Save");
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveButtonActionPerformed(evt);
-            }
-        });
-
-        saveLabel.setText("Filename:");
-
-        fileTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Text", "Excel" }));
-        fileTypeCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fileTypeComboActionPerformed(evt);
-            }
-        });
-
-        jLabel16.setText("(EXCEL AND NOTE PAD FILE ICON TO BE ADDED)");
-
-        jLabel17.setText("(PICTURE FOR EACH VARIABLE ADDED)");
-
-        jLabel19.setText("(PICTURE FOR EACH VARIABLE ADDED)");
-
-        jLabel20.setText("(PICTURE FOR VARIABLE HERE)");
-
-        jLabel21.setText("(PICTURE FOR VARIABLE HERE)");
-
-        jLabel22.setText("(PICTURE FOR VARIABLE HERE)");
-
-        jLabel23.setText("(PICTURE FOR VARIABLE HERE)");
-
-        jLabel24.setText("(PICTURE FOR VARIABLE HERE)");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel20)
-                                .addGap(636, 636, 636)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel17))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel22))
-                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(111, 111, 111)
-                                        .addComponent(saveLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(saveText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(fileTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(saveButton))
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
-                                .addComponent(ChartPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(96, 96, 96))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117)
-                        .addComponent(VariableX, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel21)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(599, 599, 599)
-                    .addComponent(jLabel19)
-                    .addContainerGap(779, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(105, 105, 105)
-                    .addComponent(jLabel23)
-                    .addContainerGap(1317, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(139, 139, 139)
-                    .addComponent(jLabel24)
-                    .addContainerGap(1283, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel20)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel17)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(VariableY)
-                            .addComponent(VariableX))
-                        .addGap(76, 76, 76)
-                        .addComponent(ChartPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel21))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel22))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(saveText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(saveButton)
-                            .addComponent(saveLabel)
-                            .addComponent(fileTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel16)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(23, 23, 23)
-                    .addComponent(jLabel19)
-                    .addContainerGap(597, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(209, 209, 209)
-                    .addComponent(jLabel23)
-                    .addContainerGap(420, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(304, 304, 304)
-                    .addComponent(jLabel24)
-                    .addContainerGap(325, Short.MAX_VALUE)))
-        );
-
-        North.setText("Go");
-        North.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NorthActionPerformed(evt);
-            }
-        });
-
-        West.setText("Go");
-        West.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WestActionPerformed(evt);
-            }
-        });
-
-        East.setText("Go");
-        East.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EastActionPerformed(evt);
-            }
-        });
 
         South.setText("Go");
         South.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SouthActionPerformed(evt);
-            }
-        });
-
-        NorthPosition.setText("No Connected Station");
-        NorthPosition.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NorthPositionActionPerformed(evt);
-            }
-        });
-
-        EastPosition.setText("No Connected Station");
-        EastPosition.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EastPositionActionPerformed(evt);
             }
         });
 
@@ -430,6 +161,69 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             }
         });
 
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/farmer/resources/Tempreature.png"))); // NOI18N
+
+        jLabel1.setText("Tempreature Data:");
+
+        DisplayTempreatureData.setColumns(20);
+        DisplayTempreatureData.setRows(5);
+        jScrollPane2.setViewportView(DisplayTempreatureData);
+
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/farmer/resources/Humidity.png"))); // NOI18N
+
+        DisplayHumidityData.setColumns(20);
+        DisplayHumidityData.setRows(5);
+        jScrollPane6.setViewportView(DisplayHumidityData);
+
+        jLabel2.setText("Humidity Data:");
+
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/farmer/resources/SoilPH.png"))); // NOI18N
+
+        jLabel3.setText("SoilPH Data:");
+
+        DisplaySoilPHData.setColumns(20);
+        DisplaySoilPHData.setRows(5);
+        jScrollPane3.setViewportView(DisplaySoilPHData);
+
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/farmer/resources/WindSpeed.png"))); // NOI18N
+
+        DisplayWindSpeedData.setColumns(20);
+        DisplayWindSpeedData.setRows(5);
+        jScrollPane4.setViewportView(DisplayWindSpeedData);
+
+        jLabel4.setText("Wind Speed Data");
+
+        WeatherStationData.setColumns(20);
+        WeatherStationData.setRows(5);
+        jScrollPane5.setViewportView(WeatherStationData);
+
+        jLabel5.setText("Station information:");
+
+        VariableX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tempreature", "Humidity", "SoilPH", "WIndSpeed" }));
+        VariableX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VariableXActionPerformed(evt);
+            }
+        });
+
+        VariableY.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tempreature", "Humidity", "SoilPH", "WIndSpeed" }));
+
+        saveLabel.setText("Filename:");
+
+        fileTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Text", "Excel" }));
+        fileTypeCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileTypeComboActionPerformed(evt);
+            }
+        });
+
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
         SouthPosition.setText("No Connected Station");
         SouthPosition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -437,25 +231,61 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("W----------------------------------------------------------------------------------------E");
+        North.setText("Go");
+        North.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NorthActionPerformed(evt);
+            }
+        });
 
-        jLabel7.setText("N");
+        EastPosition.setText("No Connected Station");
+        EastPosition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EastPositionActionPerformed(evt);
+            }
+        });
 
-        jLabel8.setText("S");
+        East.setText("Go");
+        East.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EastActionPerformed(evt);
+            }
+        });
 
-        jLabel9.setText("|");
+        NorthPosition.setText("No Connected Station");
+        NorthPosition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NorthPositionActionPerformed(evt);
+            }
+        });
 
-        jLabel10.setText("|");
+        West.setText("Go");
+        West.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WestActionPerformed(evt);
+            }
+        });
 
-        jLabel11.setText("|");
+        javax.swing.GroupLayout JfreechartpanelLayout = new javax.swing.GroupLayout(Jfreechartpanel);
+        Jfreechartpanel.setLayout(JfreechartpanelLayout);
+        JfreechartpanelLayout.setHorizontalGroup(
+            JfreechartpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1026, Short.MAX_VALUE)
+        );
+        JfreechartpanelLayout.setVerticalGroup(
+            JfreechartpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 484, Short.MAX_VALUE)
+        );
 
-        jLabel12.setText("|");
+        jLabel6.setText("Stations in field:");
 
-        jLabel13.setText("Field Station Selection: (Under Construction)");
+        jLabel7.setText("West:");
 
-        jLabel14.setText("(AMAZING FIELD PICTURE FOR BACKGROUND INCOMING)");
+        jLabel8.setText("South:");
 
-        jLabel15.setText("(COMPASS PICTURE)");
+        jLabel9.setText("East:");
+
+        jLabel10.setText("North:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -463,171 +293,287 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(346, 346, 346))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel26))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(389, 389, 389))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(saveLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(saveText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(fileTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(saveButton))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(SouthPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(VariableX, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Jfreechartpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(86, 86, 86))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(433, 433, 433)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EastPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(East)
+                                .addGap(18, 18, 18)
+                                .addComponent(NorthPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(West))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addComponent(jLabel10))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(WestPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(West)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(South)
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabel15)
-                                .addGap(38, 38, 38)
-                                .addComponent(EastPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(East))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(NorthPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(North)
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(jLabel14))
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))))))
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(177, 177, 177)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(SouthPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(South)))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NorthPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(North)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel28)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel27))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(EastPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(East))
+                            .addComponent(saveLabel)
+                            .addComponent(saveText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fileTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(saveButton))
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(VariableY, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                            .addComponent(VariableX))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Jfreechartpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(WestPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(West)))
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                            .addComponent(North)
+                            .addComponent(SouthPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(South))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(SouthPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(South))
-                .addGap(65, 65, 65))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EastPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(East)
+                    .addComponent(NorthPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(West)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void WestPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WestPositionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_WestPositionActionPerformed
+
+    private void SouthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SouthActionPerformed
+         String temp;
+        temp = SouthPosition.getSelectedText();
+        if (temp != "No Connected Station")
+        {
+            writer.println("ChangeActive;"+username+";"+temp);
+            writer.flush();   
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_SouthActionPerformed
+
+    private void WestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WestActionPerformed
+        String temp;
+        temp = WestPosition.getSelectedText();
+        if (temp != "No Connected Station")
+        {
+            writer.println("ChangeActive;"+username+";"+temp);
+            writer.flush();
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_WestActionPerformed
+
+    private void NorthPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NorthPositionActionPerformed
+
+    }//GEN-LAST:event_NorthPositionActionPerformed
+
+    private void SouthPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SouthPositionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SouthPositionActionPerformed
+
+    private void NorthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NorthActionPerformed
+        String temp;
+        temp = EastPosition.getSelectedText();
+        if (temp != "No Connected Station")
+        {
+            writer.println("ChangeActive;"+username+";"+temp);
+            writer.flush();
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_NorthActionPerformed
+
+    private void EastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EastActionPerformed
+        String temp;
+        temp = EastPosition.getSelectedText();
+        if (temp != "No Connected Station")
+        {
+            writer.println("ChangeActive;"+username+";"+temp);
+            writer.flush();
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_EastActionPerformed
+
+    private void EastPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EastPositionActionPerformed
+
+    }//GEN-LAST:event_EastPositionActionPerformed
+
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         if("Text".equals(fileTypeCombo.getSelectedItem().toString())){
-// collect all data
-        // format username, static data, time, temperature, temp, humidity,soilph, windseed
-        String fileName = saveText.getText()+".txt";
-        try{
-            FileWriter fout = new FileWriter(fileName,true);
-            BufferedWriter x = new BufferedWriter(fout);
-            PrintWriter pout = new PrintWriter(x);
-            pout.println(username);
-            pout.println(StaticData);
-            pout.println(TimeData);
-            pout.println(TempreatureData);
-            pout.println(HumidityData);
-            pout.println(SoilPHData);
-            pout.println(WindSpeedData);
-            pout.close();
-            x.close();
-            fout.close();
+            // collect all data
+            // format username, static data, time, temperature, temp, humidity,soilph, windseed
+            String fileName = saveText.getText()+".txt";
+            try{
+                FileWriter fout = new FileWriter(fileName,true);
+                BufferedWriter x = new BufferedWriter(fout);
+                PrintWriter pout = new PrintWriter(x);
+                pout.println(username);
+                pout.println(StaticData);
+                pout.println(TimeData);
+                pout.println(TempreatureData);
+                pout.println(HumidityData);
+                pout.println(SoilPHData);
+                pout.println(WindSpeedData);
+                pout.close();
+                x.close();
+                fout.close();
 
-        }catch(IOException e){
-            
-        }
-            
+            }catch(IOException e){
+
+            }
+
         }else{
             // Save file to Excel
             String name = saveText.getText();//+".xlsx";
             System.out.println(name);
             String fileName = name + ".xlsx";
             //try {
-            /*Object[][] datatypes ={{"Time Data",TimeData},
-                        {"Temperature",TempreatureData},
-                        {"Humidity",HumidityData},
-                        {"soilPH",SoilPHData},
-                        {"windSpeed",WindSpeedData},
+                /*Object[][] datatypes ={{"Time Data",TimeData},
+                    {"Temperature",TempreatureData},
+                    {"Humidity",HumidityData},
+                    {"soilPH",SoilPHData},
+                    {"windSpeed",WindSpeedData},
                 };*/
-            
+
                 XSSFWorkbook workbook = new XSSFWorkbook();
                 XSSFSheet sheet  = workbook.createSheet("fileName");
-                
+
                 String[] Time = TimeData.split(":");
                 String nameTime = Time[0];
                 String[] Time1 = Time[1].split(",");
-                
-              
+
                 String[] Temperature = TempreatureData.split(":");
                 String nameTemp = Temperature[0];
                 String[] Temp1 = Temperature[1].split(",");
-                
+
                 String[] Humidity = HumidityData.split(":");
                 String nameHumidity = Humidity[0];
                 String[] Humidity1 = Humidity[1].split(",");
-                
-                
+
                 String[] soilPH = SoilPHData.split(":");
                 String namesoilPH = soilPH[0];
                 String[] soilPH1 = soilPH[1].split(",");
-                
+
                 String[] windSpeed = WindSpeedData.split(":");
                 String namewindSpeed = windSpeed[0];
                 String[] windSpeed1 = windSpeed[1].split(",");
-                
+
                 ArrayList<String[]> dataArr = new ArrayList<>();
                 dataArr.add(Time1);
                 dataArr.add(Temp1);
                 dataArr.add(Humidity1);
                 dataArr.add(soilPH1);
                 dataArr.add(windSpeed1);
-                
+
                 ArrayList<String> nameArr = new ArrayList<>();
                 nameArr.add(nameTime);
                 nameArr.add(nameTemp);
@@ -643,10 +589,10 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                     int colNum = 0;
                     Cell cell = row.createCell(colNum);
                     if (datatype instanceof String){
-                            cell.setCellValue((String) datatype);
-                        }                    
+                        cell.setCellValue((String) datatype);
+                    }
                 }
-                
+
                 // Writing data
                 rowNum = 0;
                 for(String[] datatype : dataArr){
@@ -657,29 +603,27 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         if (field instanceof String){
                             cell.setCellValue((String) field);
                         }
-                        }
                     }
-                
+                }
+
                 try{
                     FileOutputStream outputStream = new FileOutputStream(fileName);
                     workbook.write(outputStream);
                     workbook.close();
-                    
+
                 } catch (FileNotFoundException ex) {
-                Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                
-                
-                
+                    Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 //XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(new File(fileName)));
-                
-            /*} catch (IOException ex) {
+
+                /*} catch (IOException ex) {
                 System.out.println("Excel file can't be open");
                 Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
             }*/
-            
+
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
@@ -690,62 +634,6 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private void VariableXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VariableXActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_VariableXActionPerformed
-
-    private void NorthPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NorthPositionActionPerformed
-
-    }//GEN-LAST:event_NorthPositionActionPerformed
-
-    private void EastPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EastPositionActionPerformed
-
-    }//GEN-LAST:event_EastPositionActionPerformed
-
-    private void WestPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WestPositionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_WestPositionActionPerformed
-
-    private void SouthPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SouthPositionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SouthPositionActionPerformed
-
-    private void NorthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NorthActionPerformed
-         String temp;
-        temp = EastPosition.getSelectedText();
-        if (temp != "No Connected Station")
-        {
-            writer.println("ChangeActive;"+username+";"+temp);
-            writer.flush();   
-        }         // TODO add your handling code here:
-    }//GEN-LAST:event_NorthActionPerformed
-
-    private void WestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WestActionPerformed
-         String temp;
-        temp = WestPosition.getSelectedText();
-        if (temp != "No Connected Station")
-        {
-            writer.println("ChangeActive;"+username+";"+temp);
-            writer.flush();   
-        }         // TODO add your handling code here:
-    }//GEN-LAST:event_WestActionPerformed
-
-    private void EastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EastActionPerformed
-         String temp;
-        temp = EastPosition.getSelectedText();
-        if (temp != "No Connected Station")
-        {
-            writer.println("ChangeActive;"+username+";"+temp);
-            writer.flush();   
-        }         // TODO add your handling code here:
-    }//GEN-LAST:event_EastActionPerformed
-
-    private void SouthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SouthActionPerformed
-         String temp;
-        temp = SouthPosition.getSelectedText();
-        if (temp != "No Connected Station")
-        {
-            writer.println("ChangeActive;"+username+";"+temp);
-            writer.flush();   
-        }         // TODO add your handling code here:
-    }//GEN-LAST:event_SouthActionPerformed
 
     
     
@@ -762,12 +650,12 @@ public class DataDisplayScreen extends javax.swing.JFrame {
          
         
             
-           ChartPannel.setLayout(new java.awt.BorderLayout());
+           Jfreechartpanel.setLayout(new java.awt.BorderLayout());
             
             ChartPanel CP = new ChartPanel(lineChart);
             
-            ChartPannel.add(CP,BorderLayout.CENTER);
-                    ChartPannel.validate();
+            Jfreechartpanel.add(CP,BorderLayout.CENTER);
+                    Jfreechartpanel.validate();
       
       
    }
@@ -889,36 +777,31 @@ public class DataDisplayScreen extends javax.swing.JFrame {
  }
  
  
-     public void UpdateField(String[] StationsInField) {
+     public void UpdateField(String StationsInField, String Position) {
          
-         int x = StationsInField.length;
-         String[] Temp;
-         while ( x>= 0)
-         {
-             Temp = StationsInField[x].split(":");
-             if (Temp[2].equals("N"))
+             if (Position.equals("N"))
              {
-                 NorthPosition.setText(Temp[1]);
+                 NorthPosition.setText(StationsInField);
              }
-             if (Temp[2].equals("E"))
+             if (Position.equals("E"))
              {
-                 EastPosition.setText(Temp[1]);
+                 EastPosition.setText(StationsInField);
              }
-             if (Temp[2].equals("S"))
+             if (Position.equals("S"))
              {
-                 SouthPosition.setText(Temp[1]);
+                 SouthPosition.setText(StationsInField);
              }
-             if (Temp[2].equals("W"))
+             if (Position.equals("W"))
              {
-                 WestPosition.setText(Temp[1]);
+                 WestPosition.setText(StationsInField);
              }
-             x=x-1;
+
            
          }
          
 
 
-    }
+    
  
     public void printTextField() {
      DisplayTempreatureData.setText(TempreatureData);
@@ -964,7 +847,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                      else if (data[0].equals(Done2)) 
                      {
                          Tempdata = data[1].split(",");
-                         UpdateField(Tempdata);
+                         UpdateField(Tempdata[0],Tempdata[1]);
                          
                      } 
                      else
@@ -1018,13 +901,13 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel ChartPannel;
     private javax.swing.JTextArea DisplayHumidityData;
     private javax.swing.JTextArea DisplaySoilPHData;
     private javax.swing.JTextArea DisplayTempreatureData;
     private javax.swing.JTextArea DisplayWindSpeedData;
     private javax.swing.JButton East;
     private javax.swing.JTextField EastPosition;
+    private javax.swing.JPanel Jfreechartpanel;
     private javax.swing.JButton North;
     private javax.swing.JTextField NorthPosition;
     private javax.swing.JButton South;
@@ -1037,21 +920,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> fileTypeCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1059,7 +932,6 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
