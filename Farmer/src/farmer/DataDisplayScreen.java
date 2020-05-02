@@ -795,6 +795,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_EastPositionActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        String ITrickedyou;
         if("Text".equals(fileTypeCombo.getSelectedItem().toString())){
             // collect all data
             // format username, static data, time, temperature, temp, humidity,soilph, windseed
@@ -837,18 +838,20 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 XSSFSheet sheet  = workbook.createSheet("fileName");
                 String[] Name = Names.split(",");
                 String[] Static = Static1.split(",");
-                String[] Time = TimeData.split(",");
+                ITrickedyou = "TimeData:" + TimeData;
                 
                 String[] Humidity = HumidityData.split(",");
-                //Humidity[0].split(":");
+
                 int index = Humidity[0].indexOf(":");
                 Humidity[0] = Humidity[0].substring(0,index);
-                                
+
+                String[] Time = ITrickedyou.split(",");
+
+                index = Time[0].indexOf(":");
+                Time[0] = Time[0].substring(0,index);
                 String[] Temperature = TempreatureData.split(",");
-                String[] split = Temperature[0].split(":");
-                //List list = new ArrayList(Array.asList(Temperature));
-                //Temperature[0] = split[0];
-                // Where to put split[1] ???????
+
+
                 index = Temperature[0].indexOf(":");
                 Temperature[0] = Temperature[0].substring(0,index);
                 
