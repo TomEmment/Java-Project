@@ -637,10 +637,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
     private void SouthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SouthActionPerformed
          String temp;
-        temp = SouthPosition.getSelectedText();
+        temp = SouthPosition.getText();
         ActiveStation.setText(temp);
         if (temp.equals("No Connected Station"))
         {
+            System.out.println("No Station Avaliable");
         }  
         else
         {
@@ -651,10 +652,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
     private void WestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WestActionPerformed
         String temp;
-        temp = WestPosition.getSelectedText();
+        temp = WestPosition.getText();
         ActiveStation.setText(temp);
         if (temp.equals("No Connected Station"))
         {
+            System.out.println("No Station Avaliable");
         }  
         else
         {
@@ -673,10 +675,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
     private void NorthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NorthActionPerformed
         String temp;
-        temp = NorthPosition.getSelectedText();
+        temp = NorthPosition.getText();
         ActiveStation.setText(temp);
         if (temp.equals("No Connected Station"))
         {
+            System.out.println("No Station Avaliable");
         }  
         else
         {
@@ -687,10 +690,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
     private void EastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EastActionPerformed
         String temp;
-        temp = EastPosition.getSelectedText();
+        temp = EastPosition.getText();
         ActiveStation.setText(temp);
         if (temp.equals("No Connected Station"))
         {
+            System.out.println("No Station Avaliable");
         }  
         else
         {
@@ -1151,7 +1155,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         username = data[1];
                         ActiveStation.setText(username);
                          StaticData = data[2];
-                        WeatherStationData.append(StaticData);
+                        WeatherStationData.setText(StaticData);
                         Tempdata = data[2].split(",");
                         FieldName = Tempdata[2];
                         UpdateField(username,Tempdata[3]);

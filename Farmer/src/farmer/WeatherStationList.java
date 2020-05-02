@@ -140,23 +140,23 @@ public class WeatherStationList extends javax.swing.JFrame {
                 {
                     Sleep = "2";
                 }
-                else if (Position == 0)
+                if (Position == 1)
                 {
                     Sleep = "5";
                 }               
-                else if (Position == 0)
+                if (Position == 2)
                 {
                     Sleep = "10";
                 }                  
-                else if (Position == 0)
+                if (Position == 3)
                 {
                     Sleep = "30";
                 }                  
-                 else if (Position == 0)
+                 if (Position == 4)
                 {
                     Sleep = "60";
                 }  
-                else if (Position == 0)
+               if (Position == 5)
                 {
                     Sleep = "300";
                 }                  

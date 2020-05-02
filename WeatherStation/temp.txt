@@ -4,12 +4,12 @@ Leicester,543-836,Woods,N,Treesnull
 Manchester,583-928,Stan,N,Wheatnull
 London,363-836,Lectrun,N,Barleynull
 Birmingham,167-952,Forest,N,Cropnull
-Nottingham,192-453,Meadow,S,Cropnull
+*Nottingham,192-453,Meadow,S,Cropnull
 Redditch,213-873,Farm,S,Barleynull
 Leicester,543-836,Woods,S,Treesnull
 Manchester,583-928,Stan,S,Wheatnull
 London,363-836,Lectrun,S,Barleynull
-*Birmingham,167-952,Forest,S,Cropnull
+Birmingham,167-952,Forest,S,Cropnull
 Nottingham,192-453,Meadow,E,Cropnull
 Redditch,213-873,Farm,E,Barleynull
 Leicester,543-836,Woods,E,Treesnull
