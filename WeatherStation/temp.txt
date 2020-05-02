@@ -1,6 +1,6 @@
 Nottingham-North,192-453,Meadow,N,Cropnull
 Redditch-North,213-873,Farm,N,Barleynull
-Leicester-North,543-836,Woods,N,Treesnull
+*Leicester-North,543-836,Woods,N,Treesnull
 Manchester-North,583-928,Stan,N,Wheatnull
 London-North,363-836,Lectrun,N,Barleynull
 Birmingham-North,167-952,Forest,N,Cropnull
@@ -11,7 +11,7 @@ Manchester-South,583-928,Stan,S,Wheatnull
 London-South,363-836,Lectrun,S,Barleynull
 Birmingham-South,167-952,Forest,S,Cropnull
 Nottingham-East,194-453,Meadow,E,Cropnull
-*Redditch-East,213-873,Farm,E,Barleynull
+Redditch-East,213-873,Farm,E,Barleynull
 Leicester-East,543-836,Woods,E,Treesnull
 Manchester-East,583-928,Stan,E,Wheatnull
 London-East,363-836,Lectrun,E,Barleynull

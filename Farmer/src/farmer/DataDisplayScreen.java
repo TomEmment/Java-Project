@@ -787,9 +787,38 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 };*/
 
                 XSSFWorkbook workbook = new XSSFWorkbook();
+                String Names = "Username:,"+username;
+                String Static1 = "Static Data:,"+StaticData;
                 XSSFSheet sheet  = workbook.createSheet("fileName");
-
-                String[] Time = TimeData.split(":");
+                String[] Name = Names.split(",");
+                String[] Static = Static1.split(",");
+                String[] Time = TimeData.split(",");
+                
+                String[] Humidity = HumidityData.split(",");
+                //Humidity[0].split(":");
+                int index = Humidity[0].indexOf(":");
+                Humidity[0] = Humidity[0].substring(0,index);
+                                
+                String[] Temperature = TempreatureData.split(",");
+                String[] split = Temperature[0].split(":");
+                //List list = new ArrayList(Array.asList(Temperature));
+                //Temperature[0] = split[0];
+                // Where to put split[1] ???????
+                index = Temperature[0].indexOf(":");
+                Temperature[0] = Temperature[0].substring(0,index);
+                
+                
+                String[] soilPH = SoilPHData.split(",");
+                //soilPH[0].split(":");
+                index = soilPH[0].indexOf(":");
+                soilPH[0] = soilPH[0].substring(0,index);
+                
+                
+                String[] windSpeed = WindSpeedData.split(",");
+                //windSpeed[0].split(":");
+                index = windSpeed[0].indexOf(":");
+                windSpeed[0] = windSpeed[0].substring(0,index);
+                /*String[] Time = TimeData.split(":");
                 String nameTime = Time[0];
                 String[] Time1 = Time[1].split(",");
 
@@ -807,24 +836,28 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
                 String[] windSpeed = WindSpeedData.split(":");
                 String namewindSpeed = windSpeed[0];
-                String[] windSpeed1 = windSpeed[1].split(",");
+                String[] windSpeed1 = windSpeed[1].split(",");*/
 
                 ArrayList<String[]> dataArr = new ArrayList<>();
-                dataArr.add(Time1);
-                dataArr.add(Temp1);
-                dataArr.add(Humidity1);
-                dataArr.add(soilPH1);
-                dataArr.add(windSpeed1);
+                dataArr.add(Name);
+                dataArr.add(Static);
+                dataArr.add(Time);
+                dataArr.add(Temperature);
+                dataArr.add(Humidity);
+                dataArr.add(soilPH);
+                dataArr.add(windSpeed);
 
-                ArrayList<String> nameArr = new ArrayList<>();
+                /*ArrayList<String> nameArr = new ArrayList<>();
                 nameArr.add(nameTime);
                 nameArr.add(nameTemp);
                 nameArr.add(nameHumidity);
                 nameArr.add(namesoilPH);
-                nameArr.add(namewindSpeed);
+                nameArr.add(namewindSpeed);*/
 
                 int rowNum = 0;
                 System.out.println("Creating Excel Spreadsheet");
+                
+                /*
                 //Writing variable names to first column
                 for(String datatype : nameArr){
                     Row row = sheet.createRow(rowNum++);
@@ -834,7 +867,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         cell.setCellValue((String) datatype);
                     }
                 }
-
+*/
                 // Writing data
                 rowNum = 0;
                 for(String[] datatype : dataArr){
@@ -847,7 +880,6 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         }
                     }
                 }
-
                 try{
                     FileOutputStream outputStream = new FileOutputStream(fileName);
                     workbook.write(outputStream);
@@ -858,14 +890,6 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-                //XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(new File(fileName)));
-
-                /*} catch (IOException ex) {
-                System.out.println("Excel file can't be open");
-                Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
-
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
