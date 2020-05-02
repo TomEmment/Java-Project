@@ -5,11 +5,15 @@
  */
 package weatherstation;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.net.*;
 import java.io.*;
 import java.util.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -159,11 +163,14 @@ public class GUI extends javax.swing.JFrame {
         int Start3 = 30;
         int Randomizer;
         int temp;
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
         Random rand = new Random();
         while (Length>=0)
         {
-
-        TimeData = TimeData + java.time.LocalTime.now()+",";
+    
+        date = new Date();
+        TimeData = TimeData + formatter.format(date)+",";
      
          Randomizer = -2 + rand.nextInt(4);
         temp = Start + Randomizer;       
