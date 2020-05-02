@@ -90,24 +90,61 @@ public class GUI extends javax.swing.JFrame {
         //get the length of the file
         // Read random line of file
         //generate random number
-        
+        int randNum=0;
+        boolean star = true;
+        while(star){
+            Random rand = new Random(); // random number between 0 and line num
+            randNum = rand.nextInt(lineNum);
+            System.out.println(randNum);
+            int i = 0;
+            try{
+                FileReader readfile = new FileReader("staticData.txt");
+                BufferedReader readBuffer = new BufferedReader(readfile);
 
-        Random rand = new Random(); // random number between 0 and line num
-        int randNum = rand.nextInt(lineNum);
-        int i = 0;
-        try{
-            FileReader readfile = new FileReader("staticData.txt");
-            BufferedReader readBuffer = new BufferedReader(readfile);
-
-			String line = readBuffer.readLine();
-	while (line != null) {
-            if(i==randNum){
-                  StaticData = line;
+                String line = readBuffer.readLine();
+            while (line != null) {
+                if(i==randNum){
+                    if(line.charAt(0)=='*'){
+                      System.out.println("Weather station already in use");
+                      // Repeat with new rand num
+                      line = null;
+                    }else{
+                        System.out.println("Weather station not in use");
+                        StaticData = line;
+                        // Replace line in file
+                        File inputFile = new File("staticData.txt");
+                        File tempFile = new File("temp.txt");
+                        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+                        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+                        
+                        String currentLine;
+                        String newLine = "*"+line;
+                        while((currentLine = reader.readLine()) != null){
+                            // trim newline when comparing with replace line
+                            String trimmedLine = currentLine.trim();
+                            if(trimmedLine.equals(line)){
+                                writer.write(newLine + System.getProperty("line.seperator")+"\n");
+                            }else{
+                            
+                                writer.write(currentLine + System.getProperty("line.seperator")+"\n");
+                            }
+                                                            
+                        }
+                        writer.close();
+                        reader.close();
+                        boolean successful = tempFile.renameTo(inputFile);
+                        star = false;
+                        
+                        break;
+                    }
+                }else{
+                    line = readBuffer.readLine();
+                    i = i +1;
+                }
+                
+                            }
+            }catch(IOException e){
             }
-                line = readBuffer.readLine();
-                i = i +1;
-			}
-        }catch(IOException e){
         }
         String lnNum = Integer.toString(randNum);
         username = "WeatherStaion"+lnNum;
