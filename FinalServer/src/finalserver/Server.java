@@ -37,7 +37,7 @@ public class Server extends javax.swing.JFrame
             }
 
        }
-
+       
        @Override
        public void run() 
        {
@@ -59,9 +59,19 @@ public class Server extends javax.swing.JFrame
 
                     if (data[0].equals(Data)) 
                     {
-                        
-                        SendMessage("DataSending;"+data[1]+";"+data[2]+";"+data[3]+";"+data[4]+";"+data[5]+";");
-
+                        /* checksum here
+                        int checksum = 0;
+                        checksum = CheckSum(checksum,data[2],data[3],data[4],data[5]);
+                        System.out.println("Checks");
+                        System.out.println(checksum);
+                        System.out.println(Integer.parseInt(data[6]));
+                        if(checksum == Integer.parseInt(data[6])){
+                            System.out.println("Checksum pass");*/
+                            SendMessage("DataSending;"+data[1]+";"+data[2]+";"+data[3]+";"+data[4]+";"+data[5]+";");
+                           
+                        /*}else{
+                            System.out.println("Error in data transmission");
+                        }*/
 
                     } 
                     else if (data[0].equals(Login)) 
@@ -320,14 +330,85 @@ public class Server extends javax.swing.JFrame
     }
         
     }
+public Integer CheckSum(Integer checksum,String temp, String humidity, String soilPH, String windSpeed){
+            System.out.println("Calculating checksum - Server");
+            // split each into an array
+            String[] tempCheck = temp.split(",");
+            String[] humCheck = humidity.split(",");
+            String[] soilCheck = soilPH.split(",");
+            String[] windCheck = windSpeed.split(",");
 
+            int sum=0;
+            int avg=0;
+            int sizeX = tempCheck.length;
+            int sizeY = 4;
+            int len = sizeX *4;
+            // change temperature, humiduty, soilph, windspeed to integers
+            System.out.println("Server test 1");
+            for(int x = 0; x<sizeY;x++){ 
+                System.out.println("Server test 2");
+                for(int i = 0; i<sizeX;i++){
+                    if(x==0){
+                        sum += Integer.parseInt(tempCheck[i]);
+                    }
+                    if(x==1){
+                        sum += Integer.parseInt(humCheck[i]);
+                    }
+                    if(x==2){
+                        sum += Integer.parseInt(soilCheck[i]);
+                    }
+                    if(x==3){
+                        sum += Integer.parseInt(windCheck[i]);
+                    }
+                }
+            }
+            System.out.println("Server test 2");
+            System.out.println("Server test 3");
+            System.out.println(avg);
+            System.out.println(sum);
+            System.out.println(len);
+            avg = sum/len;
+            System.out.println("Server test 4");
+            checksum = avg%10;
+            System.out.println("Checksum server complete");
+            return checksum;
+       }
         
 public void SendMessage(String message) 
     {
+       
+        
+        
+    
 	Iterator it = clientOutputStreams.iterator();
 
         while (it.hasNext()) 
         {
+            /*System.out.println("Checksum test 1");
+             
+            String[] sendData = message.split(";");
+            System.out.println(sendData[0]);
+            for (String sendData1 : sendData) {
+                System.out.println(sendData1);
+            }*/
+            
+            /*if (sendData[0].equals("DataSending")){
+                int checksum = 0;
+                System.out.println("Checksum test 2");
+                checksum = CheckSum(checksum,sendData[2],sendData[3],sendData[4],sendData[5]);
+                System.out.println("Checksum test 3");
+                System.out.println("Checks");
+                System.out.println(checksum);
+                System.out.println(Integer.parseInt(sendData[6]));
+                if(checksum == Integer.parseInt(sendData[6])){
+                    System.out.println("Checksum pass");
+
+
+                }else{
+                    System.out.println("Error in data transmission");
+                    System.exit(0);
+                }
+            }*/
             try 
             {
                 PrintWriter writer = (PrintWriter) it.next();
