@@ -70,6 +70,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         initComponents();
         try     
             {
+                
                 SleepTime = Sleep;
                 sock = new Socket(address, port);
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
@@ -442,6 +443,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         jLabel12.setText("VariableY:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Light Mode", "Dark Mode" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -994,6 +1000,10 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             printTextField();
         }
     }//GEN-LAST:event_WindChoiceActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     
     
