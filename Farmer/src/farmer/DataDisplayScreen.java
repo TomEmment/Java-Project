@@ -810,13 +810,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private void EastPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EastPositionActionPerformed
 
     }//GEN-LAST:event_EastPositionActionPerformed
-
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        String ITrickedyou;
-        if("Text".equals(fileTypeCombo.getSelectedItem().toString())){
-            // collect all data
-            // format username, static data, time, temperature, temp, humidity,soilph, windseed
-            String fileName = saveText.getText()+".txt";
+    private void saveText(){
+                    String fileName = saveText.getText()+".txt";
             try{
                 FileWriter fout = new FileWriter(fileName,true);
                 BufferedWriter x = new BufferedWriter(fout);
@@ -835,126 +830,89 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             }catch(IOException e){
 
             }
+    }
+    private void saveExcel(){
+        String ITrickedyou;
+        // Save file to Excel
+        String name = saveText.getText();//+".xlsx";
+        System.out.println(name);
+        String fileName = name + ".xlsx";
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        String Names = "Username:,"+username;
+        String Static1 = "Static Data:,"+StaticData;
+        XSSFSheet sheet  = workbook.createSheet("fileName");
+        String[] Name = Names.split(",");
+        String[] Static = Static1.split(",");
+        ITrickedyou = "TimeData:" + TimeData;
+
+        String[] Humidity = HumidityData.split(",");
+
+        int index = Humidity[0].indexOf(":");
+        Humidity[0] = Humidity[0].substring(0,index);
+
+        String[] Time = ITrickedyou.split(",");
+
+        index = Time[0].indexOf(":");
+        Time[0] = Time[0].substring(0,index);
+        String[] Temperature = TempreatureData.split(",");
+
+
+        index = Temperature[0].indexOf(":");
+        Temperature[0] = Temperature[0].substring(0,index);
+
+
+        String[] soilPH = SoilPHData.split(",");
+        index = soilPH[0].indexOf(":");
+        soilPH[0] = soilPH[0].substring(0,index);
+
+
+        String[] windSpeed = WindSpeedData.split(",");
+        index = windSpeed[0].indexOf(":");
+        windSpeed[0] = windSpeed[0].substring(0,index);
+
+
+        ArrayList<String[]> dataArr = new ArrayList<>();
+        dataArr.add(Name);
+        dataArr.add(Static);
+        dataArr.add(Time);
+        dataArr.add(Temperature);
+        dataArr.add(Humidity);
+        dataArr.add(soilPH);
+        dataArr.add(windSpeed);
+
+        int rowNum = 0;
+        System.out.println("Creating Excel Spreadsheet");
+
+        // Writing data
+        rowNum = 0;
+        for(String[] datatype : dataArr){
+            Row row = sheet.createRow(rowNum++);
+            int colNum = 1;
+            for(String field : datatype){
+                Cell cell = row.createCell(colNum++);
+                if (field instanceof String){
+                    cell.setCellValue((String) field);
+                }
+            }
+        }
+        try{
+            FileOutputStream outputStream = new FileOutputStream(fileName);
+            workbook.write(outputStream);
+            workbook.close();
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        
+        if("Text".equals(fileTypeCombo.getSelectedItem().toString())){
+            saveText();
 
         }else{
-            // Save file to Excel
-            String name = saveText.getText();//+".xlsx";
-            System.out.println(name);
-            String fileName = name + ".xlsx";
-            //try {
-                /*Object[][] datatypes ={{"Time Data",TimeData},
-                    {"Temperature",TempreatureData},
-                    {"Humidity",HumidityData},
-                    {"soilPH",SoilPHData},
-                    {"windSpeed",WindSpeedData},
-                };*/
-
-                XSSFWorkbook workbook = new XSSFWorkbook();
-                String Names = "Username:,"+username;
-                String Static1 = "Static Data:,"+StaticData;
-                XSSFSheet sheet  = workbook.createSheet("fileName");
-                String[] Name = Names.split(",");
-                String[] Static = Static1.split(",");
-                ITrickedyou = "TimeData:" + TimeData;
-                
-                String[] Humidity = HumidityData.split(",");
-
-                int index = Humidity[0].indexOf(":");
-                Humidity[0] = Humidity[0].substring(0,index);
-
-                String[] Time = ITrickedyou.split(",");
-
-                index = Time[0].indexOf(":");
-                Time[0] = Time[0].substring(0,index);
-                String[] Temperature = TempreatureData.split(",");
-
-
-                index = Temperature[0].indexOf(":");
-                Temperature[0] = Temperature[0].substring(0,index);
-                
-                
-                String[] soilPH = SoilPHData.split(",");
-                //soilPH[0].split(":");
-                index = soilPH[0].indexOf(":");
-                soilPH[0] = soilPH[0].substring(0,index);
-                
-                
-                String[] windSpeed = WindSpeedData.split(",");
-                //windSpeed[0].split(":");
-                index = windSpeed[0].indexOf(":");
-                windSpeed[0] = windSpeed[0].substring(0,index);
-                /*String[] Time = TimeData.split(":");
-                String nameTime = Time[0];
-                String[] Time1 = Time[1].split(",");
-
-                String[] Temperature = TempreatureData.split(":");
-                String nameTemp = Temperature[0];
-                String[] Temp1 = Temperature[1].split(",");
-
-                String[] Humidity = HumidityData.split(":");
-                String nameHumidity = Humidity[0];
-                String[] Humidity1 = Humidity[1].split(",");
-
-                String[] soilPH = SoilPHData.split(":");
-                String namesoilPH = soilPH[0];
-                String[] soilPH1 = soilPH[1].split(",");
-
-                String[] windSpeed = WindSpeedData.split(":");
-                String namewindSpeed = windSpeed[0];
-                String[] windSpeed1 = windSpeed[1].split(",");*/
-
-                ArrayList<String[]> dataArr = new ArrayList<>();
-                dataArr.add(Name);
-                dataArr.add(Static);
-                dataArr.add(Time);
-                dataArr.add(Temperature);
-                dataArr.add(Humidity);
-                dataArr.add(soilPH);
-                dataArr.add(windSpeed);
-
-                /*ArrayList<String> nameArr = new ArrayList<>();
-                nameArr.add(nameTime);
-                nameArr.add(nameTemp);
-                nameArr.add(nameHumidity);
-                nameArr.add(namesoilPH);
-                nameArr.add(namewindSpeed);*/
-
-                int rowNum = 0;
-                System.out.println("Creating Excel Spreadsheet");
-                
-                /*
-                //Writing variable names to first column
-                for(String datatype : nameArr){
-                    Row row = sheet.createRow(rowNum++);
-                    int colNum = 0;
-                    Cell cell = row.createCell(colNum);
-                    if (datatype instanceof String){
-                        cell.setCellValue((String) datatype);
-                    }
-                }
-*/
-                // Writing data
-                rowNum = 0;
-                for(String[] datatype : dataArr){
-                    Row row = sheet.createRow(rowNum++);
-                    int colNum = 1;
-                    for(String field : datatype){
-                        Cell cell = row.createCell(colNum++);
-                        if (field instanceof String){
-                            cell.setCellValue((String) field);
-                        }
-                    }
-                }
-                try{
-                    FileOutputStream outputStream = new FileOutputStream(fileName);
-                    workbook.write(outputStream);
-                    workbook.close();
-
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(DataDisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            saveExcel();           
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
