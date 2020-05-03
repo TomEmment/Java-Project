@@ -28,7 +28,7 @@ public class GUI extends javax.swing.JFrame {
     BufferedReader reader;
     PrintWriter writer;
     //String Data= "Nottigham,GPS,FIELDNAME,POSITION,CROP";
-    String StaticData = "Nottigham,GPS,FIELDNAME,POSITION,CROP";
+    String StaticData = "Nottingham-North,192-453,Meadow,N,Barley";
     int lineNum = 15;
     String TimeData = "";
     String TempreatureData = "";
@@ -50,7 +50,6 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         CreateData(10);
-        getStaticData();
             try 
             {
                 sock = new Socket(address, port);
@@ -87,75 +86,7 @@ public class GUI extends javax.swing.JFrame {
      
     }
     
-    public void getStaticData(){
-        //get the length of the file
-        // Read random line of file
-        //generate random number
-        int randNum=0;
-        String star = "Notfound";
-        while(star.equals("Notfound")){
-            Random rand = new Random(); // random number between 0 and line num
-            randNum = rand.nextInt(lineNum);
-            int i = 0;
-            try{
-                FileReader readfile = new FileReader("staticData.txt");
-                BufferedReader readBuffer = new BufferedReader(readfile);
-
-                String line = readBuffer.readLine();
-            while (line != null) {
-                if(i==randNum){
-
-                    try{
-                        readfile = new FileReader("temp.txt");
-                        readBuffer = new BufferedReader(readfile);
-
-                        String linetemp = readBuffer.readLine();
-                        star = "Found";
-                        while (linetemp != null) {
-                            if(linetemp.equals(line)){
-                                star = "NotFound";
-                            }
-                            linetemp = readBuffer.readLine();
-                         }
-                         if (star.equals("Found"))
-                        {
-                            StaticData = line;
-                            
-                            try{
-                                FileWriter fout = new FileWriter("Admin.txt",true);
-                                BufferedWriter x = new BufferedWriter(fout);
-                                PrintWriter pout = new PrintWriter(x);
-                                pout.println(StaticData);
-                                pout.close();
-                                x.close();
-                                fout.close();
-                            }
-                            catch(IOException e){
-                                System.out.println("Error opening file");
-                            }
-                        }
-                    }
-                    catch (Exception ex) 
-                    {
-                        System.out.println("No");
-                    }  
-                }
-                i = i+1;
-                line = readBuffer.readLine();
-            }
-            }
-             catch (Exception ex) 
-            {
-                System.out.println("No");
-                
-            }           
-        }
-    
-        
-        String lnNum = Integer.toString(randNum);
-        username = "WeatherStaion"+lnNum;
  
-    }
     
     public void CreateData(int Length)
     {

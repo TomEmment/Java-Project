@@ -132,12 +132,16 @@
                       <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="ActiveStation" min="-2" pref="145" max="-2" attributes="0"/>
-                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="354" max="32767" attributes="0"/>
+                              <Component id="jComboBox1" min="-2" pref="140" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Component id="Jfreechartpanel" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="266" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
@@ -151,14 +155,14 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="NorthPosition" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="West" min="-2" max="-2" attributes="0"/>
+                      <Component id="North" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="WestPosition" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="North" min="-2" max="-2" attributes="0"/>
+                              <Component id="West" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -213,8 +217,11 @@
                                   <Component id="jScrollPane9" min="-2" pref="38" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jComboBox1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -322,7 +329,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="WestPosition" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="North" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="West" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="SouthPosition" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="South" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -336,7 +343,7 @@
                               <Component id="EastPosition" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="East" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="NorthPosition" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="West" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="North" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
@@ -572,12 +579,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SouthPositionActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="North">
+    <Component class="javax.swing.JButton" name="West">
       <Properties>
         <Property name="text" type="java.lang.String" value="Connect"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NorthActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WestActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="EastPosition">
@@ -604,12 +611,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NorthPositionActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="West">
+    <Component class="javax.swing.JButton" name="North">
       <Properties>
         <Property name="text" type="java.lang.String" value="Connect"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WestActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NorthActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="Jfreechartpanel">
@@ -950,6 +957,19 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="VariableY:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="Light Mode"/>
+            <StringItem index="1" value="Dark Mode"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
