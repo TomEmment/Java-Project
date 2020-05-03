@@ -30,6 +30,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import java.io.FileWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -170,9 +171,10 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         TempTrends = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        colourMode = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
         South.setText("Connect");
         South.addActionListener(new java.awt.event.ActionListener() {
@@ -441,7 +443,12 @@ public class DataDisplayScreen extends javax.swing.JFrame {
 
         jLabel12.setText("VariableY:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Light Mode", "Dark Mode" }));
+        colourMode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Light Mode", "Dark Mode", "Blue Mode" }));
+        colourMode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                colourModeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -526,23 +533,21 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
+                        .addComponent(colourMode, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(VariableX, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
                         .addGap(98, 98, 98)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
                         .addGap(76, 76, 76)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ActiveStation, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 354, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel16)))
                     .addComponent(Jfreechartpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(110, 110, 110))
+                .addContainerGap(254, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
@@ -605,70 +610,72 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addGap(11, 11, 11)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(jLabel16)
-                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGap(19, 19, 19)
+                                            .addComponent(jLabel16))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(jLabel11)
                                             .addComponent(jLabel12))))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(ActiveStation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(VariableX, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(23, 23, 23)
-                                        .addComponent(Jfreechartpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel27)
-                                                .addGap(84, 84, 84))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(84, 84, 84)
-                                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel21)
-                                                    .addComponent(SoilPHChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel22))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel23)
-                                                    .addComponent(WindChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel24))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(22, 22, 22)
+                                        .addComponent(jLabel27)
+                                        .addGap(84, 84, 84))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(84, 84, 84)
+                                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(saveLabel)
-                                            .addComponent(saveText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(fileTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(saveButton))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel21)
+                                            .addComponent(SoilPHChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel22))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel23)
+                                            .addComponent(WindChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel24))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(saveLabel)
+                                    .addComponent(saveText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fileTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(saveButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(38, 38, 38)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(ActiveStation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(VariableY, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(VariableX, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(28, 28, 28)
+                                        .addComponent(colourMode, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(23, 23, 23)
+                                .addComponent(Jfreechartpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -725,6 +732,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                                 .addComponent(Slider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(42, 42, 42))))
         );
+
+        getAccessibleContext().setAccessibleName("jFrame1");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -994,6 +1003,320 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             printTextField();
         }
     }//GEN-LAST:event_WindChoiceActionPerformed
+
+    private void colourModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colourModeActionPerformed
+        // TODO add your handling code here:
+        if("Light Mode".equals(colourMode.getSelectedItem().toString())){
+            // background to light
+            //jFrame.setBackground(Color.WHITE);
+            getContentPane().setBackground(Color.WHITE);
+            ActiveStation.setBackground(Color.WHITE);
+            ActiveStation.setForeground(Color.BLACK);
+            DisplayHumidityData.setBackground(Color.WHITE);
+            DisplayHumidityData.setForeground(Color.BLACK);
+            DisplayTempreatureData.setBackground(Color.WHITE);
+            DisplayTempreatureData.setForeground(Color.BLACK);
+            DisplayWindSpeedData.setBackground(Color.WHITE);
+            DisplayWindSpeedData.setForeground(Color.BLACK);
+            DisplaySoilPHData.setBackground(Color.WHITE);
+            DisplaySoilPHData.setForeground(Color.BLACK);
+            East.setBackground(Color.WHITE);
+            East.setForeground(Color.BLACK);
+            EastPosition.setBackground(Color.WHITE);
+            EastPosition.setForeground(Color.BLACK);
+            HumidityChoice.setBackground(Color.WHITE);
+            HumidityChoice.setForeground(Color.BLACK);
+            HumidityTrends.setBackground(Color.WHITE);
+            HumidityTrends.setForeground(Color.BLACK);            
+            Jfreechartpanel.setBackground(Color.WHITE);
+            Jfreechartpanel.setForeground(Color.BLACK);
+            North.setBackground(Color.WHITE);
+            North.setForeground(Color.BLACK);
+            NorthPosition.setBackground(Color.WHITE);
+            NorthPosition.setForeground(Color.BLACK);
+            Slider1.setBackground(Color.WHITE);
+            Slider1.setForeground(Color.BLACK);
+            
+            SoilPHChoice.setBackground(Color.WHITE);
+            SoilPHChoice.setForeground(Color.BLACK);
+            SoilTrends.setBackground(Color.WHITE);
+            SoilTrends.setForeground(Color.BLACK);
+            South.setBackground(Color.WHITE);
+            South.setForeground(Color.BLACK);
+            SouthPosition.setBackground(Color.WHITE);
+            SouthPosition.setForeground(Color.BLACK);
+            TempChoice.setBackground(Color.WHITE);
+            TempChoice.setForeground(Color.BLACK);
+            TempTrends.setBackground(Color.WHITE);
+            TempTrends.setForeground(Color.BLACK);
+            VariableX.setBackground(Color.WHITE);
+            VariableX.setForeground(Color.BLACK);
+            VariableY.setBackground(Color.WHITE);
+            VariableY.setForeground(Color.BLACK);
+            WeatherStationData.setBackground(Color.WHITE);
+            WeatherStationData.setForeground(Color.BLACK);
+            West.setBackground(Color.WHITE);
+            West.setForeground(Color.BLACK);
+            WestPosition.setBackground(Color.WHITE);
+            WestPosition.setForeground(Color.BLACK);
+            WindChoice.setBackground(Color.WHITE);
+            WindChoice.setForeground(Color.BLACK);
+            WindTrends.setBackground(Color.WHITE);
+            WindTrends.setForeground(Color.BLACK);
+            colourMode.setBackground(Color.WHITE);
+            colourMode.setForeground(Color.BLACK);  
+            fileTypeCombo.setBackground(Color.WHITE);
+            fileTypeCombo.setForeground(Color.BLACK); 
+            jLabel1.setBackground(Color.WHITE);
+            jLabel1.setForeground(Color.BLACK);
+            jLabel10.setBackground(Color.WHITE);
+            jLabel10.setForeground(Color.BLACK);
+            jLabel11.setBackground(Color.WHITE);
+            jLabel11.setForeground(Color.BLACK);
+            jLabel12.setBackground(Color.WHITE);
+            jLabel12.setForeground(Color.BLACK);
+            jLabel15.setBackground(Color.WHITE);
+            jLabel15.setForeground(Color.BLACK);
+            jLabel6.setBackground(Color.WHITE);
+            jLabel6.setForeground(Color.BLACK);
+            jLabel7.setBackground(Color.WHITE);
+            jLabel7.setForeground(Color.BLACK);
+            jLabel8.setBackground(Color.WHITE);
+            jLabel8.setForeground(Color.BLACK);
+            jLabel9.setBackground(Color.WHITE);
+            jLabel9.setForeground(Color.BLACK);
+            jLabel2.setBackground(Color.WHITE);
+            jLabel2.setForeground(Color.BLACK);
+            jLabel20.setBackground(Color.WHITE);
+            jLabel20.setForeground(Color.BLACK);
+            jLabel21.setBackground(Color.WHITE);
+            jLabel21.setForeground(Color.BLACK);
+            jLabel22.setBackground(Color.WHITE);
+            jLabel22.setForeground(Color.BLACK);
+            jLabel23.setBackground(Color.WHITE);
+            jLabel23.setForeground(Color.BLACK);
+            jLabel24.setBackground(Color.WHITE);
+            jLabel24.setForeground(Color.BLACK);
+            jLabel25.setBackground(Color.WHITE);
+            jLabel25.setForeground(Color.BLACK);
+            jLabel26.setBackground(Color.WHITE);
+            jLabel26.setForeground(Color.BLACK);
+            jLabel27.setBackground(Color.WHITE);
+            jLabel27.setForeground(Color.BLACK);
+            jLabel28.setBackground(Color.WHITE);
+            jLabel28.setForeground(Color.BLACK);
+            jLabel29.setBackground(Color.WHITE);
+            jLabel29.setForeground(Color.BLACK);
+            jLabel3.setBackground(Color.WHITE);
+            jLabel3.setForeground(Color.BLACK);
+            jLabel30.setBackground(Color.WHITE);
+            jLabel30.setForeground(Color.BLACK);
+            jLabel31.setBackground(Color.WHITE);
+            jLabel31.setForeground(Color.BLACK);
+            jLabel32.setBackground(Color.WHITE);
+            jLabel32.setForeground(Color.BLACK);
+            jLabel33.setBackground(Color.WHITE);
+            jLabel33.setForeground(Color.BLACK);
+            jLabel34.setBackground(Color.WHITE);
+            jLabel34.setForeground(Color.BLACK);
+            jLabel4.setBackground(Color.WHITE);
+            jLabel4.setForeground(Color.BLACK);
+            jLabel5.setBackground(Color.WHITE);
+            jLabel5.setForeground(Color.BLACK);
+            jLabel6.setBackground(Color.WHITE);
+            jLabel6.setForeground(Color.BLACK);
+            jLabel7.setBackground(Color.WHITE);
+            jLabel7.setForeground(Color.BLACK);
+            jLabel8.setBackground(Color.WHITE);
+            jLabel8.setForeground(Color.BLACK);
+            jLabel9.setBackground(Color.WHITE);
+            jLabel9.setForeground(Color.BLACK);
+            jLabel1.setBackground(Color.WHITE);
+            jLabel1.setForeground(Color.BLACK);
+            jLabel2.setBackground(Color.WHITE);
+            jLabel2.setForeground(Color.BLACK);
+            jScrollPane1.setBackground(Color.WHITE);
+            jScrollPane1.setForeground(Color.BLACK);
+            jScrollPane2.setBackground(Color.WHITE);
+            jScrollPane2.setForeground(Color.BLACK);
+            jScrollPane3.setBackground(Color.WHITE);
+            jScrollPane3.setForeground(Color.BLACK);
+            jScrollPane4.setBackground(Color.WHITE);
+            jScrollPane4.setForeground(Color.BLACK);
+            jScrollPane5.setBackground(Color.WHITE);
+            jScrollPane5.setForeground(Color.BLACK);
+            jScrollPane6.setBackground(Color.WHITE);
+            jScrollPane6.setForeground(Color.BLACK);
+            jScrollPane7.setBackground(Color.WHITE);
+            jScrollPane7.setForeground(Color.BLACK);
+            jScrollPane8.setBackground(Color.WHITE);
+            jScrollPane8.setForeground(Color.BLACK);
+            jScrollPane9.setBackground(Color.WHITE);
+            jScrollPane9.setForeground(Color.BLACK);
+            saveButton.setBackground(Color.WHITE);
+            saveButton.setForeground(Color.BLACK);
+            saveLabel.setBackground(Color.WHITE);
+            saveLabel.setForeground(Color.BLACK);
+            saveText.setBackground(Color.WHITE);
+            saveText.setForeground(Color.BLACK);
+            
+            
+        }else{
+            // Set it to dark
+            getContentPane().setBackground(Color.BLACK);
+            ActiveStation.setBackground(Color.BLACK);
+            ActiveStation.setForeground(Color.WHITE);
+            DisplayHumidityData.setBackground(Color.BLACK);
+            DisplayHumidityData.setForeground(Color.WHITE);
+            DisplayTempreatureData.setBackground(Color.BLACK);
+            DisplayTempreatureData.setForeground(Color.WHITE);
+            DisplayWindSpeedData.setBackground(Color.BLACK);
+            DisplayWindSpeedData.setForeground(Color.WHITE);
+            DisplaySoilPHData.setBackground(Color.BLACK);
+            DisplaySoilPHData.setForeground(Color.WHITE);
+            East.setBackground(Color.BLACK);
+            East.setForeground(Color.WHITE);
+            EastPosition.setBackground(Color.BLACK);
+            EastPosition.setForeground(Color.WHITE);
+            HumidityChoice.setBackground(Color.BLACK);
+            HumidityChoice.setForeground(Color.WHITE);
+            HumidityTrends.setBackground(Color.BLACK);
+            HumidityTrends.setForeground(Color.WHITE);            
+            Jfreechartpanel.setBackground(Color.BLACK);
+            Jfreechartpanel.setForeground(Color.WHITE);
+            North.setBackground(Color.BLACK);
+            North.setForeground(Color.WHITE);
+            NorthPosition.setBackground(Color.BLACK);
+            NorthPosition.setForeground(Color.WHITE);
+            Slider1.setBackground(Color.BLACK);
+            Slider1.setForeground(Color.WHITE);
+            jLabel1.setBackground(Color.BLACK);
+            jLabel1.setForeground(Color.WHITE);
+            jPanel2.setBackground(Color.BLACK);           
+            SoilPHChoice.setBackground(Color.BLACK);
+            SoilPHChoice.setForeground(Color.WHITE);
+            SoilTrends.setBackground(Color.BLACK);
+            SoilTrends.setForeground(Color.WHITE);
+            South.setBackground(Color.BLACK);
+            South.setForeground(Color.WHITE);
+            SouthPosition.setBackground(Color.BLACK);
+            SouthPosition.setForeground(Color.WHITE);
+            TempChoice.setBackground(Color.BLACK);
+            TempChoice.setForeground(Color.WHITE);
+            TempTrends.setBackground(Color.BLACK);
+            TempTrends.setForeground(Color.WHITE);
+            VariableX.setBackground(Color.BLACK);
+            VariableX.setForeground(Color.WHITE);
+            VariableY.setBackground(Color.BLACK);
+            VariableY.setForeground(Color.WHITE);
+            WeatherStationData.setBackground(Color.BLACK);
+            WeatherStationData.setForeground(Color.WHITE);
+            West.setBackground(Color.BLACK);
+            West.setForeground(Color.WHITE);
+            WestPosition.setBackground(Color.BLACK);
+            WestPosition.setForeground(Color.WHITE);
+            WindChoice.setBackground(Color.BLACK);
+            WindChoice.setForeground(Color.WHITE);
+            WindTrends.setBackground(Color.BLACK);
+            WindTrends.setForeground(Color.WHITE);
+            colourMode.setBackground(Color.BLACK);
+            colourMode.setForeground(Color.WHITE);  
+            fileTypeCombo.setBackground(Color.BLACK);
+            fileTypeCombo.setForeground(Color.WHITE); 
+            jLabel1.setBackground(Color.BLACK);
+            jLabel1.setForeground(Color.WHITE);
+            jLabel10.setBackground(Color.BLACK);
+            jLabel10.setForeground(Color.WHITE);
+            jLabel11.setBackground(Color.BLACK);
+            jLabel11.setForeground(Color.WHITE);
+            jLabel12.setBackground(Color.BLACK);
+            jLabel12.setForeground(Color.WHITE);
+            jLabel15.setBackground(Color.BLACK);
+            jLabel15.setForeground(Color.WHITE);
+            jLabel6.setBackground(Color.BLACK);
+            jLabel6.setForeground(Color.WHITE);
+            jLabel7.setBackground(Color.BLACK);
+            jLabel7.setForeground(Color.WHITE);
+            jLabel8.setBackground(Color.BLACK);
+            jLabel8.setForeground(Color.WHITE);
+            jLabel9.setBackground(Color.BLACK);
+            jLabel9.setForeground(Color.WHITE);
+            jLabel2.setBackground(Color.BLACK);
+            jLabel2.setForeground(Color.WHITE);
+            jLabel20.setBackground(Color.BLACK);
+            jLabel20.setForeground(Color.WHITE);
+            jLabel21.setBackground(Color.BLACK);
+            jLabel21.setForeground(Color.WHITE);
+            jLabel22.setBackground(Color.BLACK);
+            jLabel22.setForeground(Color.WHITE);
+            jLabel23.setBackground(Color.BLACK);
+            jLabel23.setForeground(Color.WHITE);
+            jLabel24.setBackground(Color.BLACK);
+            jLabel24.setForeground(Color.WHITE);
+            jLabel25.setBackground(Color.BLACK);
+            jLabel25.setForeground(Color.WHITE);
+            jLabel26.setBackground(Color.BLACK);
+            jLabel26.setForeground(Color.WHITE);
+            jLabel27.setBackground(Color.BLACK);
+            jLabel27.setForeground(Color.WHITE);
+            jLabel28.setBackground(Color.BLACK);
+            jLabel28.setForeground(Color.WHITE);
+            jLabel29.setBackground(Color.BLACK);
+            jLabel29.setForeground(Color.WHITE);
+            jLabel3.setBackground(Color.BLACK);
+            jLabel3.setForeground(Color.WHITE);
+            jLabel30.setBackground(Color.BLACK);
+            jLabel30.setForeground(Color.WHITE);
+            jLabel31.setBackground(Color.BLACK);
+            jLabel31.setForeground(Color.WHITE);
+            jLabel32.setBackground(Color.BLACK);
+            jLabel32.setForeground(Color.WHITE);
+            jLabel33.setBackground(Color.BLACK);
+            jLabel33.setForeground(Color.WHITE);
+            jLabel34.setBackground(Color.BLACK);
+            jLabel34.setForeground(Color.WHITE);
+            jLabel4.setBackground(Color.BLACK);
+            jLabel4.setForeground(Color.WHITE);
+            jLabel5.setBackground(Color.BLACK);
+            jLabel5.setForeground(Color.WHITE);
+            jLabel6.setBackground(Color.BLACK);
+            jLabel6.setForeground(Color.WHITE);
+            jLabel7.setBackground(Color.BLACK);
+            jLabel7.setForeground(Color.WHITE);
+            jLabel8.setBackground(Color.BLACK);
+            jLabel8.setForeground(Color.WHITE);
+            jLabel9.setBackground(Color.BLACK);
+            jLabel9.setForeground(Color.WHITE);
+            jLabel1.setBackground(Color.BLACK);
+            jLabel1.setForeground(Color.WHITE);
+            jLabel2.setBackground(Color.BLACK);
+            jLabel2.setForeground(Color.WHITE);
+            jScrollPane1.setBackground(Color.BLACK);
+            jScrollPane1.setForeground(Color.WHITE);
+            jScrollPane2.setBackground(Color.BLACK);
+            jScrollPane2.setForeground(Color.WHITE);
+            jScrollPane3.setBackground(Color.BLACK);
+            jScrollPane3.setForeground(Color.WHITE);
+            jScrollPane4.setBackground(Color.BLACK);
+            jScrollPane4.setForeground(Color.WHITE);
+            jScrollPane5.setBackground(Color.BLACK);
+            jScrollPane5.setForeground(Color.WHITE);
+            jScrollPane6.setBackground(Color.BLACK);
+            jScrollPane6.setForeground(Color.WHITE);
+            jScrollPane7.setBackground(Color.BLACK);
+            jScrollPane7.setForeground(Color.WHITE);
+            jScrollPane8.setBackground(Color.BLACK);
+            jScrollPane8.setForeground(Color.WHITE);
+            jScrollPane9.setBackground(Color.BLACK);
+            jScrollPane9.setForeground(Color.WHITE);
+            saveButton.setBackground(Color.BLACK);
+            saveButton.setForeground(Color.WHITE);
+            saveLabel.setBackground(Color.BLACK);
+            saveLabel.setForeground(Color.WHITE);
+            saveText.setBackground(Color.BLACK);
+            saveText.setForeground(Color.WHITE);
+        }
+    }//GEN-LAST:event_colourModeActionPerformed
 
     
     
@@ -1437,8 +1760,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     private javax.swing.JTextField WestPosition;
     private javax.swing.JComboBox<String> WindChoice;
     private javax.swing.JTextArea WindTrends;
+    private javax.swing.JComboBox<String> colourMode;
     private javax.swing.JComboBox<String> fileTypeCombo;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
