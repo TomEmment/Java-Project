@@ -994,7 +994,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             NorthPosition.setForeground(Color.BLACK);
             Slider1.setBackground(Color.WHITE);
             Slider1.setForeground(Color.BLACK);
-            
+            jPanel1.setBackground(Color.WHITE);
+            jPanel2.setBackground(Color.WHITE);
             SoilPHChoice.setBackground(Color.WHITE);
             SoilPHChoice.setForeground(Color.BLACK);
             SoilTrends.setBackground(Color.WHITE);
@@ -1146,7 +1147,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             NorthPosition.setForeground(Color.gray);
             Slider1.setBackground(Color.WHITE);
             Slider1.setForeground(Color.gray);
-            
+            jPanel1.setBackground(Color.gray);
+            jPanel2.setBackground(Color.gray);
             SoilPHChoice.setBackground(Color.WHITE);
             SoilPHChoice.setForeground(Color.gray);
             SoilTrends.setBackground(Color.WHITE);
@@ -1300,6 +1302,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             Slider1.setForeground(Color.WHITE);
             jLabel1.setBackground(Color.BLACK);
             jLabel1.setForeground(Color.WHITE);
+            jPanel1.setBackground(Color.BLACK); 
             jPanel2.setBackground(Color.BLACK);           
             SoilPHChoice.setBackground(Color.BLACK);
             SoilPHChoice.setForeground(Color.WHITE);
