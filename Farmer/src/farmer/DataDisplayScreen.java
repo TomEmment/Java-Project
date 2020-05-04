@@ -45,7 +45,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     int port = 2222;
     Boolean isConnected = false;
     String Nitrogen;
-    
+    String Farmer;
     Socket sock;
     BufferedReader reader;
     PrintWriter writer;
@@ -67,18 +67,19 @@ public class DataDisplayScreen extends javax.swing.JFrame {
  * 
      * Creates new form DataDisplayScreen
      */
-    public DataDisplayScreen(String Station,String Sleep) {
+    public DataDisplayScreen(String Station,String Sleep,String Name) {
         initComponents();
         try     
             {
                 SleepTime = Sleep;
+                Farmer = Name;
                 sock = new Socket(address, port);
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(streamreader);
                 writer = new PrintWriter(sock.getOutputStream());
-                writer.println("Connect;FarmerJohn");
+                writer.println("Connect;"+Farmer);
                 writer.flush(); 
-                writer.println("DataRequest;"+Station+";"+Sleep);
+                writer.println("DataRequest;"+Station+";"+Sleep+";"+Farmer);
                 writer.flush();  
             } 
             catch (IOException ex) 
@@ -751,7 +752,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }  
         else
         {
-            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime);
+            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime+";"+Farmer);
             writer.flush();           
         }       // TODO add your handling code here:
     }//GEN-LAST:event_SouthActionPerformed
@@ -765,7 +766,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }  
         else
         {
-            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime);
+            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime+";"+Farmer);
             writer.flush();           
         }       // TODO add your handling code here:
     }//GEN-LAST:event_NorthActionPerformed
@@ -787,7 +788,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }  
         else
         {
-            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime);
+            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime+";"+Farmer);
             writer.flush();           
         }      // TODO add your handling code here:
     }//GEN-LAST:event_WestActionPerformed
@@ -801,7 +802,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }  
         else
         {
-            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime);
+            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime+";"+Farmer);
             writer.flush();           
         }
 // TODO add your handling code here:
@@ -1761,6 +1762,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                      data = stream.split(";");
                      if (data[0].equals(Done)) 
                      {
+                         if (data[6].equals(Farmer))
+                         {
                         TimeData = TimeData + data[1];
                         TempreatureData = TempreatureData +data[2];
                         HumidityData = HumidityData + data[3];
@@ -1768,10 +1771,13 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         WindSpeedData = WindSpeedData + data[5]; 
                         printTextField();
                         LineChart_AWT( );
+                         }
                         
                      } 
                      else if (data[0].equals(Done1)) 
                      {
+                         if (data[4].equals(Farmer))
+                         {
                         username = data[1];
                         ActiveStation.setText(username);
                          StaticData = data[2];
@@ -1784,14 +1790,18 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         FieldName = Tempdata[2];
                         UpdateField(username,Tempdata[3]);
                         isConnected = true;  
-                        writer.println("FieldRequest;"+FieldName);
+                        writer.println("FieldRequest;"+FieldName+";"+Farmer);
                         writer.flush(); 
+                         }
                                              
                      } 
                      else if (data[0].equals(Done2)) 
                      {
+                         if (data[2].equals(Farmer))
+                         {
                          Tempdata = data[1].split(",");
                          UpdateField(Tempdata[0],Tempdata[1]);
+                         }
                          
                      } 
                      else
@@ -1839,7 +1849,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DataDisplayScreen("WeatherStation1","10").setVisible(true);
+                new DataDisplayScreen("WeatherStation1","10","FarmerJohn").setVisible(true);
           }
         });
     }

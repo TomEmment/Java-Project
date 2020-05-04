@@ -59,19 +59,10 @@ public class Server extends javax.swing.JFrame
 
                     if (data[0].equals(Data)) 
                     {
-                        /* checksum here
-                        int checksum = 0;
-                        checksum = CheckSum(checksum,data[2],data[3],data[4],data[5]);
-                        System.out.println("Checks");
-                        System.out.println(checksum);
-                        System.out.println(Integer.parseInt(data[6]));
-                        if(checksum == Integer.parseInt(data[6])){
-                            System.out.println("Checksum pass");*/
-                            SendMessage("DataSending;"+data[1]+";"+data[2]+";"+data[3]+";"+data[4]+";"+data[5]+";");
+
+                            SendMessage("DataSending;"+data[1]+";"+data[2]+";"+data[3]+";"+data[4]+";"+data[5]+";"+data[6]);
                            
-                        /*}else{
-                            System.out.println("Error in data transmission");
-                        }*/
+
 
                     } 
                     else if (data[0].equals(Login)) 
@@ -84,7 +75,7 @@ public class Server extends javax.swing.JFrame
                     } 
                     else if (data[0].equals(Request)) 
                     {
-                        SendMessage("Active;"+data[1]+";"+data[2]);
+                        SendMessage("Active;"+data[1]+";"+data[2]+";"+data[3]);
 
                     }
                     else if (data[0].equals(Connect)) 
@@ -123,19 +114,19 @@ public class Server extends javax.swing.JFrame
                     }    
                      else if (data[0].equals(FieldRequest)) 
                     {
-                        SendMessage("FieldPull;"+data[1]);
+                        SendMessage("FieldPull;"+data[1]+";"+data[2]);
 
                     }  
                      else if (data[0].equals(Information)) 
                     {
                         
-                        SendMessage("StaticData;"+data[1]+";"+data[2]+";"+data[3]);
+                        SendMessage("StaticData;"+data[1]+";"+data[2]+";"+data[3]+";"+data[4]);
 
                     }     
                      else if (data[0].equals(FieldData)) 
                     {
                         
-                        SendMessage("FieldData;"+data[1]);
+                        SendMessage("FieldData;"+data[1]+";"+data[2]);
 
                     }   
                     else 

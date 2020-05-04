@@ -20,6 +20,7 @@ public class LogInScreen extends javax.swing.JFrame {
     ArrayList<String> users = new ArrayList();
     int port = 2222;
     Boolean isConnected = false;
+    String name;
     
     Socket sock;
     BufferedReader reader;
@@ -144,7 +145,7 @@ public class LogInScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
-        String name =String.valueOf(Username.getText());
+        name =String.valueOf(Username.getText());
         String pass = String.valueOf(Password.getPassword());   
         try     
             {
@@ -216,7 +217,7 @@ public class LogInScreen extends javax.swing.JFrame {
                         setVisible(false); 
                         dispose(); 
                         System.out.println("Opening information window");
-                        WeatherStationList Instance = new WeatherStationList();
+                        WeatherStationList Instance = new WeatherStationList(name);
                         Instance.setVisible(true);
                      } 
                      else if (data[0].equals(disconnect)) 

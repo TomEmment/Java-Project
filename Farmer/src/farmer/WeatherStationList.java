@@ -25,6 +25,7 @@ public class WeatherStationList extends javax.swing.JFrame {
     BufferedReader reader;
     PrintWriter writer;
     String Sleep;
+    String name;
     
     
         public void ListenThread() 
@@ -35,8 +36,9 @@ public class WeatherStationList extends javax.swing.JFrame {
     /**
      * Creates new form WeatherStationList
      */
-    public WeatherStationList() {
+    public WeatherStationList(String Farmer) {
         initComponents();
+        name=Farmer;
             try 
             {
                 sock = new Socket(address, port);
@@ -165,7 +167,7 @@ public class WeatherStationList extends javax.swing.JFrame {
                         dispose(); 
                         System.out.println("Opening information window");
                         String Choice = StationChoice.getItemAt(StationChoice.getSelectedIndex());
-                        DataDisplayScreen Instance = new DataDisplayScreen(Choice,Sleep);
+                        DataDisplayScreen Instance = new DataDisplayScreen(Choice,Sleep,name);
                         Instance.setVisible(true);
             }
            catch(IOException ex) { 
@@ -247,7 +249,7 @@ public class WeatherStationList extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WeatherStationList().setVisible(true);
+                new WeatherStationList("FarmerJohn").setVisible(true);
             }
         });
     }

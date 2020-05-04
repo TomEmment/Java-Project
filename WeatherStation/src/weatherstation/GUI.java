@@ -37,6 +37,7 @@ public class GUI extends javax.swing.JFrame {
     String SoilPHData = "";
     String WindSpeedData = "";
     String Nitorgen;
+    String ActiveFarmer = "None";
     int Active = 0;
     int Sleep =10;
     
@@ -137,48 +138,11 @@ public void GenerateData(){
                    SendData(); 
                 }
         }
-public void Checksum(){
-    System.out.println("Calculating checksum - "+username);
-    checksum = 0;// reset
-    
-    // split each into an array
-    String[] tempCheck = TempreatureData.split(",");
-    String[] humCheck = HumidityData.split(",");
-    String[] soilCheck = SoilPHData.split(",");
-    String[] windCheck = WindSpeedData.split(",");
 
-    int sum=0;
-    int avg;
-    int sizeX = tempCheck.length;
-    int sizeY = 4;
-    int len = sizeX *4;
-// change temperature, humiduty, soilph, windspeed to integers
-    for(int x = 0; x<sizeY;x++){  
-        for(int i = 0; i<sizeX;i++){
-            if(x==0){
-                sum += Integer.parseInt(tempCheck[i]);
-            }
-            if(x==1){
-                sum += Integer.parseInt(humCheck[i]);
-            }
-            if(x==2){
-                sum += Integer.parseInt(soilCheck[i]);
-            }
-            if(x==3){
-                sum += Integer.parseInt(windCheck[i]);
-            }
-        }
-    }
-    avg = sum/len;
-    checksum = avg%10;
-    System.out.println(checksum);
-    System.out.println(username + "Checksum calculated");
-}
         
 public void SendData(){
-            Checksum();
             try {
-               writer.println("Data"+ ";" +TimeData +";" +TempreatureData+";" +HumidityData+";" +SoilPHData+";" +WindSpeedData+";"+checksum);
+               writer.println("Data"+ ";" +TimeData +";" +TempreatureData+";" +HumidityData+";" +SoilPHData+";" +WindSpeedData+";"+ActiveFarmer);
                writer.flush(); // flushes the buffer
                StationNotification.append("Data Sent");
             } catch (Exception ex) {
@@ -204,16 +168,25 @@ public void SendData(){
 
                  if (data[0].equals(Connected))
                  {
+                     if (Active != 1)
+                     {
                      if (data[1].equals(username))
                              
                      {
+                         ActiveFarmer = data[3];
                          Nitorgen = Integer.toString(rand.nextInt(4));
-                          writer.println("Information;"+username+";"+StaticData+";"+Nitorgen);
+                          writer.println("Information;"+username+";"+StaticData+";"+Nitorgen+";"+data[3]);
                           writer.flush(); 
                           Active = 1;
                           GenerateData();
                           Sleep = Integer.parseInt(data[2]);
                              }
+                 }
+                     else
+                     {
+                          writer.println("ConnectionError;"+ActiveFarmer+";"+data[3]);
+                          writer.flush();                          
+                     }
                  }
                 else if (data[0].equals(Deactivated)) 
                 {
@@ -225,10 +198,11 @@ public void SendData(){
                        }
               else if (data[0].equals(Field)) 
                 {
+
                    temp = StaticData.split(",");
                    if (temp[2].equals(data[1]))
                    {
-                          writer.println("FieldData;"+username+","+temp[3]);
+                          writer.println("FieldData;"+username+","+temp[3]+";"+data[2]);
                           writer.flush();                        
                    }
 
