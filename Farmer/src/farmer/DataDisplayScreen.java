@@ -55,7 +55,6 @@ public class DataDisplayScreen extends javax.swing.JFrame {
     String HumidityData = "HumidityData:";
     String SoilPHData = "SoilPHData:";
     String WindSpeedData = "WindSpeedData:";  
-    String SleepTime;
     
  
     public void ListenThread() 
@@ -67,11 +66,11 @@ public class DataDisplayScreen extends javax.swing.JFrame {
  * 
      * Creates new form DataDisplayScreen
      */
-    public DataDisplayScreen(String Station,String Sleep,String Name) {
+    public DataDisplayScreen(String Station,String Name) {
         initComponents();
         try     
             {
-                SleepTime = Sleep;
+
                 Farmer = Name;
                 sock = new Socket(address, port);
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
@@ -79,7 +78,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 writer = new PrintWriter(sock.getOutputStream());
                 writer.println("Connect;"+Farmer);
                 writer.flush(); 
-                writer.println("DataRequest;"+Station+";"+Sleep+";"+Farmer);
+                writer.println("DataRequest;"+Station+";"+""+";"+Farmer);
                 writer.flush();  
             } 
             catch (IOException ex) 
@@ -380,11 +379,12 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                 .addGap(121, 121, 121)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(WeatherStationData, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(497, 497, 497)
+                                .addComponent(jLabel32))
+                            .addComponent(jLabel5)
+                            .addComponent(WeatherStationData))
                         .addGap(53, 53, 53)
                         .addComponent(Slider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -516,7 +516,12 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                         .addComponent(Jfreechartpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(99, 99, 99)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel32)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(WeatherStationData, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel29)
@@ -528,11 +533,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
                                     .addComponent(jLabel34)
                                     .addGap(30, 30, 30)
                                     .addComponent(jLabel30))
-                                .addComponent(Slider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(WeatherStationData, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Slider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -592,7 +593,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }  
         else
         {
-            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime+";"+Farmer);
+            writer.println("ChangeActive;"+username+";"+temp+";"+""+";"+Farmer);
             writer.flush();           
         }       // TODO add your handling code here:
     }//GEN-LAST:event_SouthActionPerformed
@@ -606,7 +607,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }  
         else
         {
-            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime+";"+Farmer);
+            writer.println("ChangeActive;"+username+";"+temp+";"+""+";"+Farmer);
             writer.flush();           
         }       // TODO add your handling code here:
     }//GEN-LAST:event_NorthActionPerformed
@@ -628,7 +629,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }  
         else
         {
-            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime+";"+Farmer);
+            writer.println("ChangeActive;"+username+";"+temp+";"+""+";"+Farmer);
             writer.flush();           
         }      // TODO add your handling code here:
     }//GEN-LAST:event_WestActionPerformed
@@ -642,7 +643,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         }  
         else
         {
-            writer.println("ChangeActive;"+username+";"+temp+";"+SleepTime+";"+Farmer);
+            writer.println("ChangeActive;"+username+";"+temp+";"+""+";"+Farmer);
             writer.flush();           
         }
 // TODO add your handling code here:
@@ -806,7 +807,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             NorthPosition.setForeground(Color.BLACK);
             Slider1.setBackground(Color.WHITE);
             Slider1.setForeground(Color.BLACK);
-
+            DisplayWindSpeedData.setBackground(Color.WHITE);
+            DisplayWindSpeedData.setForeground(Color.BLACK);
 
             SoilTrends.setBackground(Color.WHITE);
             SoilTrends.setForeground(Color.BLACK);
@@ -900,6 +902,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             saveLabel.setForeground(Color.BLACK);
             saveText.setBackground(Color.WHITE);
             saveText.setForeground(Color.BLACK);
+            WindTrends.setBackground(Color.WHITE);
+            WindTrends.setForeground(Color.BLACK);
             
         }else if("Grey Mode".equals(colourMode.getSelectedItem().toString())){
             getContentPane().setBackground(Color.gray);
@@ -928,8 +932,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             NorthPosition.setForeground(Color.gray);
             Slider1.setBackground(Color.WHITE);
             Slider1.setForeground(Color.gray);
-
-
+            DisplayWindSpeedData.setBackground(Color.WHITE);
+            DisplayWindSpeedData.setForeground(Color.gray);
             SoilTrends.setBackground(Color.WHITE);
             SoilTrends.setForeground(Color.gray);
             South.setBackground(Color.WHITE);
@@ -949,7 +953,18 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             West.setForeground(Color.gray);
             WestPosition.setBackground(Color.WHITE);
             WestPosition.setForeground(Color.gray);
-
+            jLabel29.setForeground(Color.WHITE);
+            jLabel29.setBackground(Color.BLACK);
+            jLabel30.setBackground(Color.BLACK);
+            jLabel30.setForeground(Color.WHITE);
+            jLabel31.setBackground(Color.BLACK);
+            jLabel31.setForeground(Color.WHITE);
+            jLabel32.setBackground(Color.BLACK);
+            jLabel32.setForeground(Color.WHITE);
+            jLabel33.setBackground(Color.BLACK);
+            jLabel33.setForeground(Color.WHITE);
+            jLabel34.setBackground(Color.BLACK);
+            jLabel34.setForeground(Color.WHITE);
             SoilTrends.setBackground(Color.WHITE);
             SoilTrends.setForeground(Color.gray);
             colourMode.setBackground(Color.WHITE);
@@ -1022,6 +1037,8 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             saveLabel.setForeground(Color.gray);
             saveText.setBackground(Color.WHITE);
             saveText.setForeground(Color.gray);
+            WindTrends.setBackground(Color.WHITE);
+            WindTrends.setForeground(Color.gray);
         }else{
             // Set it to dark
             getContentPane().setBackground(Color.BLACK);
@@ -1052,8 +1069,10 @@ public class DataDisplayScreen extends javax.swing.JFrame {
             Slider1.setForeground(Color.WHITE);
             jLabel1.setBackground(Color.BLACK);
             jLabel1.setForeground(Color.WHITE);
-      
-
+            DisplayWindSpeedData.setBackground(Color.BLACK);
+            DisplayWindSpeedData.setForeground(Color.WHITE);      
+            WindTrends.setBackground(Color.BLACK);
+            WindTrends.setForeground(Color.WHITE);
             SoilTrends.setBackground(Color.BLACK);
             SoilTrends.setForeground(Color.WHITE);
             South.setBackground(Color.BLACK);
@@ -1461,7 +1480,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
      DisplayTempreatureData.setText(TempreatureDataTemp);
     DisplayHumidityData.setText(HumidityDataTemp);
     DisplaySoilPHData.setText(SoilPHDataTemp);
-    DisplaySoilPHData.setText(WindSpeedDataTemp);
+    DisplayWindSpeedData.setText(WindSpeedDataTemp);
 
     }
    public class IncomingReader implements Runnable
@@ -1567,7 +1586,7 @@ public class DataDisplayScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DataDisplayScreen("WeatherStation1","10","FarmerJohn").setVisible(true);
+                new DataDisplayScreen("WeatherStation1","FarmerJohn").setVisible(true);
           }
         });
     }
