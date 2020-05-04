@@ -36,6 +36,7 @@ public class GUI extends javax.swing.JFrame {
     String SoilPHData = "";
     String WindSpeedData = "";
     String Nitorgen;
+    String ActiveFarmer = "None";
     int Active = 0;
     int Sleep =10;
     
@@ -139,9 +140,8 @@ public void GenerateData(){
 
         
 public void SendData(){
-        
             try {
-               writer.println("Data"+ ";" +TimeData +";" +TempreatureData+";" +HumidityData+";" +SoilPHData+";" +WindSpeedData);
+               writer.println("Data"+ ";" +TimeData +";" +TempreatureData+";" +HumidityData+";" +SoilPHData+";" +WindSpeedData+";"+ActiveFarmer);
                writer.flush(); // flushes the buffer
                StationNotification.append("Data Sent");
             } catch (Exception ex) {
@@ -167,16 +167,25 @@ public void SendData(){
 
                  if (data[0].equals(Connected))
                  {
+                     if (Active != 1)
+                     {
                      if (data[1].equals(username))
                              
                      {
+                         ActiveFarmer = data[3];
                          Nitorgen = Integer.toString(rand.nextInt(4));
-                          writer.println("Information;"+username+";"+StaticData+";"+Nitorgen);
+                          writer.println("Information;"+username+";"+StaticData+";"+Nitorgen+";"+data[3]);
                           writer.flush(); 
                           Active = 1;
                           GenerateData();
                           Sleep = Integer.parseInt(data[2]);
                              }
+                 }
+                     else
+                     {
+                          writer.println("ConnectionError;"+ActiveFarmer+";"+data[3]);
+                          writer.flush();                          
+                     }
                  }
                 else if (data[0].equals(Deactivated)) 
                 {
@@ -188,10 +197,11 @@ public void SendData(){
                        }
               else if (data[0].equals(Field)) 
                 {
+
                    temp = StaticData.split(",");
                    if (temp[2].equals(data[1]))
                    {
-                          writer.println("FieldData;"+username+","+temp[3]);
+                          writer.println("FieldData;"+username+","+temp[3]+";"+data[2]);
                           writer.flush();                        
                    }
 
@@ -205,7 +215,7 @@ public void SendData(){
 
     }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
